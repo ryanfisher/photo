@@ -5,7 +5,7 @@ html
     meta name='viewport' content='width=device-width, initial-scale=1'
     link href='http://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'
     = render partial: 'layouts/analytics'
-    = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   body.top-nav
     nav#main-nav
@@ -16,7 +16,7 @@ html
       a.logout href='/' logout
     = yield
     script src='//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js'
-    script type='text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js'
+    script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js'
     script type='text/javascript' src='http://code.jquery.com/ui/1.10.4/jquery-ui.min.js'
     script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js'
     = javascript_include_tag 'application'
