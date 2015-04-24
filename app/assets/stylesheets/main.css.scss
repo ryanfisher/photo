@@ -46,7 +46,7 @@
   background-repeat: no-repeat;
 }
 
-.image-in-transition {
+@mixin image-in-transition {
   img {
     height: 100%;
     @include opacity(1);
@@ -79,10 +79,10 @@ $main-nav-width: 80px;
 $main-nav-height: 40px;
 
 @import 'navigation';
-// @import 'photo_feed';
-// @import 'photo_manager';
-// @import 'photo_show';
-// @import 'profile';
+@import 'photo_feed';
+@import 'photo_manager';
+@import 'photo_show';
+@import 'profile';
 
 html {
   background-image: image-url('folder.png');

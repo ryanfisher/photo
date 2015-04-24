@@ -1,0 +1,552 @@
+#photo-manager {
+  ul {
+    list-style: none;
+  }
+
+  li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}
+
+$manager-side-bar-width: 320px;
+
+#notification {
+  $notification-height: 20px;
+  position: fixed;
+  top: -($notification-height + 2px + 10px);
+  left: 50%;
+  height: $notification-height;
+  line-height: $notification-height;
+  padding: 5px 14px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #3a87ad;
+  background-color: #d9edf7;
+  border: 1px solid #bce8f1;
+  z-index: 4;
+  @include border-radius(0 0 4px 4px);
+  @include transition(top 0.3s);
+
+  &.open {
+    top: 0;
+  }
+}
+
+.top-nav #photo-manager-feed {
+  top: $main-nav-height;
+  left: $manager-side-bar-width;
+
+  nav {
+    top: $main-nav-height;
+    left: $manager-side-bar-width + 1px;
+  }
+}
+
+#photo-manager-feed {
+  width: auto;
+  position: fixed;
+  top: 0;
+  left: $manager-side-bar-width + $main-nav-width;
+  right: 0;
+  bottom: 0;
+  overflow-y: hidden;
+  text-align: left;
+  border-left: 1px solid #333;
+  min-height: 80%;
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 401px;
+    right: 0;
+    background-color: white;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #333;
+
+    div {
+      float: left;
+      color: black;
+      text-decoration: none;
+      padding: 0 10px;
+      border-right: 1px solid #333;
+      border-bottom: 1px solid #333;
+      background-color: white;
+
+      &.hidden { display: none; }
+
+      &:before {
+        display: inline-block;
+        top: 4px;
+        height: 20px;
+        content: '';
+      }
+
+      &.delete-link:before, &.add-to-albums:before {
+        position: relative;
+        margin-right: 3px;
+        width: 20px;
+      }
+
+      &.delete-link { cursor: pointer; }
+
+      &.delete-link:before { @include icon-background('x-mark.png'); }
+      &.add-to-albums:before { @include icon-background('add-folder.png'); }
+
+      &.delete-link:hover { background-color: #777; }
+
+      .add-to-albums {
+        .inner-dropdown {
+          display: none;
+          position: absolute;
+          top: 81px;
+          padding-left: 100%;
+          margin-left: -10px;
+          border-top: 1px solid #333;
+          white-space: nowrap;
+        }
+
+        &:hover .inner-dropdown { display: block; }
+      }
+    }
+  }
+
+  .sort-by, .bulk-actions {
+    height: 40px;
+    padding: 0 11px 0 10px;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      .dropdown {
+        display: block;
+      }
+    }
+  }
+
+  .sort-by li {
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+    }
+
+    &.selected {
+      &:before {
+        content: "\2714";
+      }
+    }
+  }
+
+  .dropdown {
+    display: none;
+    padding: 0;
+    margin-top: 0;
+    margin-left: -10px;
+    z-index: 1;
+    position: absolute;
+    border-top: 1px solid #333;
+
+    li {
+      display: block;
+      border: 1px solid #333;
+      border-top: 0px;
+      background-color: white;
+      padding: 0 10px;
+      margin-left: -1px;
+      margin-right: 0;
+    }
+  }
+
+  .feed-container {
+    overflow-y: scroll;
+    position: absolute;
+    top: 41px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .photo {
+    height: 130px;
+    width: 130px;
+    margin: 10px;
+    background-size: cover;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    @include transition(opacity 0.3s ease-in-out);
+
+    .edit {
+      display: none;
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      padding: 3px;
+      color: black;
+      background-color: white;
+      font-size: 10px;
+      @include border-radius(3px);
+      @include opacity(.70);
+
+      &:hover { @include opacity(1); }
+    }
+
+    &.hidden {
+      @include opacity(0);
+    }
+
+    &:hover {
+      margin: 5px;
+      border: 5px solid gray;
+      cursor: pointer;
+
+      .edit { display: block; }
+    }
+
+    &.selected {
+      margin: 5px;
+      border: 5px solid $accent-color;
+    }
+  }
+
+  .bulk-editor {
+    margin-top: -50px;
+    height: 30px;
+    padding: 10px;
+    @include transition(margin-top 0.3s ease-in-out);
+
+    &.open {
+      margin-top: 0;
+    }
+  }
+}
+
+#photo-editor {
+  position: fixed;
+  top: -100%;
+  left: $main-nav-width;
+  right: 0;
+  height: 100%;
+  z-index: 2;
+  background-color: white;
+  overflow-y: auto;
+  text-align: left;
+  @include transition(top 0.3s ease-in-out);
+
+  &.open { top: 0px; }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    @include icon-background('x-mark-close-l.png');
+  }
+
+  img {
+    margin-top: 30px;
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    @include opacity(1);
+    @include transition(opacity 0.2s);
+
+    &.hidden { @include opacity(0); }
+  }
+
+  .photo-info {
+    margin-top: 30px;
+    display: inline-block;
+  }
+}
+
+.top-nav {
+  #album-editor, #photo-editor {
+    left: 0;
+
+    &.open { top: $main-nav-height; }
+  }
+}
+
+#meta-manager {
+  position: fixed;
+  top: 0;
+}
+
+#album-editor {
+  position: fixed;
+  top: -100%;
+  left: $main-nav-width;
+  right: 0;
+  height: 100%;
+  z-index: 2;
+  background-color: white;
+  overflow-y: auto;
+  text-align: left;
+  @include transition(top 0.3s ease-in-out);
+
+  &.open { top: 0px; }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    @include icon-background('x-mark-close-l.png');
+  }
+
+  .controls {
+    clear: both;
+    padding: 20px 20px 0;
+
+    a { cursor: pointer; }
+  }
+
+  .photo {
+    display: inline-block;
+    height: 130px;
+    width: 130px;
+    margin: 10px;
+    background-size: cover;
+    cursor: pointer;
+
+    &.selected {
+      margin: 5px;
+      border: 5px solid $accent-color;
+    }
+  }
+
+  .edit { display: none; }
+
+  .photos {
+    padding: 10px;
+    clear: both;
+
+    .sortable-placeholder {
+      display: inline-block;
+      margin: 10px;
+      height: 124px;
+      width: 124px;
+      border: 3px solid $accent-color;
+      background-color: white;
+    }
+  }
+
+  .album-info {
+    padding: 20px;
+
+    .cover-photo {
+      width: 150px;
+      height: 150px;
+      margin-right: 10px;
+      background-color: #eee;
+      background-size: cover;
+      display: inline-block;
+      vertical-align: top;
+      float: left;
+    }
+
+    .title {
+      display: inline-block;
+    }
+
+    .about {
+      display: inline-block;
+    }
+  }
+}
+
+#uploader { overflow-y: hidden; }
+
+.top-nav {
+  #uploader, #albums-editor, #photos-info {
+    top: $main-nav-height;
+
+    &.open { left: 0; }
+  }
+}
+
+#meta-manager {
+  position: fixed;
+  width: $manager-side-bar-width;
+  top: $main-nav-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  nav {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin-left: 20px;
+    text-align: left;
+
+    a:link, a:visited {
+      display: inline-block;
+      color: $main-color;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    a:hover, a:active {
+      text-decoration: underline;
+    }
+    a.selected {
+      cursor: default;
+      text-decoration: underline;
+    }
+  }
+}
+
+#photos-info {
+  font-size: 12px;
+
+  .screenshot-container {
+    height: 300px;
+    margin-bottom: 5px;
+    text-align: center;
+    width: 100%;
+  }
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+#uploader, #albums-editor, #photos-info {
+  position: absolute;
+  width: $manager-side-bar-width - 35px;
+  left: -($manager-side-bar-width);
+  top: 0;
+  bottom: 0;
+  text-align: left;
+  margin-left: 20px;
+  background-color: white;
+  @include transition(left 0.3s ease-in-out);
+
+  &.open {
+    left: $main-nav-width;
+  }
+
+  h4 {
+    margin-left: 5px 0;
+    cursor: pointer;
+  }
+
+  .albums-editor, form {
+    overflow: hidden;
+    @include transition(height 0.3s ease-in-out);
+
+    &.hidden {
+      height: 0;
+    }
+
+    button {
+      margin-bottom: 5px;
+    }
+
+    form, button {
+      height: 30px;
+      @include transition(all 0.2s ease-in-out);
+
+      &.hidden {
+        border: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    .albums {
+      a {
+        margin: 5px 0;
+        display: block;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+#uploader label {
+  display: none;
+}
+
+@-webkit-keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+@keyframes progress-bar-stripes {
+  from  { background-position: 40px 0; }
+  to    { background-position: 0 0; }
+}
+
+.message {
+  text-align: left;
+  height: 14px;
+  margin: 15px 0 0 5px;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &.success { color: green; }
+  &.failure, &.error409 { color: red; }
+}
+
+.progress-info {
+  cursor: pointer;
+}
+
+#uploader .progress {
+  margin-top: 10px;
+  height: 5px;
+  width: $manager-side-bar-width;
+  background-color: gray;
+  overflow: hidden;
+
+  background-color: #f7f7f7;
+  background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: linear-gradient(to bottom, #f5f5f5, #f9f9f9);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff5f5f5', endColorstr='#fff9f9f9', GradientType=0);
+  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.progress .bar.animated {
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+  -moz-animation: progress-bar-stripes 2s linear infinite;
+  -ms-animation: progress-bar-stripes 2s linear infinite;
+  -o-animation: progress-bar-stripes 2s linear infinite;
+  animation: progress-bar-stripes 2s linear infinite;
+  animation: 2s linear 0s normal none infinite progress-bar-stripes;
+}
+
+#uploader .progress .bar {
+  height: 20px;
+  width: 0px;
+  background-color: blue;
+  -webkit-transition: width 500ms ease;
+  -moz-transition: width 500ms ease;
+  -o-transition: width 500ms ease;
+  transition: width 500ms ease;
+  background-color: #149bdf;
+  background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  @include background-size(40px 40px);
+}

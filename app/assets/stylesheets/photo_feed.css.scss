@@ -1,0 +1,67 @@
+body {
+  font-family: "Open Sans", Helvetica, sans-serif;
+  text-align: center;
+}
+
+img.photo-page {
+  display: inline;
+  margin: 0 auto;
+}
+
+#content {
+  margin-left: $main-nav-width;
+  padding-left: 3px;
+}
+
+.top-nav #content {
+  margin-left: 2px;
+  padding-left: 0;
+  padding-top: $main-nav-height + 3px;
+}
+
+#photo-feed {
+  text-align: left;
+
+  .photo {
+    position: relative;
+    display: inline-block;
+    height: 250px;
+    width: 375px;
+    cursor: pointer;
+    overflow: hidden;
+    color: white;
+
+    $info_height: 30px;
+    $info_padding: 10px;
+    .info {
+      position: relative;
+      @include opacity(0.8);
+      background-color: black;
+      height: $info_height;
+      padding: $info_padding;
+      line-height: $info_height;
+      top: 0;
+      @include transition(top 0.2s);
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &:hover .info {
+      top: -($info_height + 2 * $info_padding);
+    }
+  }
+
+  .column {
+    display: inline-block;
+    margin-right: 4px;
+    vertical-align: top;
+
+    .column:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @include image-in-transition;
+}
