@@ -4,12 +4,12 @@ class App extends Backbone.View
   initialize: ->
     if bootstrapped_photos? and $('#photo-feed').length
       if $('#photo-feed').hasClass('album')
-        collection = new AlbumPhotos(bootstrapped_photos)
+        collection = new Fotio.Collections.Album.Photos(bootstrapped_photos)
       else
-        collection = new UserPhotos(bootstrapped_photos)
+        collection = new Fotio.Collections.User.Photos(bootstrapped_photos)
       new PhotoFeed({collection})
     if $('#photo-manager').length
-      collection = new UserPhotos
+      collection = new Fotio.Collections.User.Photos
       new PhotoManager({collection})
       collection.fetch()
       router = new ManagerRouter
