@@ -1,15 +1,6 @@
-(->
-  _sync = Backbone.sync
-  Backbone.sync = (method, model, options) ->
-    options.beforeSend = (xhr) ->
-      token = $('meta[name="csrf-token"]').attr("content")
-      xhr.setRequestHeader "X-CSRFToken", token
-      return
-    _sync method, model, options
-)()
+#= require models/user/photo
 
 class App extends Backbone.View
-
   initialize: ->
     if bootstrapped_photos? and $('#photo-feed').length
       if $('#photo-feed').hasClass('album')
@@ -24,7 +15,7 @@ class App extends Backbone.View
       router = new ManagerRouter
       Backbone.history.start()
     if bootstrapped_photo?
-      model = new UserPhoto(bootstrapped_photo)
+      model = new Fotio.Models.User.Photo(bootstrapped_photo)
       new PhotoPage({model})
     if $('#login-background').length
       bg_path = '/static/images/grainy-beach.jpg'
@@ -32,5 +23,4 @@ class App extends Backbone.View
         $('#login-background img').attr('src', bg_path).
           addClass('loaded')
 
-jQuery('document').ready ->
-  App = new App()
+$ -> new App

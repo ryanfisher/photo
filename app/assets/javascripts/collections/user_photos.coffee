@@ -1,6 +1,6 @@
 class UserPhotos extends Backbone.Collection
   url: '/api/photos'
-  model: UserPhoto
+  model: Fotio.Models.User.Photo
 
   initialize: ->
     @sort_key = 'id'
