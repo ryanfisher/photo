@@ -7,16 +7,16 @@ class App extends Backbone.View
         collection = new Fotio.Collections.Album.Photos(bootstrapped_photos)
       else
         collection = new Fotio.Collections.User.Photos(bootstrapped_photos)
-      new PhotoFeed({collection})
+      new Fotio.Views.Photo.Feed({collection})
     if $('#photo-manager').length
       collection = new Fotio.Collections.User.Photos
-      new PhotoManager({collection})
+      new Fotio.Views.Photo.Manager({collection})
       collection.fetch()
       router = new ManagerRouter
       Backbone.history.start()
     if bootstrapped_photo?
       model = new Fotio.Models.User.Photo(bootstrapped_photo)
-      new PhotoPage({model})
+      new Fotio.Views.Photo.Page({model})
     if $('#login-background').length
       bg_path = '/static/images/grainy-beach.jpg'
       $('<img>', src: bg_path).load ->
