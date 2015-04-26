@@ -1,4 +1,4 @@
-namespace 'Fotio.Views.Photo.Manager', (exports) ->
+namespace 'Fotio.Views.PhotoManager', (exports) ->
   class exports.AlbumsEditor extends Backbone.View
     el: '#albums-editor'
 

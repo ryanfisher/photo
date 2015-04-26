@@ -1,4 +1,4 @@
-namespace 'Fotio.Views.Photo', (exports) ->
+namespace 'Fotio.Views.PhotoManager', (exports) ->
   class exports.Manager extends Backbone.View
     el: '#photo-manager'
 
@@ -12,7 +12,7 @@ namespace 'Fotio.Views.Photo', (exports) ->
 
     initialize: ->
       @uploader = new exports.Uploader({@collection})
-      collection = new Fotio.Photos.User.Albums
+      collection = new Fotio.Collections.User.Albums
       no_albums_notice = @$('.no-albums-notice')
       album_dropdown = @$('.add-to-albums .inner-dropdown')
       collection.on 'add', (model) ->
@@ -26,8 +26,8 @@ namespace 'Fotio.Views.Photo', (exports) ->
         else
           model.on 'change:id', set_up_album
       @user_albums = collection
-      @albums_editor = new exports.Manager.AlbumsEditor({collection})
-      @photo_feed = new exports.Manager.Feed({@collection})
+      @albums_editor = new exports.AlbumsEditor({collection})
+      @photo_feed = new exports.Feed({@collection})
 
     open_uploader: ->
       @$('nav a').removeClass('selected')

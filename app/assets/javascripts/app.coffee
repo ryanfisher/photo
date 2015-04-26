@@ -10,9 +10,9 @@ class App extends Backbone.View
       new Fotio.Views.Photo.Feed({collection})
     if $('#photo-manager').length
       collection = new Fotio.Collections.User.Photos
-      new Fotio.Views.Photo.Manager({collection})
+      new Fotio.Views.PhotoManager.Manager({collection})
       collection.fetch()
-      router = new ManagerRouter
+      router = new Fotio.Routers.Manager
       Backbone.history.start()
     if bootstrapped_photo?
       model = new Fotio.Models.User.Photo(bootstrapped_photo)

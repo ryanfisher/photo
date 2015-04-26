@@ -1,4 +1,4 @@
-namespace 'Fotio.Views.Photo.Manager', (exports) ->
+namespace 'Fotio.Views.PhotoManager', (exports) ->
   class exports.Feed extends Backbone.View
     el: '#photo-manager-feed'
 
