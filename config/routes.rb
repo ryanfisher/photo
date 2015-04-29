@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :manage, only: [:index]
 
   namespace :api do
-    resources :photos, only: [:index]
+    resources :photos, only: [:index, :create]
     resources :albums, only: [:index]
   end
 end

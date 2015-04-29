@@ -8,4 +8,12 @@ describe Api::PhotosController, type: :controller do
       expect(response.status).to be 200
     end
   end
+
+  describe 'POST create' do
+    before { post :create }
+
+    it 'should responds with 200 OK' do
+      expect(response.status).to be 200
+    end
+  end
 end
