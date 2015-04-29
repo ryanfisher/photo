@@ -1,6 +1,9 @@
 module Api
   # Api controller for user photos
   class PhotosController < ApplicationController
+    # TODO: Study csrf
+    skip_before_action :verify_authenticity_token
+
     def index
       render json: photos
     end
@@ -16,7 +19,7 @@ module Api
     end
 
     def photo
-      Photo.new
+      current_user.photos.new
     end
   end
 end

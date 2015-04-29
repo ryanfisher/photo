@@ -16,6 +16,13 @@ describe Api::PhotosController, type: :controller do
   end
 
   describe 'POST create' do
+    let(:photos) { double(:photos, new: {}) }
+
+    before do
+      expect(controller).to receive(:current_user) { user }
+      expect(user).to receive(:photos) { photos }
+    end
+
     before { post :create }
 
     it 'should responds with 200 OK' do
