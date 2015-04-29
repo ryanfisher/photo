@@ -1,0 +1,5 @@
+#uploader
+  h4.upload uploader
+  form action='/api/photos' method='POST' enctype='multipart/form-data'
+    input.multiple-photos[accept='image/jpeg' type='file' multiple]
+    #progress-bars data-success='Successfully uploaded ' data-failure='Failed to upload ' data-error409='Duplicate file: ' data-uploading-message='Uploading file '
