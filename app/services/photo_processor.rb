@@ -7,5 +7,13 @@ class PhotoProcessor
   #
   # @constructor
   def initialize(photo, file_stream)
+    @photo = photo
+    @file_stream = file_stream
   end
+
+  attr_accessor :photo
+
+  private
+
+  attr_reader :file_stream
 end
