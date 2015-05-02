@@ -9,7 +9,7 @@ module Api
     end
 
     def create
-      render json: photo
+      render json: processed_photo
     end
 
     private
@@ -19,7 +19,12 @@ module Api
     end
 
     def photo
-      current_user.photos.new
+      @_photo ||= current_user.photos.new
+    end
+
+    def processed_photo
+      processor = PhotoProcessor.new(photo, params.fetch(:file))
+      processor.photo
     end
   end
 end
