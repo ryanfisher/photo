@@ -9,9 +9,15 @@ class PhotoProcessor
   def initialize(photo, file_stream)
     @photo = photo
     @file_stream = file_stream
+    process
   end
 
   attr_accessor :photo
+
+  def process
+    photo.file = file_stream
+    photo.save
+  end
 
   private
 
