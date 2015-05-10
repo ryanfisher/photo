@@ -3,7 +3,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     el: '#photos-info'
 
     set_photo: (model) ->
-      @$('img').prop('src', model.get('thumbnail_url'))
+      @$('img').prop('src', model.thumbnail())
 
     unset_photo: ->
       @$('img').prop('src', '')

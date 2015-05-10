@@ -5,3 +5,6 @@ namespace 'Fotio.Models.User', (exports) ->
 
     width_from: (height) ->
       height * @get('width') / @get('height')
+
+    thumbnail: ->
+      @get('file').thumb.url

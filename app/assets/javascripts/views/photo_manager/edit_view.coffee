@@ -7,7 +7,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       'click .edit': 'open_photo_editor'
 
     initialize: ->
-      img_url = @model.get('thumbnail_url')
+      img_url = @model.thumbnail()
       # Load image before showing it in view
       $('<img>', src: img_url).on 'load', => @$el.removeClass('hidden')
       thumbnail_url = "url(#{img_url})".replace /\s/, "%20"
