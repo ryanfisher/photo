@@ -5,4 +5,4 @@ namespace 'Fotio.Views.Photo', (exports) ->
 
     initialize: ->
       @$el.on 'load', => @$el.removeClass('hidden')
-      @$el.attr('src', @model.get('thumbnail_url'))
+      @$el.attr('src', @model.thumbnail())
