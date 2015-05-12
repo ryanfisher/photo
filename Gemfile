@@ -43,4 +43,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 
   gem 'guard-rspec'
+
+  gem 'teaspoon-jasmine'
+  gem 'guard-teaspoon'
 end
