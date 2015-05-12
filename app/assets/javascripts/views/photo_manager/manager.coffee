@@ -11,6 +11,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       'click .bulk-editor button': 'add_tags'
 
     initialize: ->
+      @collection = new Fotio.Collections.User.Photos
       @uploader = new exports.Uploader({@collection})
       collection = new Fotio.Collections.User.Albums
       no_albums_notice = @$('.no-albums-notice')
@@ -28,6 +29,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @user_albums = collection
       @albums_editor = new exports.AlbumsEditor({collection})
       @photo_feed = new exports.Feed({@collection})
+      @collection.fetch()
 
     open_uploader: ->
       @$('nav a').removeClass('selected')

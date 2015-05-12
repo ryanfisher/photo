@@ -7,6 +7,8 @@ namespace 'Fotio.Views.Photo', (exports) ->
     USE_COLUMNS = true
 
     initialize: ->
+      type = if @$el.hasClass('album') then 'Album' else 'User'
+      @collection = new Fotio.Collections[type].Photos(bootstrapped_photos)
       @render()
       @window_width = $(window).width()
       $(window).on 'resize', =>
