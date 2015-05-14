@@ -12,6 +12,11 @@ module Api
       render json: processed_photo
     end
 
+    def destroy
+      Photo.find(params.fetch(:id)).destroy
+      head :no_content
+    end
+
     private
 
     def photos
