@@ -1,5 +1,5 @@
 # Manager app for backend
-class ManageController < ApplicationController
+class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index; end
