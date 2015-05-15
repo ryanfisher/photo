@@ -2,6 +2,6 @@ namespace 'Fotio.Models.User', (exports) ->
   class exports.Album extends Backbone.Model
 
     parse: (response, options) ->
-      photos = new AlbumPhotos(response['photos'])
+      photos = new Fotio.Collections.Album.Photos(response['photos'])
       response['photos'] = photos
       super(response, options)
