@@ -57,4 +57,5 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @$('.photos .photo').each (index) ->
         photo = photos.get($(this).data('id'))
         photo.set('position', index + 1)
-      @model.save {}, success: -> Notification.show('Album saved successfully!')
+      @model.save {}, success: ->
+        exports.Notification.show('Album saved successfully!')

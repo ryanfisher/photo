@@ -1,3 +1,5 @@
+#= require ./notification
+
 namespace 'Fotio.Views.PhotoManager', (exports) ->
   class exports.Manager extends Backbone.View
     el: '#photo-manager'
@@ -61,7 +63,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
         album.set('photos', photos)
       album.save()
       text = "The selected photos have been added to #{album.get('title')}."
-      Notification.show(text)
+      exports.Notification.show(text)
       @photo_feed.clear_selections()
 
     add_tags: ->
@@ -71,7 +73,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
         photo_tags = _.union(photo.get('public_tags'), tags)
         photo.set('public_tags', photo_tags)
         text = "Added tags #{input_value} to selected photos."
-        photo.save {}, success: -> Notification.show(text)
+        photo.save {}, success: -> exports.Notification.show(text)
       @$('.bulk-editor').removeClass('open')
 
     open_bulk_editor: ->

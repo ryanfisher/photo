@@ -26,4 +26,4 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     save_photo: ->
       public_tags = @$('input[name="public-tags"]').val().split(',')
       @model.save {public_tags: public_tags}, success: ->
-        Notification.show('Photo saved successfully!')
+        exports.Notification.show('Photo saved successfully!')
