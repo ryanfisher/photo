@@ -11,14 +11,28 @@ module Api
       render json: new_album, status: :created
     end
 
+    def update
+      render json: update_album, status: :ok
+    end
+
     private
 
     def new_album
-      current_user.albums.create(params.permit(:title))
+      current_user_albums.create(params.permit(:title))
+    end
+
+    def update_album
+      album = current_user_albums.find(params.fetch(:id))
+      album.photo_ids = params.fetch(:photos, []).map { |photo| photo[:id] }
+      album.save
+    end
+
+    def current_user_albums
+      current_user.albums
     end
 
     def albums
-      Album.limit(40)
+      current_user_albums.limit(40)
     end
   end
 end
