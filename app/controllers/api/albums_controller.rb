@@ -22,9 +22,7 @@ module Api
     end
 
     def update_album
-      album = current_user_albums.find(params.fetch(:id))
-      album.photo_ids = params.fetch(:photos, []).map { |photo| photo[:id] }
-      album.save
+      current_user_albums.find(params.fetch(:id)).update_with(params)
     end
 
     def current_user_albums

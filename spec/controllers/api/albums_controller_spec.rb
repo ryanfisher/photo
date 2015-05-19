@@ -39,8 +39,7 @@ describe Api::AlbumsController, type: :controller do
 
     before do
       expect(albums).to receive(:find).with('1') { album }
-      expect(album).to receive(:photo_ids=).with(%w(2 4))
-      expect(album).to receive(:save) { true }
+      expect(album).to receive(:update_with)
     end
 
     before do
