@@ -1,6 +1,6 @@
 class Album < ActiveRecord::Base
   has_many :sorted_photos
-  has_many :photos, through: :sorted_photos
+  has_many :photos, -> { order 'position' }, through: :sorted_photos
   belongs_to :user
 
   def update_with(hash)
