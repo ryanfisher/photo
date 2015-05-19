@@ -10,5 +10,7 @@ class Album < ActiveRecord::Base
     end
     self.title = hash[:title]
     save
+
+    self
   end
 end

@@ -27,6 +27,7 @@ module Api
 
     def update_album
       current_user_albums.find(params.fetch(:id)).update_with(params)
+        .as_json(include: :photos)
     end
 
     def current_user_albums

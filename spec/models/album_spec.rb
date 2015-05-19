@@ -25,8 +25,8 @@ describe Album, type: :model do
       expect(subject).to receive(:save) { true }
     end
 
-    it 'should update the sorted photos and return true' do
-      expect(subject.update_with(hash)).to be true
+    it 'should update the sorted photos and return the album' do
+      expect(subject.update_with(hash)).to be subject
     end
   end
 end
