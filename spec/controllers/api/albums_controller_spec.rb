@@ -22,6 +22,18 @@ describe Api::AlbumsController, type: :controller do
     end
   end
 
+  describe 'GET show' do
+    before do
+      expect(albums).to receive(:find).with('17') { { title: 'Switzerland!' } }
+    end
+
+    before { get :show, id: 17 }
+
+    it 'should respond with 200 OK' do
+      expect(response.status).to be 200
+    end
+  end
+
   describe 'POST create' do
     before do
       expect(albums).to receive(:create)

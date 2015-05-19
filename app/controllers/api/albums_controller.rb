@@ -7,6 +7,10 @@ module Api
       render json: albums
     end
 
+    def show
+      render json: current_user_albums.find(params[:id])
+    end
+
     def create
       render json: new_album, status: :created
     end
