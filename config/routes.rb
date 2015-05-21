@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:index]
 
   namespace :api do
-    resources :photos, only: [:index, :create, :destroy]
+    resources :photos, only: [:index, :show, :create, :destroy]
     resources :albums, only: [:index, :show, :create, :update]
   end
 end

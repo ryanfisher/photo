@@ -8,6 +8,10 @@ module Api
       render json: photos
     end
 
+    def show
+      render json: user_photos.find(params.fetch(:id))
+    end
+
     def create
       render json: processed_photo
     end
@@ -24,12 +28,16 @@ module Api
     end
 
     def photo
-      @_photo ||= current_user.photos.new
+      @_photo ||= user_photos.new
     end
 
     def processed_photo
       processor = PhotoProcessor.new(photo, params.fetch(:file))
       processor.photo
+    end
+
+    def user_photos
+      current_user.photos
     end
   end
 end

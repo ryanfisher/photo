@@ -15,6 +15,22 @@ describe Api::PhotosController, type: :controller do
     end
   end
 
+  describe 'GET show' do
+    let(:photos) { double(:photos) }
+
+    before do
+      expect(controller).to receive(:current_user) { user }
+      expect(user).to receive(:photos) { photos }
+      expect(photos).to receive(:find) { {} }
+    end
+
+    before { get :show, id: 1 }
+
+    it 'should respond with 200 OK' do
+      expect(response.status).to be 200
+    end
+  end
+
   describe 'POST create' do
     let(:photos)    { double(:photos, new: {})      }
     let(:processor) { double(:processor, photo: {}) }
