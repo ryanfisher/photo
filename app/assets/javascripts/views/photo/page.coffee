@@ -3,7 +3,7 @@ namespace 'Fotio.Views.Photo', (exports) ->
     el: '.photo-container'
 
     initialize: ->
-      image = $('<img>', src: @model.get('optimized_url'), class: 'hidden')
+      image = $('<img>', src: @model.optimized(), class: 'hidden')
       image.on 'load', => image.removeClass('hidden')
       @$el.prepend(image)
       window_height = $(window).height()

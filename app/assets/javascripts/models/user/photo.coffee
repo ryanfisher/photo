@@ -8,3 +8,6 @@ namespace 'Fotio.Models.User', (exports) ->
 
     thumbnail: ->
       @get('file').thumb.url
+
+    optimized: ->
+      @get('file').optimized.url

@@ -9,7 +9,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     initialize: ->
       @reset_editor()
       img = @$('img')
-      img.prop('src', @model.get('optimized_url'))
+      img.prop('src', @model.optimized())
       img.on 'load', -> img.removeClass('hidden')
       @$('input[name="public-tags"]').val(@model.get('public_tags'))
       @$el.addClass('open')
