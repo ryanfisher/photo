@@ -17,14 +17,14 @@ module Api
     end
 
     def destroy
-      Photo.find(params.fetch(:id)).destroy
+      user_photos.find(params.fetch(:id)).destroy
       head :no_content
     end
 
     private
 
     def photos
-      Photo.limit(40)
+      user_photos.limit(40)
     end
 
     def photo

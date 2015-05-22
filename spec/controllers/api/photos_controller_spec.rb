@@ -1,13 +1,20 @@
 require 'rails_helper'
 
 describe Api::PhotosController, type: :controller do
-  let(:user) { double(:user) }
+  let(:user)   { double(:user)            }
+  let(:photos) { double(:photos, new: {}) }
 
   before do
     expect(request.env['warden']).to receive(:authenticate!) { user }
+    expect(controller).to receive(:current_user) { user }
+    expect(user).to receive(:photos) { photos }
   end
 
   describe 'GET index' do
+    before do
+      expect(photos).to receive(:limit)
+    end
+
     before { get :index, format: :json }
 
     it 'should respond with 200 OK' do
@@ -19,8 +26,6 @@ describe Api::PhotosController, type: :controller do
     let(:photos) { double(:photos) }
 
     before do
-      expect(controller).to receive(:current_user) { user }
-      expect(user).to receive(:photos) { photos }
       expect(photos).to receive(:find) { {} }
     end
 
@@ -32,12 +37,9 @@ describe Api::PhotosController, type: :controller do
   end
 
   describe 'POST create' do
-    let(:photos)    { double(:photos, new: {})      }
     let(:processor) { double(:processor, photo: {}) }
 
     before do
-      expect(controller).to receive(:current_user) { user }
-      expect(user).to receive(:photos) { photos }
       expect(PhotoProcessor).to receive(:new) { processor }
     end
 
@@ -53,7 +55,7 @@ describe Api::PhotosController, type: :controller do
     let(:photo) { double(:photo) }
 
     before do
-      expect(Photo).to receive(:find).with(id) { photo }
+      expect(photos).to receive(:find).with(id) { photo }
       expect(photo).to receive(:destroy)
     end
 
