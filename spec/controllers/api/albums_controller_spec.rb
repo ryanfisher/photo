@@ -62,4 +62,21 @@ describe Api::AlbumsController, type: :controller do
       expect(response.status).to be 200
     end
   end
+
+  describe 'DELETE destroy' do
+    let(:album) { double(:album) }
+
+    before do
+      expect(albums).to receive(:find).with('1') { album }
+      expect(album).to receive(:destroy)
+    end
+
+    before do
+      delete :destroy, id: 1
+    end
+
+    it 'should respond with 200' do
+      expect(response.status).to be 200
+    end
+  end
 end

@@ -19,6 +19,11 @@ module Api
       render json: update_album, status: :ok
     end
 
+    def destroy
+      current_user_albums.find(params.fetch(:id)).destroy
+      head :ok
+    end
+
     private
 
     def new_album
