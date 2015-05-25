@@ -1,5 +1,5 @@
 class Album < ActiveRecord::Base
-  has_many :sorted_photos
+  has_many :sorted_photos, dependent: :destroy
   has_many :photos, -> { order 'position' }, through: :sorted_photos
   belongs_to :user
 
