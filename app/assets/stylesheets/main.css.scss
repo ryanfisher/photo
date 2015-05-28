@@ -48,7 +48,6 @@
 
 @mixin image-in-transition {
   img {
-    height: 100%;
     @include opacity(1);
     @include transition(opacity 0.3s ease-in-out);
 

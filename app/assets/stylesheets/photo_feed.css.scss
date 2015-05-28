@@ -64,4 +64,5 @@ img.photo-page {
   }
 
   @include image-in-transition;
+  img { height: 100%; }
 }
