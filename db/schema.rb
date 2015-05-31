@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150516073250) do
+ActiveRecord::Schema.define(version: 20150531172716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
   create_table "albums", force: :cascade do |t|
     t.string   "title"
@@ -24,12 +25,6 @@ ActiveRecord::Schema.define(version: 20150516073250) do
   end
 
   create_table "photos", force: :cascade do |t|
-    t.string   "url"
-    t.string   "key"
-    t.string   "thumbnail_url"
-    t.string   "thumbnail_key"
-    t.string   "optimized_url"
-    t.string   "optimized_key"
     t.string   "original_filename"
     t.datetime "date_taken"
     t.integer  "width"
@@ -39,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150516073250) do
     t.datetime "updated_at",        null: false
     t.integer  "user_id",           null: false
     t.string   "file"
+    t.hstore   "exif"
   end
 
   create_table "sorted_photos", force: :cascade do |t|
