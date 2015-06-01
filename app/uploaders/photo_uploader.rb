@@ -42,5 +42,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
     image = MiniMagick::Image.open(file.file)
     model.width = image.width
     model.height = image.height
+    model.exif = image.exif
   end
 end
