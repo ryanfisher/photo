@@ -16,12 +16,23 @@ module Api
       render json: processed_photo
     end
 
+    def update
+      params.fetch(:public_tags, []).each do |name|
+        photo_by_id.tags << Tag.where(name: name).first_or_create
+      end
+      render json: photo_by_id
+    end
+
     def destroy
-      user_photos.find(params.fetch(:id)).destroy
+      photo_by_id.destroy
       head :no_content
     end
 
     private
+
+    def photo_by_id
+      @_photo_by_id ||= user_photos.find(params.fetch(:id))
+    end
 
     def photos
       user_photos.limit(40)

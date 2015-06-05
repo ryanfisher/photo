@@ -50,6 +50,27 @@ describe Api::PhotosController, type: :controller do
     end
   end
 
+  describe 'PUT update' do
+    let(:id)    { 17.to_s                    }
+    let(:tags)  { double(:tags)              }
+    let(:photo) { double(:photo, tags: tags) }
+    let(:name)  { 'arbys'                    }
+    let(:tag)   { double(:tag)               }
+
+    before do
+      expect(photos).to receive(:find).with(id) { photo }
+      expect(Tag).to receive(:where).with(name: name) { tag }
+      expect(tag).to receive(:first_or_create) { tag }
+      expect(tags).to receive(:<<).with(tag)
+    end
+
+    before { put :update, id: id, public_tags: [name] }
+
+    it 'should respond with 200 OK' do
+      expect(response.status).to be 200
+    end
+  end
+
   describe 'DELETE destroy' do
     let(:id)    { 17.to_s        }
     let(:photo) { double(:photo) }
