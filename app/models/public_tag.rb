@@ -1,4 +1,4 @@
-class PhotoTag < ActiveRecord::Base
+class PublicTag < ActiveRecord::Base
   belongs_to :photo
   belongs_to :tag
 end
