@@ -43,6 +43,10 @@ img.photo-page {
       top: 0;
       @include transition(top 0.2s);
 
+      a:link, a:visited {
+        color: white;
+        text-decoration: none;
+      }
       a:hover {
         text-decoration: underline;
       }
