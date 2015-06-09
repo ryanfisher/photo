@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'root#index'
 
   resources :photos, only: [:index, :show]
+  resources :profile, only: [:show]
   resources :dashboard, only: [:index]
 
   namespace :api do
