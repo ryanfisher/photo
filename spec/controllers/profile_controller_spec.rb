@@ -1,14 +1,18 @@
 describe ProfileController, type: :controller do
   describe 'GET show' do
-    let(:profile)  { double(:profile) }
-    let(:photos)   { double(:photos)  }
-    let(:albums)   { double(:albums)  }
-    let(:username) { 'hansolo'        }
+    let(:email)     { ' jon@nightswatch.com '         }
+    let(:profile)   { double(:profile, email: email)  }
+    let(:photo)     { double(:photo)                  }
+    let(:presenter) { double(:presenter, to_json: {}) }
+    let(:photos)    { [photo]                         }
+    let(:albums)    { double(:albums)                 }
+    let(:username)  { 'hansolo'                       }
 
     before do
       expect(User).to receive(:find_by_username).with(username) { profile }
       expect(profile).to receive(:photos) { photos }
       expect(profile).to receive(:albums) { albums }
+      expect(PhotoPresenter).to receive(:new) { presenter }
     end
 
     before { get :show, id: username }

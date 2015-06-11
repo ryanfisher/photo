@@ -1,0 +1,11 @@
+- content_for :photos_json
+  javascript:
+    bootstrapped_photos = #{raw photos_json}
+#profile-info
+  img src="http://www.gravatar.com/avatar/#{gravatar}?s=150"
+  h1 = "Profile of #{user.username}"
+  select onChange="self.location=this.options[this.selectedIndex].value"
+    option Go to an Album
+    - albums.each do |album|
+      option value=api_album_path(album.id) =album.title
+#photo-feed.profile-show
