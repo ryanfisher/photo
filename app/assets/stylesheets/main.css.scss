@@ -91,6 +91,10 @@ html {
   background-size: cover;
 
   @include transition(background-image 0.6s ease-in-out);
+
+  body {
+    margin: 0;
+  }
 }
 
 // http://css-tricks.com/perfect-full-page-background-image/

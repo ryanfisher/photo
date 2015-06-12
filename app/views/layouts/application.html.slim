@@ -16,5 +16,6 @@ html
       a.albums href="#{dashboard_index_path}#albums" albums
       a.upload href="#{dashboard_index_path}#upload" upload
       a.logout href='/' logout
-    = yield
+    #content
+      = yield
     = javascript_include_tag 'application'
