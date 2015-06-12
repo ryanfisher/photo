@@ -3,7 +3,7 @@
 class App extends Backbone.View
   initialize: ->
     if $(Fotio.Views.Photo.Feed::el).length
-      new Fotio.Views.Photo.Feed
+      new Fotio.Views.Photo.ColumnFeed
     if $(Fotio.Views.PhotoManager.Manager::el).length
       new Fotio.Views.PhotoManager.Manager
       router = new Fotio.Routers.Manager
