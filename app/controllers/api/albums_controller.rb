@@ -1,5 +1,5 @@
 module Api
-  class AlbumsController < ApplicationController
+  class AlbumsController < Api::ApplicationController
     # TODO: Study csrf
     skip_before_action :verify_authenticity_token
 

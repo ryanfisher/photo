@@ -1,6 +1,6 @@
 module Api
   # Api controller for user photos
-  class PhotosController < ApplicationController
+  class PhotosController < Api::ApplicationController
     # TODO: Study csrf
     skip_before_action :verify_authenticity_token
 
