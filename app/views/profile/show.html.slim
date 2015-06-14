@@ -7,5 +7,5 @@
   select onChange="self.location=this.options[this.selectedIndex].value"
     option Go to an Album
     - albums.each do |album|
-      option value=api_album_path(album.id) =album.title
+      option value=album_path(album.id) =album.title
 #photo-feed.profile-show
