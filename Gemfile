@@ -46,4 +46,6 @@ group :development, :test do
 
   gem 'teaspoon-jasmine'
   gem 'guard-teaspoon'
+
+  gem 'reek'
 end
