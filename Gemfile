@@ -49,3 +49,7 @@ group :development, :test do
 
   gem 'reek'
 end
+
+group :test do
+  gem 'simplecov', require: false
+end
