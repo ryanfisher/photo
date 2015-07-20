@@ -6,6 +6,10 @@ class PhotoPresenter < BasePresenter
       @presenters = photos.map { |photo| PhotoPresenter.new(photo) }
     end
 
+    def to_json
+      @presenters.map(&:to_json).to_json
+    end
+
     private
 
     attr_reader :presenters

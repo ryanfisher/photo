@@ -1,7 +1,7 @@
 # Controller for the photos
 class PhotosController < ApplicationController
   def index
-    photos = Photo.limit(40).map { |photo| PhotoPresenter.new(photo).to_json }
+    photos = PhotoPresenter::Collection.new(Photo.limit(40))
     render locals: { photos_json: photos.to_json }
   end
 

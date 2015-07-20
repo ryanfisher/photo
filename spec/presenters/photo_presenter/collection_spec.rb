@@ -10,4 +10,10 @@ describe PhotoPresenter::Collection do
       expect(subject).to be_an_instance_of described_class
     end
   end
+
+  describe '#to_json' do
+    it 'calls to_json on each presenter in collection' do
+      expect(subject.to_json).to eq '[]'
+    end
+  end
 end
