@@ -15,7 +15,8 @@ class PhotoProcessor
   attr_accessor :photo
 
   def process
-    photo.file = file_stream
+    # TODO: Save file to s3 or some other service
+    # photo.file = file_stream
     photo.save
   end
 
