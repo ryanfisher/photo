@@ -18,11 +18,21 @@ class PhotoProcessor
 
   def process
     # Save file stream with random file name
-    photo.versions.new url: PhotoUploader.upload(file_stream, SecureRandom.hex)
+    photo.versions.new url: PhotoUploader.upload(file_stream, file_path)
+    photo.size = file_stream.size
     photo.save
   end
 
   private
+
+  def file_path
+    [
+      :photos,
+      photo.username,
+      SecureRandom.hex,
+      file_stream.original_filename
+    ].join('/')
+  end
 
   attr_reader :file_stream
 end

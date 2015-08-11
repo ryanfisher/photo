@@ -4,4 +4,6 @@ class Photo < ActiveRecord::Base
   has_many :public_tags
   has_many :tags, through: :public_tags
   has_many :versions
+
+  delegate :username, to: :user
 end
