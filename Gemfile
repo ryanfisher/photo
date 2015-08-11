@@ -17,6 +17,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
+gem 'aws-s3'
 gem 'mini_magick'
 
 # Use ActiveModel has_secure_password

@@ -1,3 +1,5 @@
+require 'securerandom'
+
 # Processes photos for storage
 class PhotoProcessor
   # Takes a photo and processes it for storage and display
@@ -15,8 +17,8 @@ class PhotoProcessor
   attr_accessor :photo
 
   def process
-    # TODO: Save file to s3 or some other service
-    # photo.file = file_stream
+    # Save file stream with random file name
+    photo.versions.new url: PhotoUploader.upload(file_stream, SecureRandom.hex)
     photo.save
   end
 

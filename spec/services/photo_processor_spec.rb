@@ -3,8 +3,14 @@ describe PhotoProcessor do
 
   let(:photo)       { double(:photo)       }
   let(:file_stream) { double(:file_stream) }
+  let(:versions)    { double(:versions)    }
 
-  before { expect(photo).to receive(:save) { true } }
+  before do
+    expect(photo).to receive(:save) { true }
+    expect(photo).to receive(:versions) { versions }
+    expect(versions).to receive(:new)
+    expect(PhotoUploader).to receive(:upload)
+  end
 
   describe '.new' do
     it 'is an instance of described class' do
