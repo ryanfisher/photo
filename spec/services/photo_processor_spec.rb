@@ -1,17 +1,16 @@
 describe PhotoProcessor do
   subject { described_class.new(photo, file_stream) }
 
-  let(:photo)       { double(:photo)    }
-  let(:versions)    { double(:versions) }
-  let(:file_stream) do
-    double(:file_stream, original_filename: 'obi.jpg', size: 30)
-  end
+  let(:photo)       { double(:photo, file_path: '/') }
+  let(:versions)    { double(:versions)              }
+  let(:file_stream) { double(:file_stream, size: 30) }
 
   before do
     expect(photo).to receive(:size=)
-    expect(photo).to receive(:username)
     expect(photo).to receive(:save) { true }
     expect(photo).to receive(:versions) { versions }
+    expect(photo).to receive(:original_filename=)
+    expect(file_stream).to receive(:original_filename)
     expect(versions).to receive(:new)
     expect(PhotoUploader).to receive(:upload)
   end
