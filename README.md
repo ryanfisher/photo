@@ -1,32 +1,20 @@
-README
+Photo Hosting App
 ===
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Setting up the development environment
+---
 
-Things you may want to cover:
+Running tests
+---
+The default rake task is set up to run specs and other metrics
+```ruby
+bundle exec rake
+```
 
-* Ruby version
+Deploying the app
+---
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
+Additional resources and inspirations
+---
 The best way to organize a lifetime of photos https://news.ycombinator.com/item?id=9426422
 https://www.thislife.com/
