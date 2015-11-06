@@ -5,25 +5,38 @@ class PhotoProcessor
   # Takes a photo and processes it for storage and display
   #
   # @param [Photo]
-  # @param [FileStream] # TODO: Determine what sort of object this should be
+  # @param [ActionDispatch::Http::UploadedFile]
   #
   # @constructor
-  def initialize(photo, file_stream)
+  def initialize(photo, uploaded_file)
     @photo = photo
-    @file_stream = file_stream
+    @uploaded_file = uploaded_file
     process
   end
 
   attr_accessor :photo
 
   def process
-    photo.original_filename = file_stream.original_filename
-    photo.versions.new url: PhotoUploader.upload(file_stream, photo.file_path)
-    photo.size = file_stream.size
+    photo.original_filename = uploaded_file.original_filename
+    upload_location = PhotoUploader.upload(uploaded_file, photo.file_path)
+    photo.versions.new url: upload_location, width: width, height: height
+    photo.size = uploaded_file.size
     photo.save
   end
 
   private
 
-  attr_reader :file_stream
+  def dimensions
+    @_dimensions ||= MiniMagick::Image.new(uploaded_file.path).dimensions
+  end
+
+  def width
+    dimensions[0]
+  end
+
+  def height
+    dimensions[1]
+  end
+
+  attr_reader :uploaded_file
 end

@@ -1,18 +1,22 @@
 describe PhotoProcessor do
-  subject { described_class.new(photo, file_stream) }
+  subject { described_class.new(photo, uploaded_file) }
 
-  let(:photo)       { double(:photo, file_path: '/') }
-  let(:versions)    { double(:versions)              }
-  let(:file_stream) { double(:file_stream, size: 30) }
+  let(:photo)         { double(:photo, file_path: '/')       }
+  let(:image)         { double(:image, dimensions: [20, 10]) }
+  let(:versions)      { double(:versions)                    }
+  let(:uploaded_file) { double(:uploaded_file, size: 30)     }
 
   before do
+    # TODO: Refactor and remove some of the mocking
     expect(photo).to receive(:size=)
     expect(photo).to receive(:save) { true }
     expect(photo).to receive(:versions) { versions }
     expect(photo).to receive(:original_filename=)
-    expect(file_stream).to receive(:original_filename)
+    expect(uploaded_file).to receive(:original_filename)
+    expect(uploaded_file).to receive(:path)
     expect(versions).to receive(:new)
     expect(PhotoUploader).to receive(:upload)
+    expect(MiniMagick::Image).to receive(:new) { image }
   end
 
   describe '.new' do
@@ -29,7 +33,7 @@ describe PhotoProcessor do
     end
   end
 
-  describe '#file_stream' do
-    it { should_not respond_to(:file_stream) }
+  describe '#uploaded_file' do
+    it { should_not respond_to(:uploaded_file) }
   end
 end
