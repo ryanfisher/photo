@@ -3,9 +3,9 @@ class PhotoUploader
     set_current_bucket_to Rails.application.secrets.aws_image_bucket
   end
 
-  def self.upload(file_stream, file_name)
+  def self.upload(uploaded_file, file_name)
     establish_connection!
-    new(file_stream, file_name).location
+    new(uploaded_file, file_name).location
   end
 
   def self.establish_connection!
@@ -16,9 +16,9 @@ class PhotoUploader
     )
   end
 
-  def initialize(file_stream, file_name)
+  def initialize(uploaded_file, file_name)
     @file_name = file_name
-    S3Photo.store(file_name, file_stream)
+    S3Photo.store(file_name, uploaded_file)
   end
 
   def location
