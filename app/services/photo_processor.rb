@@ -18,8 +18,8 @@ class PhotoProcessor
 
   def process
     photo.original_filename = uploaded_file.original_filename
-    upload_location = PhotoUploader.upload(uploaded_file, photo.file_path)
-    photo.versions.new url: upload_location, width: width, height: height
+    photo.url = PhotoUploader.upload(uploaded_file, photo.file_path)
+    photo.width, photo.height = width, height
     photo.size = uploaded_file.size
     photo.save
   end

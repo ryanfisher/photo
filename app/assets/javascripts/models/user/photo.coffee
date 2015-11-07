@@ -7,7 +7,7 @@ namespace 'Fotio.Models.User', (exports) ->
       height * @get('width') / @get('height')
 
     thumbnail: ->
-      @get('file').url
+      @get('url')
 
     optimized: ->
-      @get('file').url
+      @get('url')

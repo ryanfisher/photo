@@ -10,7 +10,8 @@ describe PhotoUploader do
     let(:file_stream) { double }
 
     it 'should return the location of the upload' do
-      expect(described_class.upload(file_stream, '')).to eq '/'
+      expect(described_class.upload(file_stream, ''))
+        .to match '//s3.amazonaws.com'
     end
   end
 end
