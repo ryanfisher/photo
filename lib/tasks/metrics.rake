@@ -1,6 +1,7 @@
+require 'reek/rake/task'
+
 namespace :metrics do
-  desc 'Runs reek'
-  task reek: :environment do
-    system 'bundle exec reek'
+  Reek::Rake::Task.new do |t|
+    t.fail_on_error = true
   end
 end
