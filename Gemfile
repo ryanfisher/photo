@@ -20,6 +20,8 @@ gem 'devise'
 gem 'aws-s3'
 gem 'mini_magick'
 
+gem 'skylight'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
