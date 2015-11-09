@@ -2,6 +2,9 @@
 
 class App extends Backbone.View
   initialize: ->
+    $(document).ajaxSend (e, xhr, options) ->
+      token = $("meta[name='csrf-token']").attr("content")
+      xhr.setRequestHeader("X-CSRF-Token", token)
     if $(Fotio.Views.Photo.Feed::el).length
       new Fotio.Views.Photo.ColumnFeed
     if $(Fotio.Views.PhotoManager.Manager::el).length
