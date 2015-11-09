@@ -19,15 +19,19 @@ class PhotoProcessor
   def process
     photo.original_filename = uploaded_file.original_filename
     photo.url = PhotoUploader.upload(uploaded_file, photo.file_path)
-    photo.width, photo.height = width, height
+    photo.width, photo.height, photo.exif = width, height, mm_image.exif
     photo.size = uploaded_file.size
     photo.save
   end
 
   private
 
+  def mm_image
+    @_mm_image ||= MiniMagick::Image.new(uploaded_file.path)
+  end
+
   def dimensions
-    @_dimensions ||= MiniMagick::Image.new(uploaded_file.path).dimensions
+    @_dimensions ||= mm_image.dimensions
   end
 
   def width

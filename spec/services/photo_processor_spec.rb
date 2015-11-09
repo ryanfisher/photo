@@ -10,6 +10,7 @@ describe PhotoProcessor do
 
   before do
     expect(photo).to receive(:file_path) { '/' }
+    expect(image).to receive(:exif)
     expect(uploaded_file).to receive(:original_filename)
     expect(uploaded_file).to receive(:path)
     expect(PhotoUploader).to receive(:upload) { '/' }
