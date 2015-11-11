@@ -3,7 +3,6 @@
   top: 0;
   left: 0;
   bottom: 0;
-  padding-top: 10px;
   width: $main-nav-width;
   background-color: black;
   overflow: hidden;
@@ -40,7 +39,7 @@
   height: $main-nav-height;
   line-height: $main-nav-height - 10px;
   width: 100%;
-  padding-top: 0;
+  padding: 0 $side-width;
   text-align: left;
   z-index: 3;
   text-transform: uppercase;
