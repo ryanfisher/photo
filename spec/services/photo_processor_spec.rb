@@ -15,6 +15,7 @@ describe PhotoProcessor do
     expect(uploaded_file).to receive(:path)
     expect(PhotoUploader).to receive(:upload) { '/' }
     expect(MiniMagick::Image).to receive(:new) { image }
+    expect(PhotoResizeJob).to receive(:perform_later)
   end
 
   describe '.new' do

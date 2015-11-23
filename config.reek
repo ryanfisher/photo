@@ -1,5 +1,9 @@
 IrresponsibleModule:
   enabled: false
 
+FeatureEnvy:
+  exclude:
+    - "PhotoResizeJob#resize"
+
 exclude_paths:
   - db/migrate
