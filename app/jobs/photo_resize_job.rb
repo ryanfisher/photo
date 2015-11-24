@@ -3,8 +3,8 @@ class PhotoResizeJob < ActiveJob::Base
 
   def perform(*args)
     @photo = Photo.find(args[0]['photo_id'])
-    resize photo.url
-    upload
+    thumb_path = resize photo.url
+    upload thumb_path
   end
 
   private
@@ -15,19 +15,11 @@ class PhotoResizeJob < ActiveJob::Base
     # TODO: The logic needs to change so we're not concerned with protocol here
     image = MiniMagick::Image.open("http:#{url}")
     image.resize 'x350'
-    image.write tempfile
+
+    image.path
   end
 
-  def upload
-    PhotoUploader.upload(tempfile, photo.thumb_file_path)
-  end
-
-  def tempfile
-    @_tempfile ||= Rails.root.join(
-      'tmp',
-      'resized_photos',
-      SecureRandom.hex,
-      photo.original_filename
-    )
+  def upload(image_path)
+    PhotoUploader.upload(image_path, photo.thumb_file_path)
   end
 end

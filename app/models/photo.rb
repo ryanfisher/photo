@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
   has_many :tags, through: :public_tags
   has_many :versions
 
-  # after_create :enqueue_resize
+  after_create :enqueue_resize
 
   delegate :username, to: :user
 

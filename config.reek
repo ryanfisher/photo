@@ -1,7 +1,7 @@
 IrresponsibleModule:
   enabled: false
 
-FeatureEnvy:
+UtilityFunction:
   exclude:
     - "PhotoResizeJob#resize"
 
