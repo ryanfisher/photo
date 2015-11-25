@@ -20,6 +20,6 @@ class PhotoResizeJob < ActiveJob::Base
   end
 
   def upload(image_path)
-    PhotoUploader.upload(image_path, photo.thumb_file_path)
+    PhotoUploader.upload(open(image_path), photo.thumb_file_path)
   end
 end
