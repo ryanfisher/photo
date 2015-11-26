@@ -5,7 +5,7 @@ class PhotoUploader
 
   def self.upload(uploaded_file, file_path)
     establish_connection!
-    new(uploaded_file, file_path).location
+    new(uploaded_file, file_path).upload
   end
 
   def self.establish_connection!
@@ -17,8 +17,13 @@ class PhotoUploader
   end
 
   def initialize(uploaded_file, file_path)
+    @uploaded_file = uploaded_file
     @file_path = file_path
+  end
+
+  def upload
     S3Photo.store(file_path, uploaded_file)
+    location
   end
 
   def location
@@ -28,5 +33,5 @@ class PhotoUploader
 
   private
 
-  attr_reader :file_path
+  attr_reader :file_path, :uploaded_file
 end
