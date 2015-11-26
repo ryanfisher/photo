@@ -8,6 +8,8 @@ class Photo < ActiveRecord::Base
 
   after_create :enqueue_resize
 
+  after_destroy :delete_photos
+
   delegate :username, to: :user
 
   def file_path
@@ -19,6 +21,11 @@ class Photo < ActiveRecord::Base
   end
 
   private
+
+  def delete_photos
+    PhotoUploader.delete(file_path)
+    PhotoUploader.delete(thumb_file_path)
+  end
 
   def initialize_hex_key
     self.file_key ||= SecureRandom.hex

@@ -8,6 +8,11 @@ class PhotoUploader
     new(uploaded_file, file_path).upload
   end
 
+  def self.delete(key)
+    establish_connection!
+    S3Photo.delete(key)
+  end
+
   def self.establish_connection!
     secrets = Rails.application.secrets
     AWS::S3::Base.establish_connection!(
