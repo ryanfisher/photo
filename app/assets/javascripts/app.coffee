@@ -6,7 +6,7 @@ class App extends Backbone.View
       token = $("meta[name='csrf-token']").attr("content")
       xhr.setRequestHeader("X-CSRF-Token", token)
     if $(Fotio.Views.Photo.Feed::el).length
-      new Fotio.Views.Photo.ColumnFeed
+      new Fotio.Views.Photo.RowFeed
     if $(Fotio.Views.PhotoManager.Manager::el).length
       new Fotio.Views.PhotoManager.Manager
       router = new Fotio.Routers.Manager
