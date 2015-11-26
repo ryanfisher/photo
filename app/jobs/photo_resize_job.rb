@@ -4,7 +4,8 @@ class PhotoResizeJob < ActiveJob::Base
   def perform(*args)
     @photo = Photo.find(args[0]['photo_id'])
     thumb_path = resize photo.url
-    upload thumb_path
+    photo.thumb_url = upload thumb_path
+    photo.save
   end
 
   private
