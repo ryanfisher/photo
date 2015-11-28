@@ -8,7 +8,8 @@ namespace('Fotio.Views.Photo', function(exports) {
       $('html').css('overflow-y', 'scroll')
       this.$el.text('')
       var row = new exports.Row();
-      var feedWidth = this.$el.width();
+      // The extra one is to handle rounding issues when fitting into feed
+      var feedWidth = parseInt(this.$el.width() - 1);
       this.collection.each(_.bind(function(model) {
         var view = new exports.View({ model: model });
         if (row.width() > feedWidth) {
@@ -18,6 +19,7 @@ namespace('Fotio.Views.Photo', function(exports) {
         }
         row.append(view);
       }, this));
+      if (row.width() > feedWidth) row.adjustWidth(feedWidth);
       this.$el.append(row.$el);
     },
   });
