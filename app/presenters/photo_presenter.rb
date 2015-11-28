@@ -21,7 +21,8 @@ class PhotoPresenter < BasePresenter
       width: width,
       height: height,
       username: username,
-      url: url
+      url: url,
+      thumb_url: thumb_url
     }
   end
 end
