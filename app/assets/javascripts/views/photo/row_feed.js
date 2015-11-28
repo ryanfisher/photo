@@ -18,7 +18,6 @@ namespace('Fotio.Views.Photo', function(exports) {
         }
         row.append(view);
       }, this));
-      row.adjustWidth(feedWidth);
       this.$el.append(row.$el);
     },
   });

@@ -26,6 +26,7 @@ namespace('Fotio.Views.Photo', function(exports) {
       _.each(this.views, function(view) {
         view.set_height(parseInt(defaultHeight * ratio));
       });
+      // Expand the last image slightly to take up any remaining difference
       var diff = this.width() - desiredWidth;
       var last = _.last(this.views)
       last.$el.width(last.$el.width() - diff);
