@@ -27,14 +27,14 @@ img.photo-page {
     position: relative;
     display: inline-block;
     height: 250px;
-    width: 375px;
+    width: 10px;
     cursor: pointer;
     overflow: hidden;
     color: white;
-    margin: 3px 3px 0;
+    margin: 3px 5px 0 0;
 
-    &:first-child {
-      margin-left: 0;
+    &:last-child {
+      margin-right: 0;
     }
 
     $info_height: 30px;

@@ -3,6 +3,7 @@ namespace('Fotio.Views.Photo', function(exports) {
     className: 'row',
 
     DEFAULT_HEIGHT: 350,
+    DEFAULT_MARGIN: 5,
 
     initialize: function() {
       this.views = [];
@@ -11,20 +12,28 @@ namespace('Fotio.Views.Photo', function(exports) {
     width: function() {
       var defaultHeight = this.DEFAULT_HEIGHT;
       return _.reduce(this.views, function(sum, view) {
-        return sum + view.model.width_from(defaultHeight) + 15;
-      }, 0);
+        return sum + view.$el.width();
+      }, 0) + this.marginSpacing();
+    },
+
+    marginSpacing: function() {
+      return (this.views.length - 1) * this.DEFAULT_MARGIN;
     },
 
     adjustWidth: function(desiredWidth) {
       var ratio = desiredWidth / this.width();
       var defaultHeight = this.DEFAULT_HEIGHT;
       _.each(this.views, function(view) {
-        view.set_height(defaultHeight * ratio);
+        view.set_height(parseInt(defaultHeight * ratio));
       });
+      var diff = this.width() - desiredWidth;
+      var last = _.last(this.views)
+      last.$el.width(last.$el.width() - diff);
     },
 
     append: function(view) {
       this.$el.append(view.$el)
+      view.set_height(this.DEFAULT_HEIGHT);
       this.views.push(view);
     }
   });
