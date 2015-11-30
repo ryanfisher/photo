@@ -1,7 +1,8 @@
 # Controller for the photos
 class PhotosController < ApplicationController
   def index
-    photos = PhotoPresenter::Collection.new(Photo.limit(40))
+    photos_result = Photo.order(created_at: :desc).limit(40)
+    photos = PhotoPresenter::Collection.new(photos_result)
     render locals: { photos_json: photos.to_json }
   end
 
