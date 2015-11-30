@@ -1,13 +1,27 @@
+#static-nav {
+  margin: 20px $side-width;
+  text-align: right;
+
+  a {
+    display: inline-block;
+    color: #333;
+    text-decoration: none;
+    margin-left: 30px;
+    margin-top: 3px;
+    border-bottom: 3px solid transparent;
+
+    &:hover {
+      border-bottom: 3px solid #333;
+    }
+  }
+}
+
 #main-nav {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
-  width: $main-nav-width;
-  background-color: black;
   overflow: hidden;
-  text-align: center;
-  z-index: 2;
 
   a {
     display: block;
@@ -39,7 +53,7 @@
   height: $main-nav-height;
   line-height: $main-nav-height - 10px;
   width: 100%;
-  padding: 0 $side-width;
+  padding: 0;
   text-align: left;
   z-index: 3;
   text-transform: uppercase;
@@ -88,7 +102,6 @@
   position: absolute;
   bottom: 20px;
   border: none;
-  width: $main-nav-width;
 
   &:hover {
     border-right: none;

@@ -8,13 +8,19 @@ html
     = render partial: 'layouts/analytics'
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
-  body.top-nav
-    nav#main-nav
-      a.home href=root_path home
-      a.photos href=photos_path photos
-      a.albums href="#{dashboard_index_path}#albums" albums
-      a.upload href="#{dashboard_index_path}#upload" upload
-      a.logout href='/' logout
+  body class=('top-nav' if controller_name == 'dashboard')
+    - if controller_name == 'dashboard'
+      nav#main-nav
+        a.home href=root_path home
+        a.photos href=photos_path photos
+        a.albums href="#{dashboard_index_path}#albums" albums
+        a.upload href="#{dashboard_index_path}#upload" upload
+        a.logout href='/' logout
+    - else
+      nav#static-nav
+        a.home href=root_path home
+        a.photos href=photos_path photos
+        a.dashboard href=dashboard_index_path dashboard
     #content
       = yield
     = javascript_include_tag 'application'
