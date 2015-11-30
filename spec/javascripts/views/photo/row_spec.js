@@ -27,8 +27,8 @@ describe('Fotio.Views.Photo.Row', function() {
         subject.append(view2);
       });
 
-      it('should sum up the widths of all views adding 15 to each', function() {
-        expect(subject.width()).toBe(405);
+      it('should sum up the widths of all views adding 15 for margins', function() {
+        expect(subject.width()).toBe(415);
       });
     });
   });
