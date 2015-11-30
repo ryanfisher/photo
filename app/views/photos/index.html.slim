@@ -1,4 +1,8 @@
 - content_for :photos_json
   javascript:
     bootstrapped_photos = #{raw photos_json}
+- content_for :head
+  / We add the scrollbar before loading the photos to prevent the layout from
+  / shifting due to the scrollbar appearing once the photos have been loaded
+  style html { overflow-y: scroll; }
 #photo-feed

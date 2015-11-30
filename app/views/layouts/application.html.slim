@@ -8,6 +8,7 @@ html
     = render partial: 'layouts/analytics'
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
+    = yield :head
   body class=('top-nav' if controller_name == 'dashboard')
     - if controller_name == 'dashboard'
       nav#main-nav
