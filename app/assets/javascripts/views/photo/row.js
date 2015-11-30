@@ -3,7 +3,7 @@ namespace('Fotio.Views.Photo', function(exports) {
     className: 'row',
 
     DEFAULT_HEIGHT: 350,
-    DEFAULT_MARGIN: 5,
+    DEFAULT_MARGIN: 15,
 
     initialize: function() {
       this.views = [];
