@@ -1,7 +1,5 @@
 namespace('Fotio.Views.Photo', function(exports) {
   exports.Row = Backbone.View.extend({
-    className: 'row',
-
     DEFAULT_HEIGHT: 350,
     DEFAULT_MARGIN: 15,
 
@@ -29,11 +27,11 @@ namespace('Fotio.Views.Photo', function(exports) {
       // Expand the last image slightly to take up any remaining difference
       var diff = this.width() - desiredWidth;
       var last = _.last(this.views)
-      last.$el.width(last.$el.width() - diff);
+      last.$el.width(last.$el.width() - diff - 1);
+      last.$el.css('margin-right', 0);
     },
 
     append: function(view) {
-      this.$el.append(view.$el)
       view.set_height(this.DEFAULT_HEIGHT);
       this.views.push(view);
     }

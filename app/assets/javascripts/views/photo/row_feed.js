@@ -14,10 +14,10 @@ namespace('Fotio.Views.Photo', function(exports) {
         var view = new exports.View({ model: model });
         if (row.width() > feedWidth) {
           row.adjustWidth(feedWidth);
-          this.$el.append(row.$el)
           row = new exports.Row();
         }
         row.append(view);
+        this.$el.append(view.$el)
       }, this));
       if (row.width() > feedWidth) row.adjustWidth(feedWidth);
       this.$el.append(row.$el);
