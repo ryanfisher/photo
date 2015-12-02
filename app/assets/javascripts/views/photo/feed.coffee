@@ -9,12 +9,17 @@ namespace 'Fotio.Views.Photo', (exports) ->
       @collection = new Fotio.Collections[type].Photos(bootstrapped_photos)
       @render()
       @window_width = $(window).width()
-      $(window).on 'resize', =>
-        width = $(window).width()
-        # We only need to reset the photo feed when window width changes
-        return if width == @window_width
-        @window_width = width
-        @render()
+      $(window).on 'resize', => @adjustPhotoSizes()
+
+    adjustPhotoSizes: ->
+      @render() unless @equalsPreviousWidth()
+
+    equalsPreviousWidth: ->
+      width = $(window).width()
+      # We only need to reset the photo feed when window width changes
+      return true if width == @window_width
+      @window_width = width
+      false
 
     render: ->
       # We set the scrollbar here so the width doesn't change when photos

@@ -23,6 +23,7 @@ namespace('Fotio.Views.Photo', function(exports) {
       var defaultHeight = this.DEFAULT_HEIGHT;
       _.each(this.views, function(view) {
         view.set_height(parseInt(defaultHeight * ratio));
+        view.$el.css('margin-right', '');
       });
       // Expand the last image slightly to take up any remaining difference
       var diff = this.width() - desiredWidth;
