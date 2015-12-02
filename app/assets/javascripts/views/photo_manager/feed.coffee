@@ -5,16 +5,16 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     events:
       'click .feed-container': 'clear_selections'
       'click .delete-link':    'delete_selected_photos'
-      'click .sort-by li':     'sort_by'
+      'click .sort-by li':     'sortBy'
 
     initialize: ->
       @photos_info = new exports.Info
       @render()
 
-    sort_by: (event) ->
+    sortBy: (event) ->
       @$('.sort-by li').removeClass('selected')
       sort_type = $(event.currentTarget).addClass('selected').data('sort-type')
-      @collection.sort_by(sort_type)
+      @collection.sortBy(sort_type)
       @reset()
       @update_selected_count()
 
