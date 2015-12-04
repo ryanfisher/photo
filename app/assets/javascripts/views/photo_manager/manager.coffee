@@ -33,23 +33,24 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @photo_feed = new exports.Feed({@collection})
       @collection.fetch()
 
-    open_uploader: ->
+    setNav: (className) ->
       @$('nav a').removeClass('selected')
-      @$('nav .upload').addClass('selected')
+      @$("nav .#{className}").addClass('selected')
+
+    open_uploader: ->
+      @setNav('upload')
       @albums_editor.close()
       @photo_feed.close_photos_info()
       @uploader.$el.addClass('open')
 
     open_albums_editor: ->
-      @$('nav a').removeClass('selected')
-      @$('nav .edit-albums').addClass('selected')
+      @setNav('edit-albums')
       @uploader.close()
       @photo_feed.close_photos_info()
       @albums_editor.$el.addClass('open')
 
     open_photos_editor: ->
-      @$('nav a').removeClass('selected')
-      @$('nav .edit-photos').addClass('selected')
+      @setNav('edit-photos')
       @uploader.close()
       @albums_editor.close()
       @photo_feed.open_photos_info()
