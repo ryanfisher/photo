@@ -1,5 +1,4 @@
 #album-feed
   - albums.each do |album|
-    - Rails.logger.debug album
     .album-cover style="display: inline-block; background-image: url(#{album.thumb_url}); background-size: cover; height: 250px; width: 250px;"
       .album-title = album.title

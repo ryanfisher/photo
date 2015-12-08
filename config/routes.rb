@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   resources :albums, only: [:index, :show]
   resources :photos, only: [:index, :show]
-  resources :profile, only: [:show]
+  resources :profile, only: [:show] do
+    resources :albums, only: [:index]
+  end
   resources :dashboard, only: [:index]
 
   namespace :api do
