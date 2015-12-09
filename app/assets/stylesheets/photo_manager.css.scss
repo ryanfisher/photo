@@ -420,7 +420,28 @@ $manager-side-bar-width: 320px;
   }
 }
 
-#uploader, #albums-editor, #photos-info {
+#uploader {
+  display: none;
+  position: absolute;
+  top: $main-nav-height;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 2;
+
+  &.open { display: block; }
+
+  .close {
+    color: blue;
+    float: right;
+    cursor: pointer;
+
+    &:hover { text-decoration: underline; }
+  }
+}
+
+#albums-editor, #photos-info {
   position: absolute;
   width: $manager-side-bar-width - 35px;
   left: -($manager-side-bar-width);

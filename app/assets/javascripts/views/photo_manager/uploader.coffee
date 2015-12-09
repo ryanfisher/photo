@@ -5,10 +5,14 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     events:
       'click h4': 'toggle_open'
       'change input': 'upload_photos'
+      'click .close': 'close'
 
     initialize: ->
       $('#id_file').hide()
       @uploading = false
+
+    open: ->
+      @$el.addClass('open')
 
     close: ->
       @$el.removeClass('open')

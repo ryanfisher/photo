@@ -38,10 +38,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @$("nav .#{className}").addClass('selected')
 
     open_uploader: ->
-      @setNav('upload')
-      @albums_editor.close()
-      @photo_feed.close_photos_info()
-      @uploader.$el.addClass('open')
+      @uploader.open()
 
     open_albums_editor: ->
       @setNav('edit-albums')

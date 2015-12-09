@@ -1,11 +1,10 @@
 #photo-manager
   #notification
+  = render partial: 'uploader'
   #meta-manager
     nav
-      a.upload> href='#upload' upload
       a.edit-albums> href='#albums' edit albums
       a.edit-photos> href='#photos' edit photos
-    = render partial: 'uploader'
     = render partial: 'albums_editor'
     = render partial: 'photos_editor'
   #album-editor
