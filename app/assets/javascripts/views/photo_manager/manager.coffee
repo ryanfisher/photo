@@ -55,10 +55,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     add_photos_to_album: (event) ->
       album_id = $(event.currentTarget).data('id')
       album = @user_albums.get(album_id)
-      _.each @photo_feed.selected_photos(), (model) ->
-        photos = album.get('photos') or []
-        photos.push model
-        album.set('photos', photos)
+      _.each @photo_feed.selected_photos(), _.bind(album.addPhoto, album)
       album.save()
       text = "The selected photos have been added to #{album.get('title')}."
       exports.Notification.show(text)

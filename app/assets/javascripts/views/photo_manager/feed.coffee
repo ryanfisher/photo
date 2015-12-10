@@ -21,20 +21,20 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     reset: ->
       @photo_edit_views = []
       @$('.feed').empty()
-      @collection.each (model) =>
-        @new_photo_view model
-        @$('.feed').append @last_photo_view_el()
+      @collection.each _.bind(@append_photo_view, this)
 
     render: ->
       @photo_edit_views = []
-      @collection.on 'add', (model) =>
-        @new_photo_view model
-        @$('.feed').append @last_photo_view_el()
+      @collection.on 'add', _.bind(@append_photo_view, this)
       @collection.once 'sync', =>
         @collection.off 'add'
         @collection.on 'add', (model) =>
           @new_photo_view model
           @$('.feed').prepend @last_photo_view_el()
+
+    append_photo_view: (model) ->
+      @new_photo_view model
+      @$('.feed').append @last_photo_view_el()
 
     open_photos_info: ->
       @photos_info.open()

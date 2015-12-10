@@ -10,8 +10,8 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @collection.fetch success: => @render()
 
     render: ->
-      @collection.each (album) => @add_album(album)
-      @collection.on 'add', (album) => @add_album(album)
+      @collection.each _.bind(@add_album, this)
+      @collection.on 'add', _.bind(@add_album, this)
 
     add_album: (album) ->
       title = $('<a>', text: album.get('title'))
