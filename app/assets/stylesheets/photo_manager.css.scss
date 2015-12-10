@@ -169,6 +169,27 @@ $manager-side-bar-width: 320px;
     z-index: -1;
   }
 
+  .upload-button {
+    height: 130px;
+    width: 130px;
+    margin: 10px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    background-color: #ccc;
+    @include icon-background('upload.png');
+    background-size: 30px;
+    background-position: 50% 40%;
+    cursor: pointer;
+    color: white;
+    text-align: center;
+    line-height: 175px;
+
+    &:hover { background-color: #aaa; }
+  }
+
+  #uploader { display: none; }
+
   .photo {
     height: 130px;
     width: 130px;
@@ -363,10 +384,8 @@ $manager-side-bar-width: 320px;
   }
 }
 
-#uploader { overflow-y: hidden; }
-
 .top-nav {
-  #uploader, #albums-editor, #photos-info {
+  #albums-editor, #photos-info {
     top: $main-nav-height;
 
     &.open { left: 0; }
@@ -417,27 +436,6 @@ $manager-side-bar-width: 320px;
   img {
     max-width: 100%;
     max-height: 100%;
-  }
-}
-
-#uploader {
-  display: none;
-  position: absolute;
-  top: $main-nav-height;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: white;
-  z-index: 2;
-
-  &.open { display: block; }
-
-  .close {
-    color: blue;
-    float: right;
-    cursor: pointer;
-
-    &:hover { text-decoration: underline; }
   }
 }
 

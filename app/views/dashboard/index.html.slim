@@ -1,6 +1,5 @@
 #photo-manager
   #notification
-  = render partial: 'uploader'
   #meta-manager
     nav
       a.edit-albums> href='#albums' edit albums
@@ -56,3 +55,6 @@
         input placeholder='separate tags with a comma' type='text' name='tags'
         button add tags
       .feed
+        .upload-button
+          | upload
+    = render partial: 'uploader'

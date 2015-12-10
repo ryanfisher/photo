@@ -5,7 +5,6 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     el: '#photo-manager'
 
     events:
-      'open_uploader': 'open_uploader'
       'open_albums_editor': 'open_albums_editor'
       'open_photos_editor': 'open_photos_editor'
       'click .add-to-albums li': 'add_photos_to_album'
@@ -14,7 +13,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     initialize: ->
       @collection = new Fotio.Collections.User.SortablePhotos
-      @uploader = new exports.Uploader({@collection})
+      new exports.Uploader({@collection})
       collection = new Fotio.Collections.User.Albums
       no_albums_notice = @$('.no-albums-notice')
       album_dropdown = @$('.add-to-albums .inner-dropdown')
@@ -37,18 +36,13 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @$('nav a').removeClass('selected')
       @$("nav .#{className}").addClass('selected')
 
-    open_uploader: ->
-      @uploader.open()
-
     open_albums_editor: ->
       @setNav('edit-albums')
-      @uploader.close()
       @photo_feed.close_photos_info()
       @albums_editor.$el.addClass('open')
 
     open_photos_editor: ->
       @setNav('edit-photos')
-      @uploader.close()
       @albums_editor.close()
       @photo_feed.open_photos_info()
 

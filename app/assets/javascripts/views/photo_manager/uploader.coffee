@@ -11,12 +11,6 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       $('#id_file').hide()
       @uploading = false
 
-    open: ->
-      @$el.addClass('open')
-
-    close: ->
-      @$el.removeClass('open')
-
     toggle_open: ->
       @$('form').toggleClass('hidden')
 
@@ -32,4 +26,3 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     onComplete: ->
       @$('form')[0].reset()
-

@@ -6,10 +6,14 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       'click .feed-container': 'clear_selections'
       'click .delete-link':    'delete_selected_photos'
       'click .sort-by li':     'sortBy'
+      'click .upload-button':  'openUploadInput'
 
     initialize: ->
       @photos_info = new exports.Info
       @render()
+
+    openUploadInput: ->
+      @$('input.multiple-photos').click()
 
     sortBy: (event) ->
       @$('.sort-by li').removeClass('selected')
@@ -19,8 +23,8 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @update_selected_count()
 
     reset: ->
+      _.invoke @photo_edit_views, 'remove'
       @photo_edit_views = []
-      @$('.feed').empty()
       @collection.each _.bind(@append_photo_view, this)
 
     render: ->
@@ -30,7 +34,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
         @collection.off 'add'
         @collection.on 'add', (model) =>
           @new_photo_view model
-          @$('.feed').prepend @last_photo_view_el()
+          @$('.feed .upload-button').after @last_photo_view_el()
 
     append_photo_view: (model) ->
       @new_photo_view model
