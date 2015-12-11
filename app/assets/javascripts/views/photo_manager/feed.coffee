@@ -5,7 +5,6 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     events:
       'click .feed-container': 'clear_selections'
       'click .delete-link':    'delete_selected_photos'
-      'click .sort-by li':     'sortBy'
       'click .upload-button':  'openUploadInput'
 
     initialize: ->
@@ -14,13 +13,6 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     openUploadInput: ->
       @$('input.multiple-photos').click()
-
-    sortBy: (event) ->
-      @$('.sort-by li').removeClass('selected')
-      sort_type = $(event.currentTarget).addClass('selected').data('sort-type')
-      @collection.sortBy(sort_type)
-      @reset()
-      @update_selected_count()
 
     reset: ->
       _.invoke @photo_edit_views, 'remove'
