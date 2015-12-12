@@ -1,54 +1,5 @@
-#photo-manager
-  #notification
-  #meta-manager
-    nav
-      a.edit-albums> href='#albums' edit albums
-      a.edit-photos> href='#photos' edit photos
-    = render partial: 'albums_editor'
-    = render partial: 'photos_editor'
-  #album-editor
-    .close-button
-    .album-info
-      .cover-photo
-      .title
-      .about
-      br
-      button.save-album Save Album
-      button.delete-album Delete Album
-    .controls
-      a.remove-selected remove selected
-    .photos
-
-  #photo-editor
-    .close-button
-    img.hidden
-    .photo-info
-      p
-        label for='public-tags' Tags: (separate tags with commas)
-        br
-        input name='public-tags'
-      button.save-photo save photo
-
-  #photo-manager-feed
-    nav
-      .info
-        span.selected-count> 0
-        | photos selected
-      .bulk-actions.photos-selected.hidden
-        ' bulk actions
-        span &#9663;
-        ul.dropdown
-          li.delete-link delete selected
-          li.add-tags add tags
-          li.add-to-albums
-            ' add to album &#9657;
-            ul.inner-dropdown
-              li.no-albums-notice no albums
-    .feed-container
-      .bulk-editor
-        input placeholder='separate tags with a comma' type='text' name='tags'
-        button add tags
-      .feed
-        .upload-button
-          | upload
-    = render partial: 'uploader'
+#photo-manager-feed
+  .feed-container
+    .feed
+      .upload-button upload
+  = render partial: 'uploader'

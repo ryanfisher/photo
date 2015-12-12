@@ -12,7 +12,6 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       $('<img>', src: img_url).on 'load', => @$el.removeClass('hidden')
       thumbnail_url = "url(#{img_url})".replace /\s/, "%20"
       @$el.css('background-image', thumbnail_url)
-      @$el.append($('<div>', class: 'edit', text: 'edit'))
       @model.on 'destroy', => @remove()
 
     # Checks if photo is selected
@@ -29,4 +28,3 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     open_photo_editor: (event) ->
       event.stopPropagation()
-      new exports.Editor({@model})

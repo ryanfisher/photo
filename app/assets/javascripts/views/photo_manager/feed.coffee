@@ -8,8 +8,10 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       'click .upload-button':  'openUploadInput'
 
     initialize: ->
-      @photos_info = new exports.Info
+      @collection = new Fotio.Collections.User.SortablePhotos
+      new exports.Uploader({@collection})
       @render()
+      @collection.fetch()
 
     openUploadInput: ->
       @$('input.multiple-photos').click()
@@ -32,15 +34,8 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @new_photo_view model
       @$('.feed').append @last_photo_view_el()
 
-    open_photos_info: ->
-      @photos_info.open()
-
-    close_photos_info: ->
-      @photos_info.close()
-
     new_photo_view: (model) ->
       photo_edit_view = new exports.EditView({model})
-      photo_edit_view.on 'selected_toggle', => @update_selected_count()
       @photo_edit_views.push photo_edit_view
 
     last_photo_view_el: ->
@@ -50,18 +45,6 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       target = $(event?.target)
       return if event? and not target.attr('class')?.match(/feed|feed-container/)
       @$('.feed .selected').removeClass('selected')
-      @update_selected_count()
-
-    update_selected_count: (selected_photos = null) ->
-      selected_photos ?= @selected_photos()
-      @photos_info.update(selected_photos)
-      selected_count = @$('.feed .selected').length
-      if selected_count > 0
-        @$('.photos-selected').removeClass('hidden')
-      else
-        @$('.photos-selected').addClass('hidden')
-        @$('.bulk-editor').removeClass('open')
-      @$('.selected-count').text selected_count
 
     # A list of photo models currently selected in the photo manager feed
     #
