@@ -11,7 +11,7 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
     = yield :head
-  body
+  body class="#{controller_name} #{action_name}"
     nav#main-nav
       a.home href=root_path home
       a.photos href=photos_path photos

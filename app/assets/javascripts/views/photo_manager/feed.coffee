@@ -4,14 +4,11 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     events:
       'click .feed-container': 'clear_selections'
-      'click .delete-link':    'delete_selected_photos'
       'click .upload-button':  'openUploadInput'
 
     initialize: ->
-      @collection = new Fotio.Collections.User.SortablePhotos
       new exports.Uploader({@collection})
       @collection.once 'sync', => @render()
-      @collection.fetch()
 
     openUploadInput: ->
       @$('input.multiple-photos').click()
@@ -50,13 +47,3 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     selected_photos: ->
       views = _.filter @photo_edit_views, (view) -> view.is_selected()
       _.map views, (view) -> view.model
-
-    delete_selected_photos: ->
-      to_delete = @selected_photos()
-      delete_count = to_delete.length
-      return if delete_count == 0
-      confirm_text = "Are you sure you want to delete the selected photo(s)?" +
-                     "\n\n#{delete_count} selected"
-      if window.confirm(confirm_text)
-        _.each to_delete, (model) -> model.destroy()
-      @update_selected_count(to_delete)

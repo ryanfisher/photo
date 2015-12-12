@@ -4,7 +4,7 @@ class App extends Backbone.View
   initialize: ->
     views = [
       Fotio.Views.Photo.RowFeed,
-      Fotio.Views.PhotoManager.Feed
+      Fotio.Views.PhotoManager.Manager
     ]
     _.each views, (view) -> new view if $(view::el).length
     if bootstrapped_photo?
