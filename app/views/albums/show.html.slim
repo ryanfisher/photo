@@ -1,4 +1,6 @@
 - content_for :photos_json
   javascript:
     bootstrapped_photos = #{raw album.to_json}
+- content_for :header
+  h1 = album.title
 #photo-feed
