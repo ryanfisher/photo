@@ -2,15 +2,11 @@
 
 class App extends Backbone.View
   initialize: ->
-    $(document).ajaxSend (e, xhr, options) ->
-      token = $("meta[name='csrf-token']").attr("content")
-      xhr.setRequestHeader("X-CSRF-Token", token)
-    if $(Fotio.Views.Photo.Feed::el).length
-      new Fotio.Views.Photo.RowFeed
-    if $(Fotio.Views.PhotoManager.Feed::el).length
-      new Fotio.Views.PhotoManager.Feed
-      router = new Fotio.Routers.Manager
-      Backbone.history.start()
+    views = [
+      Fotio.Views.Photo.RowFeed,
+      Fotio.Views.PhotoManager.Feed
+    ]
+    _.each views, (view) -> new view if $(view::el).length
     if bootstrapped_photo?
       model = new Fotio.Models.User.Photo(bootstrapped_photo)
       new Fotio.Views.Photo.Page({model})
@@ -20,4 +16,8 @@ class App extends Backbone.View
         $('#login-background img').attr('src', bg_path).
           addClass('loaded')
 
-$ -> new App
+$ ->
+  $(document).ajaxSend (e, xhr, options) ->
+    token = $("meta[name='csrf-token']").attr("content")
+    xhr.setRequestHeader("X-CSRF-Token", token)
+  new App
