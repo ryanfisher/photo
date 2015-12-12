@@ -8,15 +8,25 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     initialize: ->
       img_url = @model.thumbnail()
-      if img_url then @setImage(img_url) else @$el.addClass('processing')
-      @listenTo @model, 'change:id', -> @$el.removeClass('processing')
+      if img_url then @setImage(img_url) else @$el.addClass('uploading')
+      @listenTo @model, 'change:id', @finishUploading
       @$el.append($('<i>', class: 'fa fa-spinner fa-spin'))
       @listenTo @model, 'destroy', @remove
 
+    finishUploading: ->
+      @$el.removeClass('uploading')
+      img_url = @model.thumbnail()
+      return @setImage(img_url) if img_url
+      @$el.addClass('processing')
+      @listenTo @model, 'change:thumb_url', -> @setImage(@model.thumbnail())
+      @checkImgUrl = setInterval(_.bind(@model.fetch, @model), 3000)
+
     setImage: (img_url) ->
+      return unless img_url
+      clearInterval(@checkImgUrl)
+      @$el.removeClass('processing')
       # Load image before showing it in view
-      $('<img>', src: img_url).on 'load', =>
-        @$el.removeClass('hidden processing')
+      $('<img>', src: img_url).on 'load', => @$el.removeClass('hidden')
       thumbnail_url = "url(#{img_url})".replace /\s/, "%20"
       @$el.css('background-image', thumbnail_url)
 

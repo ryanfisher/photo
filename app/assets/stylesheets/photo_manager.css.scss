@@ -42,18 +42,18 @@ $manager-side-bar-width: 320px;
 
     &.hidden {
       @include opacity(0);
-    }
-
-    &.hidden.processing {
-      @include opacity(1);
       text-align: center;
       line-height: 130px;
       font-size: 50px;
+      @include transition(opacity 0s);
 
-      i {
-        display: inherit;
-        color: $accent-color;
+      &.processing, &.uploading {
+        @include opacity(1);
+
+        i { display: inherit; }
       }
+      &.uploading i { color: $accent-color; }
+      &.processing i { color: black; }
     }
 
     &:hover {
