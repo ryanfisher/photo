@@ -62,8 +62,9 @@ $manager-side-bar-width: 320px;
 #photo-manager-feed {
   text-align: left;
   padding: 0 $side-width 40px;
-  margin: -10px;
   min-height: 100%;
+
+  .feed-container { margin: 0 -10px; }
 
   .upload-button {
     height: 130px;
@@ -81,6 +82,7 @@ $manager-side-bar-width: 320px;
     text-align: center;
     line-height: 175px;
     font-size: 16px;
+    float: left;
 
     &:hover { background-color: #aaa; }
   }
@@ -96,6 +98,7 @@ $manager-side-bar-width: 320px;
     overflow: hidden;
     position: relative;
     @include transition(opacity 0.3s ease-in-out);
+    float: left;
 
     i { display: none; }
 
