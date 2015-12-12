@@ -6,14 +6,16 @@ html
     = content_for :photos_json
     = content_for :photo_json
     = render partial: 'layouts/analytics'
+    link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
     = yield :head
   body
-    nav#static-nav
+    nav#main-nav
       a.home href=root_path home
       a.photos href=photos_path photos
       a.dashboard href=dashboard_index_path dashboard
+    .header = content_for :header
     #content
       = yield
     = javascript_include_tag 'application'

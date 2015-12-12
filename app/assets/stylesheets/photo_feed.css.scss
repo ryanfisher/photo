@@ -1,5 +1,5 @@
 body {
-  font-family: Helvetica, sans-serif;
+  font-family: 'Open Sans', Helvetica, sans-serif;
   text-align: center;
 }
 
@@ -10,6 +10,19 @@ img.photo-page {
 
 #content {
   padding-left: 0;
+  clear: both;
+}
+
+.header {
+  float: left;
+  margin: 20px $side-width 0;
+
+  h1 {
+    font-size: 18px;
+    font-weight: 100;
+    margin: 0;
+    text-transform: uppercase;
+  }
 }
 
 #photo-feed {

@@ -1,6 +1,6 @@
-#static-nav {
+#main-nav {
   margin: 20px $side-width;
-  text-align: right;
+  float: right;
 
   a {
     display: inline-block;
@@ -8,10 +8,10 @@
     text-decoration: none;
     margin-left: 30px;
     margin-top: 3px;
-    border-bottom: 3px solid transparent;
+    border-bottom: 1px solid transparent;
 
     &:hover {
-      border-bottom: 3px solid #333;
+      border-bottom: 1px solid #333;
     }
   }
 }
