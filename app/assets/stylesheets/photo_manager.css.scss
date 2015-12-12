@@ -57,16 +57,14 @@ $manager-side-bar-width: 320px;
     }
 
     &:hover {
-      margin: 5px;
-      border: 5px solid gray;
+      margin: 7px;
+      border: 3px solid gray;
       cursor: pointer;
-
-      .edit { display: block; }
     }
 
     &.selected {
-      margin: 5px;
-      border: 5px solid $accent-color;
+      margin: 7px;
+      border: 3px solid $accent-color;
     }
   }
 }
