@@ -3,6 +3,7 @@ $manager-side-bar-width: 320px;
 #photo-manager-feed {
   text-align: left;
   padding: 0 $side-width 40px;
+  margin: -10px;
   min-height: 100%;
 
   .upload-button {
@@ -10,8 +11,7 @@ $manager-side-bar-width: 320px;
     width: 130px;
     margin: 10px;
     position: relative;
-    display: block;
-    float: left;
+    display: inline-block;
     vertical-align: top;
     background-color: #ccc;
     @include icon-background('upload.png');
@@ -21,6 +21,7 @@ $manager-side-bar-width: 320px;
     color: white;
     text-align: center;
     line-height: 175px;
+    font-size: 16px;
 
     &:hover { background-color: #aaa; }
   }

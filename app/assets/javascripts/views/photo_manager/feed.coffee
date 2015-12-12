@@ -10,7 +10,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     initialize: ->
       @collection = new Fotio.Collections.User.SortablePhotos
       new exports.Uploader({@collection})
-      @render()
+      @collection.once 'sync', => @render()
       @collection.fetch()
 
     openUploadInput: ->
@@ -23,12 +23,10 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     render: ->
       @photo_edit_views = []
-      @collection.on 'add', _.bind(@append_photo_view, this)
-      @collection.once 'sync', =>
-        @collection.off 'add'
-        @collection.on 'add', (model) =>
-          @new_photo_view model
-          @$('.feed .upload-button').after @last_photo_view_el()
+      @collection.each _.bind(@append_photo_view, this)
+      @collection.on 'add', (model) =>
+        @new_photo_view model
+        @$('.feed .upload-button').after @last_photo_view_el()
 
     append_photo_view: (model) ->
       @new_photo_view model
