@@ -1,5 +1,64 @@
 $manager-side-bar-width: 320px;
 
+#dashboard-actions {
+  text-align: left;
+  padding: 0 $side-width 20px;
+
+  .dropdown-menu {
+    // visibility: hidden;
+    display: inline-block;
+    padding: 7px;
+    margin-bottom: 5px;
+    border: 1px solid #aaa;
+    @include border-radius(2px);
+    font-size: 14px;
+    height: 19px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    position: relative;
+    vertical-align: top;
+    cursor: pointer;
+    z-index: 1;
+
+    &.album-choices { z-index: 10; }
+    &.batch-actions { z-index: 9; }
+    &.publish-actions { z-index: 8; }
+
+    &:hover, &.opened {
+      overflow: visible;
+    }
+
+    .placeholder {
+      display: inline-block;
+      padding-right: 30px;
+    }
+
+    i {
+      float: right;
+      line-height: 19px;
+
+      &.fa-caret-down { color: #555; }
+    }
+
+    .options {
+      margin: 7px -8px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 200px;
+      border: 1px solid #aaa;
+      background-color: white;
+      @include border-radius(0 0 2px 2px);
+
+      .option {
+        padding: 7px;
+
+        &:hover { background-color: $accent-color; color: white; }
+      }
+    }
+  }
+}
+
 #photo-manager-feed {
   text-align: left;
   padding: 0 $side-width 40px;

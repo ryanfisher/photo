@@ -1,6 +1,35 @@
 - content_for :header do
   h1 Dashboard
-
+nav#dashboard-actions
+  .dashboard-actions
+    .album-choices.dropdown-menu
+      span.placeholder Add to an album
+      i.fa.fa-caret-down
+      .options
+        .option Create a new album
+    .batch-actions.dropdown-menu
+      span.placeholder Batch actions
+      i.fa.fa-caret-down
+      .options
+        .option
+          i.fa.fa-trash
+          | Delete selected
+    .publish-actions.dropdown-menu
+      span.placeholder Publish to service
+      i.fa.fa-caret-down
+      .options
+        .option
+          i.fa.fa-instagram
+          | Instagram
+        .option
+          i.fa.fa-flickr
+          | Flickr
+        .option
+          i.fa.fa-500px
+          | 500px
+        .option
+          i.fa.fa-facebook-square
+          | Facebook
 #photo-manager-feed
   .feed-container
     .feed
