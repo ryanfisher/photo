@@ -38,23 +38,22 @@ $manager-side-bar-width: 320px;
     position: relative;
     @include transition(opacity 0.3s ease-in-out);
 
-    .edit {
-      display: none;
-      position: absolute;
-      bottom: 5px;
-      left: 5px;
-      padding: 3px;
-      color: black;
-      background-color: white;
-      font-size: 10px;
-      @include border-radius(3px);
-      @include opacity(.70);
-
-      &:hover { @include opacity(1); }
-    }
+    i { display: none; }
 
     &.hidden {
       @include opacity(0);
+    }
+
+    &.hidden.processing {
+      @include opacity(1);
+      text-align: center;
+      line-height: 130px;
+      font-size: 50px;
+
+      i {
+        display: inherit;
+        color: $accent-color;
+      }
     }
 
     &:hover {
