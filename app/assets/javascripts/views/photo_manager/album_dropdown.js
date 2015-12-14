@@ -13,12 +13,14 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     },
 
     render: function() {
-      this.collection.each(this.appendOption, this)
+      _.invoke(this.options, 'remove');
+      this.options = this.collection.map(this.appendOption, this)
     },
 
     appendOption: function(model) {
       var option = new exports.AlbumDropdown.Option({ model: model })
       this.$('.options').append(option.$el);
+      return option;
     },
 
     createAlbum: function() {

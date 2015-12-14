@@ -3,7 +3,8 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     el: '#modal',
 
     events: {
-      'click button': 'hide'
+      'click button.cancel': 'hide',
+      'click button.create': 'create'
     },
 
     initialize: function() {
@@ -12,9 +13,17 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     render: function() {
       this.$('.modal-body').html(
-        '<form><input type="text" name="title"><br>' +
-        '<button type="button">Create album</button></form>'
+        '<form><input type="text" name="title" placeholder="Album title"><br>' +
+        '<button class="cancel" type="button">Cancel</button>' +
+        '<button class="create" type="button">Create album</button></form>'
       )
+    },
+
+    create: function() {
+      if (this.creating) return;
+      this.creating = true;
+      this.collection.create({ title: this.$('[name=title]').val() });
+      this.hide();
     },
 
     show: function() {
