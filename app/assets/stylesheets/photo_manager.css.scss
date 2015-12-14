@@ -112,7 +112,10 @@ $manager-side-bar-width: 320px;
       &.processing, &.uploading {
         @include opacity(1);
 
-        i { display: inherit; }
+        i {
+          display: inherit;
+          line-height: 130px;
+        }
       }
       &.uploading i { color: $accent-color; }
       &.processing i { color: black; }
