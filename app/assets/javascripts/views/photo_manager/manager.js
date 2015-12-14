@@ -11,12 +11,13 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       this.feed =
         new Fotio.Views.PhotoManager.Feed({ collection: this.collection });
       this.collection.fetch();
+      new exports.AlbumDropdown();
     },
 
     deletePhotos: function() {
       var confirmText = 'Are you sure you want to delete the selected photos?';
       if (!confirm(confirmText)) return;
       _.invoke(this.feed.selected_photos(), 'destroy')
-    }
+    },
   });
 });

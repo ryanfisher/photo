@@ -83,6 +83,7 @@ $side-width: 5%;
 @import 'photo_manager';
 @import 'photo_show';
 @import 'profile';
+@import 'modal';
 
 html {
   @include transition(background-image 0.6s ease-in-out);
