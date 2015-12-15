@@ -3,7 +3,8 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     el: '.dashboard.index',
 
     events: {
-      'click .option.delete': 'deletePhotos'
+      'click .option.delete': 'deletePhotos',
+      'click .album-view': 'switchToAlbumView'
     },
 
     initialize: function() {
@@ -19,5 +20,14 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       if (!confirm(confirmText)) return;
       _.invoke(this.feed.selected_photos(), 'destroy')
     },
+
+    showAlbumView: function() {
+      this.feed.$el.removeClass('changing')
+    },
+
+    switchToAlbumView: function() {
+      this.feed.$el.addClass('changing')
+      setTimeout(_.bind(this.showAlbumView, this), 1000)
+    }
   });
 });

@@ -1,8 +1,16 @@
 $manager-side-bar-width: 320px;
 
+.dashboard.index {
+  .header h1 { display:inline-block; }
+  .photo-view, .album-view {
+    margin: 0 20px;
+    cursor: pointer;
+  }
+}
+
 #dashboard-actions {
   text-align: left;
-  padding: 0 $side-width 20px;
+  padding: 0 0 20px;
 
   .dropdown-menu {
     // visibility: hidden;
@@ -63,8 +71,18 @@ $manager-side-bar-width: 320px;
   text-align: left;
   padding: 0 $side-width 40px;
   min-height: 100%;
+  width: 100% - (2 * $side-width);
 
-  .feed-container { margin: 0 -10px; }
+  @include transition(margin-left 1s);
+
+  &.changing {
+    margin-left: -100%;
+  }
+
+  .feed-container {
+    margin: 0 -10px;
+    width: 100%;
+  }
 
   .upload-button {
     height: 130px;
