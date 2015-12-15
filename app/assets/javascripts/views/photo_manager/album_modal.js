@@ -4,7 +4,8 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     events: {
       'click button.cancel': 'hide',
-      'click button.create': 'create'
+      'click button.create': 'create',
+      'submit form': 'create'
     },
 
     initialize: function() {
@@ -19,7 +20,8 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       )
     },
 
-    create: function() {
+    create: function(event) {
+      event.preventDefault();
       if (this.creating) return;
       this.creating = true;
       this.collection.create({ title: this.$('[name=title]').val() });
@@ -28,6 +30,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     show: function() {
       this.$el.addClass('visible');
+      this.$('input').focus();
     },
 
     hide: function() {
