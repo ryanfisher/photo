@@ -2,7 +2,7 @@
   h1 Dashboard
   a.photo-view photo view
   a.album-view album view
-#photo-manager-feed
+#photo-manager-feed.base-view
   nav#dashboard-actions
     .dashboard-actions
       .album-choices.dropdown-menu
@@ -37,3 +37,14 @@
     .feed
       .upload-button upload
   = render partial: 'uploader'
+#album-manager-feed.base-view.changing.hidden
+  nav#dashboard-actions
+    .dashboard-actions
+      .permissions-choices.dropdown-menu
+        span.placeholder Choose Permissions
+        i.fa.fa-caret-down
+        .options
+          .option.private Private
+          .option.public Public
+          .option.friends Friends
+          .option.unlisted Unlisted

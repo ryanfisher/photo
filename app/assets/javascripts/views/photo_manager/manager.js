@@ -4,12 +4,13 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     events: {
       'click .option.delete': 'deletePhotos',
-      'click .album-view': 'switchToAlbumView'
+      'click .album-view': 'switchToAlbumView',
+      'click .photo-view': 'switchToPhotoView'
     },
 
     initialize: function() {
       this.collection = new Fotio.Collections.User.SortablePhotos();
-      this.feed =
+      this.currentView =
         new Fotio.Views.PhotoManager.Feed({ collection: this.collection });
       this.collection.fetch();
       new exports.AlbumDropdown();
@@ -21,13 +22,17 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       _.invoke(this.feed.selected_photos(), 'destroy')
     },
 
-    showAlbumView: function() {
-      this.feed.$el.removeClass('changing')
+    switchToPhotoView: function() {
+      this.switchViewTo(new exports.Feed({ collection: this.collection }));
     },
 
     switchToAlbumView: function() {
-      this.feed.$el.addClass('changing')
-      setTimeout(_.bind(this.showAlbumView, this), 1000)
+      this.switchViewTo(new exports.AlbumFeed());
+    },
+
+    switchViewTo: function(newView) {
+      this.currentView.switchViewTo(newView);
+      this.currentView = newView;
     }
   });
 });

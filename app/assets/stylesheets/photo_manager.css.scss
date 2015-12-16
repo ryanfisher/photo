@@ -67,18 +67,19 @@ $manager-side-bar-width: 320px;
   }
 }
 
-#photo-manager-feed {
+.base-view {
   text-align: left;
   padding: 0 $side-width 40px;
   min-height: 100%;
   width: 100% - (2 * $side-width);
 
-  @include transition(margin-left 1s);
+  @include transition(margin-left 0.7s);
 
-  &.changing {
-    margin-left: -100%;
-  }
+  &.changing { margin-left: -100%; }
+  &.hidden { display: none; }
+}
 
+#photo-manager-feed {
   .feed-container {
     margin: 0 -10px;
     width: 100%;
