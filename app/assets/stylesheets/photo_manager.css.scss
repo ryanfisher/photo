@@ -77,14 +77,39 @@ $manager-side-bar-width: 320px;
 
   &.changing { margin-left: -100%; }
   &.hidden { display: none; }
-}
 
-#photo-manager-feed {
   .feed-container {
     margin: 0 -10px;
     width: 100%;
   }
+}
 
+#album-manager-feed {
+  .album-cover {
+    height: 130px;
+    width: 130px;
+    margin: 10px;
+    line-height: 155px;
+    background-size: cover;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+    background-color: #ccc;
+    color: white;
+    cursor: pointer;
+
+    i {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      font-size: 20px;
+      margin-left: -10px;
+    }
+  }
+}
+
+#photo-manager-feed {
   .upload-button {
     height: 130px;
     width: 130px;
