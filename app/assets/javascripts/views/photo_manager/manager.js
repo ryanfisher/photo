@@ -10,19 +10,21 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     initialize: function() {
       // Set to scroll so there is no shifting when changing views
       $('html').css('overflow-y', 'scroll')
-      this.currentView = new Fotio.Views.PhotoManager.Feed();
+      this.currentView = new exports.Feed();
       new exports.AlbumDropdown();
     },
 
     switchToPhotoView: function() {
-      this.switchViewTo(new exports.Feed());
+      this.switchViewTo(exports.Feed);
     },
 
     switchToAlbumView: function() {
-      this.switchViewTo(new exports.AlbumFeed());
+      this.switchViewTo(exports.AlbumFeed);
     },
 
-    switchViewTo: function(newView) {
+    switchViewTo: function(viewClass) {
+      if ('#' + this.currentView.el.id == viewClass.prototype.el) return;
+      var newView = new viewClass()
       this.currentView.switchViewTo(newView);
       delete this.currentView
       this.currentView = newView;
