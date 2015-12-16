@@ -5,18 +5,33 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     events:
       'click .feed-container': 'clear_selections'
       'click .upload-button':  'openUploadInput'
+      'click .option.delete': 'deletePhotos'
 
     initialize: ->
-      new exports.Uploader({@collection})
+      @collection = new Fotio.Collections.User.SortablePhotos()
+      this.uploader = new exports.Uploader({@collection})
       @collection.once 'sync', => @render()
+      @collection.fetch()
+
+    deletePhotos: ->
+      confirmText = 'Are you sure you want to delete the selected photos?';
+      return unless confirm(confirmText)
+      _.invoke(this.selected_photos(), 'destroy')
 
     openUploadInput: ->
       @$('input.multiple-photos').click()
 
     reset: ->
+      @cleanUp()
+      @collection.each _.bind(@append_photo_view, this)
+
+    removePhotoViews: ->
       _.invoke @photo_edit_views, 'remove'
       @photo_edit_views = []
-      @collection.each _.bind(@append_photo_view, this)
+
+    cleanUp: ->
+      this.removePhotoViews()
+      this.uploader.undelegateEvents();
 
     render: ->
       @photo_edit_views = []

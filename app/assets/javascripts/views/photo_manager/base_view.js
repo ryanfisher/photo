@@ -12,8 +12,13 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       var duration = this.$el.css('transition-duration');
       setTimeout(_.bind(function() {
         newView.show()
-        this.$el.addClass('hidden')
+        this.$el.addClass('hidden');
+        this.undelegateEvents();
+        this.cleanUp();
       }, this), parseFloat(duration) * 1000);
-    }
+    },
+
+    // Perform extra cleanup when hiding view
+    cleanUp: function() {}
   });
 });
