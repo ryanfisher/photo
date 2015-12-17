@@ -19,6 +19,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     appendOption: function(model) {
       var option = new exports.AlbumDropdown.Option({ model: model })
+      option.feed = this.feed;
       this.$('.options').append(option.$el);
       return option;
     },

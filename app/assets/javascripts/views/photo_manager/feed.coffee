@@ -10,6 +10,8 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     initialize: ->
       @collection = new Fotio.Collections.User.SortablePhotos()
       this.uploader = new exports.Uploader({@collection})
+      this.albumDropdown = new exports.AlbumDropdown();
+      this.albumDropdown.feed = this;
       @collection.once 'sync', => @render()
       @collection.fetch()
 
@@ -32,6 +34,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     cleanUp: ->
       this.removePhotoViews()
       this.uploader.undelegateEvents();
+      this.albumDropdown.undelegateEvents();
 
     render: ->
       @photo_edit_views = []

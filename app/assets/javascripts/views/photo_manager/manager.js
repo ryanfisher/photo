@@ -11,7 +11,6 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       // Set to scroll so there is no shifting when changing views
       $('html').css('overflow-y', 'scroll')
       this.currentView = new exports.Feed();
-      new exports.AlbumDropdown();
     },
 
     switchToPhotoView: function() {
