@@ -14,6 +14,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     render: function() {
       _.invoke(this.options, 'remove');
+      this.$('.option.album').remove();
       this.options = this.collection.map(this.appendOption, this)
     },
 

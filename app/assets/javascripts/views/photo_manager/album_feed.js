@@ -17,6 +17,9 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     appendAlbum: function(model) {
       var album = $('<div>', { text: model.get('title'), class: 'album-cover' });
       album.append($('<i>', { class: 'fa fa-folder' }));
+      album.on('click', function() {
+        exports.switchViewTo(exports.AlbumEditor, { model: model });
+      });
       this.$('.feed').append(album)
     },
 

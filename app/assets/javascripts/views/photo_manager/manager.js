@@ -10,23 +10,23 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     initialize: function() {
       // Set to scroll so there is no shifting when changing views
       $('html').css('overflow-y', 'scroll')
-      this.currentView = new exports.Feed();
+      exports.currentView = new exports.Feed();
     },
 
     switchToPhotoView: function() {
-      this.switchViewTo(exports.Feed);
+      exports.switchViewTo(exports.Feed);
     },
 
     switchToAlbumView: function() {
-      this.switchViewTo(exports.AlbumFeed);
+      exports.switchViewTo(exports.AlbumFeed);
     },
-
-    switchViewTo: function(viewClass) {
-      if ('#' + this.currentView.el.id == viewClass.prototype.el) return;
-      var newView = new viewClass()
-      this.currentView.switchViewTo(newView);
-      delete this.currentView
-      this.currentView = newView;
-    }
   });
+
+  exports.switchViewTo = function(viewClass, options) {
+    if ('#' + exports.currentView.el.id == viewClass.prototype.el) return;
+    var newView = new viewClass(options)
+    exports.currentView.switchViewTo(newView);
+    delete exports.currentView
+    exports.currentView = newView;
+  };
 });
