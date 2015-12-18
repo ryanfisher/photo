@@ -10,15 +10,15 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     initialize: function() {
       // Set to scroll so there is no shifting when changing views
       $('html').css('overflow-y', 'scroll')
-      exports.currentView = new exports.Feed();
+      exports.currentView = new exports.PhotosView();
     },
 
     switchToPhotoView: function() {
-      exports.switchViewTo(exports.Feed);
+      exports.switchViewTo(exports.PhotosView);
     },
 
     switchToAlbumView: function() {
-      exports.switchViewTo(exports.AlbumFeed);
+      exports.switchViewTo(exports.AlbumsView);
     },
   });
 
