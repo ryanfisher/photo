@@ -9,6 +9,10 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
         el: this.$('.feed'),
         collection: this.model.get('photos')
       });
+      this.render();
+    },
+
+    render: function() {
       this.feed.render();
     },
   });
