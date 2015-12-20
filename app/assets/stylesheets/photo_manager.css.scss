@@ -76,13 +76,14 @@ $manager-side-bar-width: 320px;
   @include transition(margin-left 0.7s);
 
   &.changing { margin-left: -100%; }
-  &.hidden { display: none; }
 
   .feed-container {
     margin: 0 -10px;
     width: 100%;
   }
 }
+
+.hidden { display: none !important; }
 
 #album-manager-feed {
   .album-cover {
