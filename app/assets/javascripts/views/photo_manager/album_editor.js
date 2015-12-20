@@ -15,5 +15,9 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     render: function() {
       this.feed.render();
     },
+
+    cleanUp: function() {
+      this.feed.removePhotoViews();
+    }
   });
 });
