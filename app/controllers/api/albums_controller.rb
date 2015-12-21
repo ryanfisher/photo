@@ -9,7 +9,7 @@ module Api
 
     def show
       album = current_user_albums.find(params[:id])
-      render json: AlbumPresenter.new(album).to_json
+      render json: AlbumPresenter.new(album).simple_json
     end
 
     def create
