@@ -23,8 +23,10 @@ describe Api::AlbumsController, type: :controller do
   end
 
   describe 'GET show' do
+    let(:album) { double(:album, id: 17, title: 'Switzerland!', photos: []) }
+
     before do
-      expect(albums).to receive(:find).with('17') { { title: 'Switzerland!' } }
+      expect(albums).to receive(:find).with('17') { album }
     end
 
     before { get :show, id: 17 }

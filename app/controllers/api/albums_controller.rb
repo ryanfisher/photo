@@ -4,11 +4,12 @@ module Api
     skip_before_action :verify_authenticity_token
 
     def index
-      render json: albums.as_json(include: :photos)
+      render json: albums
     end
 
     def show
-      render json: current_user_albums.find(params[:id])
+      album = current_user_albums.find(params[:id])
+      render json: AlbumPresenter.new(album).to_json
     end
 
     def create

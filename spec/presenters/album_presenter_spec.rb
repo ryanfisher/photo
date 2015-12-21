@@ -3,18 +3,14 @@ require 'rails_helper'
 describe AlbumPresenter do
   subject { described_class.new(resource) }
 
-  let(:resource) { double(:resource) }
+  let(:resource) { double(:resource, id: 17, title: 'Switzerland!') }
 
   describe '#to_json' do
-    let(:photo) { double(:photo) }
+    let(:photo) { double(:photo, simple_json: { id: 1, thumb_url: '/photo' }) }
     let(:photos) { [photo, photo] }
-    let(:presenter) { double(:presenter) }
 
     before do
       expect(resource).to receive(:photos) { photos }
-      expect(PhotoPresenter).to receive(:new).exactly(2).times { presenter }
-      expect(presenter).to receive(:to_json).exactly(2)
-        .times { { photo: 'photo' } }
     end
 
     it 'returns a json representation of photos' do

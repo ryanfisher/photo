@@ -1,5 +1,13 @@
 class AlbumPresenter < BasePresenter
   def to_json
-    photos.map { |photo| PhotoPresenter.new(photo).to_json }.to_json
+    {
+      id: id,
+      title: title,
+      photos: photos_array
+    }
+  end
+
+  def photos_array
+    photos.map(&:simple_json)
   end
 end

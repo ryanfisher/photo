@@ -11,7 +11,8 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     },
 
     render: function() {
-      this.collection.each(_.bind(this.appendAlbum, this))
+      this.$('.album-cover').remove();
+      this.collection.each(_.bind(this.appendAlbum, this));
     },
 
     appendAlbum: function(model) {

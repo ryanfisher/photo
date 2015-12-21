@@ -20,6 +20,10 @@ class Photo < ActiveRecord::Base
     [:photos, username, file_key, "thumb_#{original_filename}"].join('/')
   end
 
+  def simple_json
+    { id: id, thumb_url: thumb_url }
+  end
+
   private
 
   def delete_photos

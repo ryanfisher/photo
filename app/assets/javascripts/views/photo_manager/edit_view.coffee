@@ -21,6 +21,9 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @listenTo @model, 'change:thumb_url', -> @setImage(@model.thumbnail())
       @checkImgUrl = setInterval(_.bind(@model.fetch, @model), 3000)
 
+    updatePosition: ->
+      this.model.set('position', this.$el.index());
+
     setImage: (img_url) ->
       return unless img_url
       clearInterval(@checkImgUrl)
