@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :albums, only: [:index]
   end
   resources :dashboard, only: [:index]
+  get 'dashboard/*path' => 'dashboard#index'
 
   namespace :api do
     resources :photos, only: [:index, :show, :create, :update, :destroy]

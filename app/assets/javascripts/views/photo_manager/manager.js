@@ -1,3 +1,5 @@
+//= require ./../../routers/manager
+
 namespace('Fotio.Views.PhotoManager', function(exports) {
   exports.Manager = Backbone.View.extend({
     el: '.dashboard.index',
@@ -11,6 +13,8 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       // Set to scroll so there is no shifting when changing views
       $('html').css('overflow-y', 'scroll')
       exports.currentView = new exports.PhotosView();
+      new Fotio.Routers.Manager();
+      Backbone.history.start({ pushState: true, root: '/dashboard/' });
     },
 
     switchToPhotoView: function() {
