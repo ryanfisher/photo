@@ -12,5 +12,11 @@ Rails.application.routes.draw do
   namespace :api do
     resources :photos, only: [:index, :show, :create, :update, :destroy]
     resources :albums, only: [:index, :show, :create, :update, :destroy]
+
+    resources :sorted_photos, only: [] do
+      collection do
+        post :update_positions
+      end
+    end
   end
 end
