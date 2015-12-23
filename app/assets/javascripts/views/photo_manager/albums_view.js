@@ -19,7 +19,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       var album = $('<div>', { text: model.get('title'), class: 'album-cover' });
       album.append($('<i>', { class: 'fa fa-folder' }));
       album.on('click', function() {
-        exports.switchViewTo(exports.AlbumEditor, { model: model });
+        Fotio.router.navigate('albums/' + model.id, { trigger: true });
       });
       this.$('.feed').append(album)
     },

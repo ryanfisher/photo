@@ -8,17 +8,25 @@ namespace('Fotio.Routers', function(exports) {
     },
 
     albums: function() {
-      var namespace = Fotio.Views.PhotoManager;
-      namespace.switchViewTo(namespace.AlbumsView);
+      this.switchViewTo('AlbumsView', {});
+    },
+
+    album: function(id) {
+      var model = new Fotio.Models.User.Album({ id: id });
+      this.switchViewTo('AlbumEditor', { model: model });
     },
 
     photos: function() {
-      var namespace = Fotio.Views.PhotoManager;
-      namespace.switchViewTo(namespace.PhotosView);
+      this.switchViewTo('PhotosView', {});
     },
 
     redirectToPhotos: function() {
       this.navigate('photos', { trigger: true, replace: true });
+    },
+
+    switchViewTo: function(viewClass, options) {
+      var namespace = Fotio.Views.PhotoManager;
+      Fotio.Views.PhotoManager.switchViewTo(namespace[viewClass], options);
     }
   })
 });

@@ -14,6 +14,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       $('html').css('overflow-y', 'scroll')
       exports.currentView = new exports.BaseView();
       this.router = new Fotio.Routers.Manager();
+      Fotio.router = this.router;
       Backbone.history.start({ pushState: true, root: '/dashboard/' });
     },
 
