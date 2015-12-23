@@ -12,17 +12,17 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     initialize: function() {
       // Set to scroll so there is no shifting when changing views
       $('html').css('overflow-y', 'scroll')
-      exports.currentView = new exports.PhotosView();
-      new Fotio.Routers.Manager();
+      exports.currentView = new exports.BaseView();
+      this.router = new Fotio.Routers.Manager();
       Backbone.history.start({ pushState: true, root: '/dashboard/' });
     },
 
     switchToPhotoView: function() {
-      exports.switchViewTo(exports.PhotosView);
+      this.router.navigate('photos', { trigger: true });
     },
 
     switchToAlbumView: function() {
-      exports.switchViewTo(exports.AlbumsView);
+      this.router.navigate('albums', { trigger: true });
     },
   });
 
