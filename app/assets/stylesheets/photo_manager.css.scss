@@ -73,7 +73,7 @@ $manager-side-bar-width: 320px;
   min-height: 100%;
   width: 100% - (2 * $side-width);
 
-  @include transition(margin-left 0.7s);
+  @include transition(margin-left 0.5s);
 
   &.changing { margin-left: -100%; }
 
