@@ -11,8 +11,8 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @collection = new Fotio.Collections.User.SortablePhotos()
       @uploader = new exports.Uploader({ @collection })
       @feed = new exports.PhotoFeed({ el: @$('.feed'), @collection })
-      @albumDropdown = new exports.AlbumDropdown();
-      @albumDropdown.feed = this;
+      @albumDropdown = new exports.AlbumDropdown()
+      @albumDropdown.feed = @feed
       @collection.once 'sync', => @feed.render()
       @collection.fetch()
 
@@ -30,8 +30,8 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     cleanUp: ->
       @feed.removePhotoViews()
-      @uploader.undelegateEvents();
-      @albumDropdown.undelegateEvents();
+      @uploader.undelegateEvents()
+      @albumDropdown.undelegateEvents()
 
     clear_selections: (event) ->
       target = $(event?.target)
