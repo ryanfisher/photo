@@ -16,9 +16,14 @@ namespace('Fotio.Views.PhotoManager.AlbumDropdown', function(exports) {
 
     addSelectedPhotos: function() {
       var photos = this.feed.selected_photos();
-      if (photos.length === 0) return;
+      if (photos.length === 0) return this.showErrorNotice();
       _.each(photos, this.model.addPhoto, this.model)
       this.model.save()
+    },
+
+    showErrorNotice: function() {
+      var message = 'Must select photos to add to album.';
+      Backbone.trigger('notice', { message: message, status: 'danger' });
     }
   })
 });

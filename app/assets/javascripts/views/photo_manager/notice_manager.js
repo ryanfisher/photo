@@ -1,4 +1,10 @@
 namespace('Fotio.Views.PhotoManager', function(exports) {
+  // To display a notice, trigger a notice event on the Backbone object,
+  // passing in an argument object with a message property where the value is
+  // the notice message to display
+  //
+  // @example
+  //   Backbone.trigger('notice', { message: 'Selected photos deleted.' });
   exports.NoticeManager = Backbone.View.extend({
     el: '#notice',
 
