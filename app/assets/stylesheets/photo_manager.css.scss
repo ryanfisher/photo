@@ -6,6 +6,33 @@ $manager-side-bar-width: 320px;
     margin: 0 20px;
     cursor: pointer;
   }
+
+  #notice {
+    float: right;
+    padding-right: $side-width;
+    min-width: 50px;
+
+    p {
+      margin: 0;
+      line-height: 38px;
+
+      &.success {
+        color: #3c763d;
+      }
+
+      &.info {
+        color: #31708f;
+      }
+
+      &.warning {
+        color: #8a6d3b;
+      }
+
+      &.danger {
+        color: #a94442;
+      }
+    }
+  }
 }
 
 #dashboard-actions {

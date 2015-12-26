@@ -16,6 +16,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       this.router = new Fotio.Routers.Manager();
       Fotio.router = this.router;
       Backbone.history.start({ pushState: true, root: '/dashboard/' });
+      new exports.NoticeManager();
     },
 
     switchToPhotoView: function() {

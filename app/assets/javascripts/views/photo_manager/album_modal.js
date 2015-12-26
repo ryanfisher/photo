@@ -24,8 +24,10 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       event.preventDefault();
       if (this.creating) return;
       this.creating = true;
-      this.collection.create({ title: this.$('[name=title]').val() });
+      title = this.$('[name=title]').val();
+      this.collection.create({ title: title });
       this.hide();
+      Backbone.trigger('notice', { message: 'New album (' + title + ') created.' });
     },
 
     show: function() {
