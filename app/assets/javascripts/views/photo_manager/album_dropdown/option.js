@@ -15,7 +15,9 @@ namespace('Fotio.Views.PhotoManager.AlbumDropdown', function(exports) {
     },
 
     addSelectedPhotos: function() {
-      _.each(this.feed.selected_photos(), this.model.addPhoto, this.model)
+      var photos = this.feed.selected_photos();
+      if (photos.length === 0) return;
+      _.each(photos, this.model.addPhoto, this.model)
       this.model.save()
     }
   })
