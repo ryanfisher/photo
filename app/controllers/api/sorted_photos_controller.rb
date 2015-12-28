@@ -1,12 +1,9 @@
 module Api
   class SortedPhotosController < Api::ApplicationController
     def update_positions
-      # TODO: Simplify
-      positions = params.fetch(:positions)
-      (0...positions.size).each do |index|
-        position = positions.fetch(index.to_s)
-        SortedPhoto.where(position.permit(:album_id, :photo_id))
-          .update_all(position.permit(:position))
+      params.fetch(:positions).values.each do |sorted_photo|
+        SortedPhoto.where(sorted_photo.slice(:album_id, :photo_id))
+          .first.update(sorted_photo.slice(:position))
       end
 
       render json: {}, status: :ok
