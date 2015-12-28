@@ -22,7 +22,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     },
 
     savePositions: function() {
-      _.invoke(this.feed.photo_edit_views, 'updatePosition');
+      _.invoke(this.feed.photoEditViews, 'updatePosition');
       var positions = this.collection.positions(this.model.id);
       $.post('/api/sorted_photos/update_positions', { positions: positions });
     },

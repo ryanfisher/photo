@@ -51,7 +51,7 @@
     @include opacity(1);
     @include transition(opacity 0.3s ease-in-out);
 
-    &.hidden {
+    &.transparent {
       @include opacity(0);
     }
   }

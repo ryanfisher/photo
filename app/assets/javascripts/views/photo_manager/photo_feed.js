@@ -1,12 +1,12 @@
 namespace('Fotio.Views.PhotoManager', function(exports) {
   exports.PhotoFeed = Backbone.View.extend({
     removePhotoViews: function() {
-      _.invoke(this.photo_edit_views, 'remove')
-      this.photo_edit_views = []
+      _.invoke(this.photoEditViews, 'remove')
+      this.photoEditViews = []
     },
 
     render: function() {
-      this.photo_edit_views = [];
+      this.photoEditViews = [];
       this.collection.each(_.bind(this.append_photo_view, this))
       this.collection.on('add', _.bind(function(model) {
         this.new_photo_view(model);
@@ -21,11 +21,11 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     new_photo_view: function(model) {
       var view = new exports.EditView({ model: model })
-      this.photo_edit_views.push(view)
+      this.photoEditViews.push(view)
     },
 
     last_photo_view_el: function() {
-      return this.photo_edit_views[this.photo_edit_views.length - 1].$el;
+      return this.photoEditViews[this.photoEditViews.length - 1].$el;
     },
 
     reset: function() {
@@ -37,7 +37,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
      * @return [Array<Photo>]
      */
     selected_photos: function() {
-      var views = _.filter(this.photo_edit_views, function(view) {
+      var views = _.filter(this.photoEditViews, function(view) {
         return view.is_selected()
       });
       return _.pluck(views, 'model');

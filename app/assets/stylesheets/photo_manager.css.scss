@@ -189,7 +189,7 @@ $manager-side-bar-width: 320px;
 
     i { display: none; }
 
-    &.hidden {
+    &.transparent {
       @include opacity(0);
       text-align: center;
       line-height: 130px;

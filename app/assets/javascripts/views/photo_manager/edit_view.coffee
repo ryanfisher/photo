@@ -1,6 +1,6 @@
 namespace 'Fotio.Views.PhotoManager', (exports) ->
   class exports.EditView extends Backbone.View
-    className: 'photo hidden'
+    className: 'photo transparent'
 
     events:
       'click': 'toggle_selected'
@@ -29,7 +29,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       clearInterval(@checkImgUrl)
       @$el.removeClass('processing')
       # Load image before showing it in view
-      $('<img>', src: img_url).on 'load', => @$el.removeClass('hidden')
+      $('<img>', src: img_url).on 'load', => @$el.removeClass('transparent')
       thumbnail_url = "url(#{img_url})".replace /\s/, "%20"
       @$el.css('background-image', thumbnail_url)
 
