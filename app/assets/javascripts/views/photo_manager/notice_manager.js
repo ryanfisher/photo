@@ -16,8 +16,11 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     },
 
     displayNotice: function(args) {
+      this.removeNotice();
       this.$('p').text(args.message).addClass(args.status || this.defaultStatus);
-      setTimeout(_.bind(this.removeNotice, this), args.duration || this.defaultDuration);
+      var duration = args.duration || this.defaultDuration;
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(_.bind(this.removeNotice, this), duration);
     },
 
     removeNotice: function() {
