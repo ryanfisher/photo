@@ -27,6 +27,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       confirmText = 'Are you sure you want to delete the selected photos?';
       return unless confirm(confirmText)
       _.invoke(selectedPhotos, 'destroy')
+      Backbone.trigger 'notice', { message: 'Selected photos deleted.' }
 
     openUploadInput: ->
       @$('input.multiple-photos').click()
