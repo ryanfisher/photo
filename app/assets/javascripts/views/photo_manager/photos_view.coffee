@@ -17,9 +17,16 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @collection.fetch()
 
     deletePhotos: ->
+      selectedPhotos = @feed.selected_photos()
+      if selectedPhotos.length == 0
+        Backbone.trigger 'notice', {
+          message: 'Must select photos to delete.',
+          status: 'danger'
+        }
+        return
       confirmText = 'Are you sure you want to delete the selected photos?';
       return unless confirm(confirmText)
-      _.invoke(@feed.selected_photos(), 'destroy')
+      _.invoke(selectedPhotos, 'destroy')
 
     openUploadInput: ->
       @$('input.multiple-photos').click()

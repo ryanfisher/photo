@@ -24,7 +24,13 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     savePositions: function() {
       _.invoke(this.feed.photoEditViews, 'updatePosition');
       var positions = this.collection.positions(this.model.id);
-      $.post('/api/sorted_photos/update_positions', { positions: positions });
+      $.post('/api/sorted_photos/update_positions', {
+        positions: positions, success: this.updateNotice
+      });
+    },
+
+    updateNotice: function() {
+      Backbone.trigger('notice', { message: 'Positions successfully updated.' });
     },
 
     cleanUp: function() {
