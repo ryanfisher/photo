@@ -1,5 +1,9 @@
 # Controller for the photos
 class PhotosController < ApplicationController
+  caches_action :index, cache_path: Proc.new {
+    { updated_at: Photo.limit(40).maximum(:updated_at) }
+  }
+
   def index
     photos_result = Photo.includes(:user).order(created_at: :desc).limit(40)
     photos = PhotoPresenter::Collection.new(photos_result)
