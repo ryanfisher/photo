@@ -13,8 +13,10 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     },
 
     render: function() {
+      var title = this.model ? this.model.get('title') : '';
       this.$('.modal-body').html(
-        '<form><input type="text" name="title" placeholder="Album title"><br>' +
+        '<form><input type="text" name="title" placeholder="Album title" value="' + 
+        title + '"><br>' +
         '<button class="cancel" type="button">Cancel</button>' +
         '<button class="create" type="button">Create album</button></form>'
       )
@@ -25,9 +27,16 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       if (this.creating) return;
       this.creating = true;
       title = this.$('[name=title]').val();
-      this.collection.create({ title: title });
+      var notice;
+      if (this.model) {
+        this.model.save({ title: title });
+        notice = 'Album title updated.';
+      } else {
+        this.collection.create({ title: title });
+        notice = 'New album (' + title + ') created.';
+      }
       this.hide();
-      Backbone.trigger('notice', { message: 'New album (' + title + ') created.' });
+      Backbone.trigger('notice', { message: notice });
     },
 
     show: function() {
@@ -37,6 +46,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     hide: function() {
       this.$el.removeClass('visible');
+      this.undelegateEvents();
     }
   })
 });

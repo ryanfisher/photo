@@ -5,7 +5,8 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     el: '#album-editor',
 
     events: {
-      'click .option.delete': 'deleteAlbum'
+      'click .option.delete': 'deleteAlbum',
+      'click .option.change-title': 'changeTitle'
     },
 
     initialize: function() {
@@ -39,6 +40,11 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       this.model.destroy({ success: function() {
         Fotio.router.navigate('albums', { trigger: true });
       }});
+    },
+
+    changeTitle: function() {
+      var modal = new exports.AlbumModal({ model: this.model });
+      modal.show();
     },
 
     updateNotice: function() {
