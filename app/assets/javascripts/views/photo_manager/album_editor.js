@@ -4,6 +4,10 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
   exports.AlbumEditor = exports.BaseView.extend({
     el: '#album-editor',
 
+    events: {
+      'click .option.delete': 'deleteAlbum'
+    },
+
     initialize: function() {
       this.listenTo(this.model, 'sync', this.render);
       this.model.fetch();
@@ -27,6 +31,14 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       $.post('/api/sorted_photos/update_positions', {
         positions: positions, success: this.updateNotice
       });
+    },
+
+    deleteAlbum: function() {
+      var text = 'Are you sure you want to delete this album? This action is cannot be undone.';
+      if (!confirm(text)) return;
+      this.model.destroy({ success: function() {
+        Fotio.router.navigate('albums', { trigger: true });
+      }});
     },
 
     updateNotice: function() {

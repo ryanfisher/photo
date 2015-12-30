@@ -22,7 +22,7 @@ module Api
 
     def destroy
       current_user_albums.find(params.fetch(:id)).destroy
-      head :ok
+      render json: {}, status: :ok
     end
 
     private
