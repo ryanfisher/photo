@@ -4,5 +4,5 @@ describe 'Fotio.Views.Photo.Image', ->
     @subject = new Fotio.Views.Photo.Image { model }
 
   describe '#initialize', ->
-    it 'creates an element with the hidden class', ->
-      expect(@subject.$el.hasClass('hidden')).toBe(true)
+    it 'creates an element with the transparent class', ->
+      expect(@subject.$el.hasClass('transparent')).toBe(true)
