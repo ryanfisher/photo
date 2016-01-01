@@ -29,10 +29,9 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     savePositions: function() {
       _.invoke(this.feed.photoEditViews, 'updatePosition');
-      var positions = this.collection.positions(this.model.id);
-      $.post('/api/sorted_photos/update_positions', {
-        positions: positions, success: this.updateNotice
-      });
+      // TODO: Make request only when model has changed
+      _.invoke(this.collection.models, 'save');
+      this.updateNotice()
     },
 
     deleteAlbum: function() {
