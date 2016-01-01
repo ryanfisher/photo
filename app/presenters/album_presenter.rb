@@ -12,6 +12,6 @@ class AlbumPresenter < BasePresenter
   end
 
   def photos_array
-    photos.map(&:simple_json)
+    sorted_photos.map(&:simple_json)
   end
 end

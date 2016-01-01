@@ -6,7 +6,8 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     events: {
       'click .option.delete': 'deleteAlbum',
-      'click .option.change-title': 'changeTitle'
+      'click .option.change-title': 'changeTitle',
+      'click .option.remove-selected': 'removePhotos'
     },
 
     initialize: function() {
@@ -53,6 +54,14 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
 
     cleanUp: function() {
       this.feed.removePhotoViews();
+    },
+
+    removePhotos: function() {
+      var photos = this.feed.selected_photos();
+      var text = 'Are you sure you want to remove the selected photos from this album?';
+      if (!confirm(text)) return;
+      _.invoke(photos, 'destroy');
+      Backbone.trigger('notice', { message: 'Selected photos removed from album.' });
     }
   });
 });

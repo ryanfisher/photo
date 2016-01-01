@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :photos, only: [:index, :show, :create, :update, :destroy]
     resources :albums, only: [:index, :show, :create, :update, :destroy]
 
-    resources :sorted_photos, only: [] do
+    resources :sorted_photos, only: [:destroy] do
       collection do
         post :update_positions
       end
