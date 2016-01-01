@@ -53,7 +53,7 @@ server '192.241.235.241',
   user: 'ryan',
   roles: %w{web app},
   ssh_options: {
-    keys: %w(/home/ryan/.ssh/id_rsa),
+    keys: %w(/home/ryan/.ssh/id_rsa_photo),
     forward_agent: false,
     auth_methods: %w(publickey)
   }
