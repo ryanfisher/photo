@@ -54,6 +54,6 @@ server '192.241.235.241',
   roles: %w{web app},
   ssh_options: {
     keys: %w(/home/ryan/.ssh/id_rsa_photo),
-    forward_agent: false,
+    forward_agent: true,
     auth_methods: %w(publickey)
   }
