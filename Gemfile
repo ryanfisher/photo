@@ -22,6 +22,7 @@ gem 'aws-s3'
 gem 'mini_magick'
 
 gem 'skylight'
+gem 'rollbar', '~> 2.5.0'
 
 gem 'passenger'
 
