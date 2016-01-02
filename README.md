@@ -11,8 +11,14 @@ The default rake task is set up to run specs and other metrics
 bundle exec rake
 ```
 
+Linux system dependencies
+---
+Postrgres dependencies:
+sudo apt-get install libpq-dev postgresql-9.3 postgresql-contrib-9.3
+
 Deploying the app
 ---
+Add database.yml and secrets.yml to capistrano shared/config folder
 
 Additional resources and inspirations
 ---
