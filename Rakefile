@@ -5,4 +5,10 @@ require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
 
-task default: ['metrics:reek', :spec, :teaspoon]
+begin
+  task default: ['metrics:reek', :spec, :teaspoon]
+rescue LoadError
+  task :reek do
+    $stderr.puts 'Reek is not available. In order to run reek, you must: gem install reek'
+  end
+end
