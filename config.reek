@@ -1,9 +1,17 @@
+Attribute:
+  exclude:
+    - PhotoProcessor#photo
+
 IrresponsibleModule:
   enabled: false
 
+UnusedPrivateMethod:
+  exclude:
+    - Photo
+
 UtilityFunction:
   exclude:
-    - "PhotoResizeJob#resize"
+    - PhotoResizeJob#resize
 
 exclude_paths:
   - db/migrate
