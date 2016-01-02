@@ -31,8 +31,14 @@ gem 'passenger'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+gem 'reek'
+
 # Use Capistrano for deployment
-gem 'capistrano-rails', group: :development
+group :development do
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
+  gem 'capistrano-passenger'
+end
 
 gem 'actionpack-action_caching'
 
@@ -53,8 +59,6 @@ group :development, :test do
 
   gem 'teaspoon-jasmine'
   gem 'guard-teaspoon'
-
-  gem 'reek'
 end
 
 group :test do
