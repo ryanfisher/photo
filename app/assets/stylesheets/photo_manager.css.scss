@@ -188,7 +188,7 @@ $manager-side-bar-width: 320px;
     @include transition(opacity 0.3s ease-in-out);
     float: left;
 
-    i { display: none; }
+    i, .percentage { display: none; }
 
     &.transparent {
       @include opacity(0);
@@ -205,8 +205,17 @@ $manager-side-bar-width: 320px;
           line-height: 130px;
         }
       }
-      &.uploading i { color: $accent-color; }
-      &.processing i { color: black; }
+      &.processing i {
+        color: $accent-color;
+      }
+      &.uploading i { display: none; }
+      &.uploading .percentage {
+        display: inline;
+        color: $accent-color;
+        font-family: "Lucida Console", Monaco, monospace;
+        font-size: 40px;
+        line-height: 130px;
+      }
     }
 
     &:hover {

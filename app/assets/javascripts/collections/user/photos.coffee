@@ -22,6 +22,7 @@ namespace 'Fotio.Collections.User', (exports) ->
             callback = (ev) ->
               if ev.lengthComputable
                 percentUploaded = Math.floor(ev.loaded * 100 / ev.total)
+                newPhoto.trigger('percentUpdated', { percentage: percentUploaded })
               console.log(percentUploaded)
             myXhr.upload.addEventListener 'progress', callback, false
           myXhr

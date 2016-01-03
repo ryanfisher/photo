@@ -11,7 +11,12 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       if img_url then @setImage(img_url) else @$el.addClass('uploading')
       @listenTo @model, 'change:id', @finishUploading
       @$el.append($('<i>', class: 'fa fa-spinner fa-spin'))
+      @$el.append($('<span>', class: 'percentage'))
       @listenTo @model, 'destroy', @remove
+      @listenTo @model, 'percentUpdated', @updatePercentage
+
+    updatePercentage: (args) ->
+      @$('.percentage').text("#{args.percentage}%")
 
     finishUploading: ->
       @$el.removeClass('uploading')
