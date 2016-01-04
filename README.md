@@ -13,7 +13,6 @@ bundle exec rake
 
 Linux system dependencies
 ---
-Postrgres dependencies:
 sudo apt-get install libpq-dev postgresql-9.3 postgresql-contrib-9.3 imagemagick
 
 Deploying the app
