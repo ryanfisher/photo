@@ -15,6 +15,9 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @listenTo @model, 'destroy', @remove
       @listenTo @model, 'percentUpdated', @updatePercentage
 
+    selectedIndex: ->
+      @$el.index() if @$el.hasClass('selected')
+
     updatePercentage: (args) ->
       @$('.percentage').text("#{args.percentage}%")
 
@@ -44,11 +47,12 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
     is_selected: ->
       @$el.is(':visible') and @$el.hasClass('selected')
 
+    selectView: ->
+      @$el.addClass('selected')
+
     toggle_selected: (event) ->
-      # Don't fire click event on photo manager feed
-      event.stopPropagation()
       @$el.toggleClass('selected')
-      @trigger 'selected_toggle'
+      @trigger 'selected' if @$el.hasClass('selected') && event.shiftKey
 
     open_photo_editor: (event) ->
       event.stopPropagation()
