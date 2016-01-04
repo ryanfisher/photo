@@ -13,9 +13,11 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     initialize: function() {
       this.listenTo(this.model, 'sync', this.render);
       this.model.fetch();
+      this.listenTo(this.model, 'change:title', this.setTitle);
     },
 
     render: function() {
+      this.setTitle()
       this.collection = this.model.get('photos');
       this.feed = new exports.PhotoFeed({
         el: this.$('.feed'),
@@ -25,6 +27,10 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       this.$('.feed').sortable({
         stop: _.bind(this.savePositions, this)
       });
+    },
+
+    setTitle: function() {
+      this.$('.title').text(this.model.get('title'));
     },
 
     savePositions: function() {

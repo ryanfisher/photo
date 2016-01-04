@@ -55,6 +55,16 @@ $manager-side-bar-width: 320px;
   // elements
   font-size: 0;
 
+  h2 {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 35px;
+    display: inline-block;
+    margin: 0 10px 0 0;
+
+    .label { margin-right: 3px; }
+  }
+
   .dropdown-menu {
     // visibility: hidden;
     display: inline-block;
