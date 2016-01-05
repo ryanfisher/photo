@@ -1,4 +1,5 @@
 #album-feed
   - albums.each do |album|
     .album-cover style="display: inline-block; background-image: url(#{album.thumb_url}); background-size: cover; height: 250px; width: 250px;"
-      .album-title = album.title
+      .album-title
+        a href=album_path(album.id) = album.title

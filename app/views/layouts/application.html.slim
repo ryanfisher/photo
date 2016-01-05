@@ -14,8 +14,8 @@ html
     = yield :head
   body class="#{controller_name} #{action_name}"
     nav#main-nav
-      a.home href=root_path home
       a.photos href=photos_path photos
+      a.albums href=albums_path albums
       a.dashboard href=dashboard_index_path dashboard
     .header = content_for :header
     #content

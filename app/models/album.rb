@@ -6,7 +6,7 @@ class Album < ActiveRecord::Base
 
   def self.covers
     joins('LEFT JOIN photos ON albums.photo_id = photos.id')
-      .select(:title, 'photos.thumb_url')
+      .select(:id, :title, 'photos.thumb_url')
   end
 
   def update_with(hash)
