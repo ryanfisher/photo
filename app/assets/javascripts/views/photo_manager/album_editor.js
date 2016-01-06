@@ -11,8 +11,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     },
 
     initialize: function() {
-      this.listenTo(this.model, 'sync', this.render);
-      this.model.fetch();
+      this.model.fetch({ success: _.bind(this.render, this) });
       this.listenTo(this.model, 'change:title', this.setTitle);
     },
 

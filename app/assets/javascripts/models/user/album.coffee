@@ -9,5 +9,5 @@ namespace 'Fotio.Models.User', (exports) ->
 
     addPhoto: (model) ->
       photos = @get('photos') or []
-      photos.push model
+      photos.push photo_id: model.get('id')
       @set('photos', photos)
