@@ -2,6 +2,10 @@ Attribute:
   exclude:
     - PhotoProcessor#photo
 
+DuplicateMethodCall:
+  exclude:
+    - Album#update_with
+
 IrresponsibleModule:
   enabled: false
 

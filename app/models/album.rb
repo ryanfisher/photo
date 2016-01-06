@@ -14,8 +14,7 @@ class Album < ActiveRecord::Base
       next unless photo[:photo_id]
       sorted_photos.find_or_create_by(photo_id: photo[:photo_id])
     end
-    self.title = hash[:title]
-    save
+    update(title: hash[:title])
 
     self
   end
