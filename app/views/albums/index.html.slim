@@ -1,6 +1,5 @@
 #album-feed
   - albums.each do |album|
-    a href=album_path(album.id)
-      .album-cover style="background-image: url(#{album.thumb_url});"
-        .album-title-overlay
-        .album-title = album.title
+    a.album-cover style="background-image: url(#{album.thumb_url});" href=album_path(album.id)
+      .album-title-overlay
+      .album-title = album.title
