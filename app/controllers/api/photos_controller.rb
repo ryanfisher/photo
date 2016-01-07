@@ -32,7 +32,7 @@ module Api
     end
 
     def photos
-      user_photos.limit(40)
+      user_photos.limit(40).order(created_at: :desc)
     end
 
     def photo

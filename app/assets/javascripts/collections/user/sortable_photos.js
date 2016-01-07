@@ -3,12 +3,13 @@
 namespace('Fotio.Collections.User', function(exports) {
   exports.SortablePhotos = exports.Photos.extend({
     sortTypes: {
-      'upload-date': 'id',
+      'upload-date': 'created_at',
       'date-taken': 'taken'
     },
 
     initialize: function() {
-      this.sortKey = 'id';
+      this.sortKey = 'created_at';
+      this.order = 'desc'
     },
 
     sortBy: function(type) {
@@ -19,7 +20,10 @@ namespace('Fotio.Collections.User', function(exports) {
     comparator: function(model1, model2) {
       this.value1 = model1.get(this.sortKey)
       this.value2 = model2.get(this.sortKey)
-      return this.value1 > this.value2 ? 1 : -1;
+      if (this.value1 > this.value2 && this.order === 'asc' ||
+          this.value1 < this.value2 && this.order === 'desc')
+        return 1;
+      else return -1;
     }
   });
 });
