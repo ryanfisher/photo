@@ -6,7 +6,7 @@ class Album < ActiveRecord::Base
 
   def self.covers
     joins('LEFT JOIN photos ON albums.photo_id = photos.id')
-      .select(:id, :title, 'photos.thumb_url')
+      .where.not(photo_id: nil).select(:id, :title, 'photos.thumb_url')
   end
 
   def update_with(hash)
@@ -14,7 +14,7 @@ class Album < ActiveRecord::Base
       next unless photo[:photo_id]
       sorted_photos.find_or_create_by(photo_id: photo[:photo_id])
     end
-    update(title: hash[:title])
+    update(title: hash[:title], cover_photo: photos.first)
 
     self
   end
