@@ -6,6 +6,8 @@ namespace 'Fotio.Collections.Album', (exports) ->
     url: '/api/photos'
     model: Fotio.Models.User.AlbumPhoto
 
+    comparator: 'position'
+
     positions: (album_id) ->
       this.map (photo) ->
         {
