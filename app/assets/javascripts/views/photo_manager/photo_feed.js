@@ -15,7 +15,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     },
 
     append_photo_view: function(model) {
-      this.new_photo_view(model)
+      this.new_photo_view(model);
       this.$el.append(this.last_photo_view_el());
     },
 
@@ -37,11 +37,8 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
       if (photoIndexes.length < 2) return;
       var otherIndex = photoIndexes[index == 0 ? 1 : index - 1];
       var sliceIndexes = [otherIndex, selectedIndex];
-      var toSelect = this.photoEditViews.slice(
-        _.min(sliceIndexes),
-        _.max(sliceIndexes)
-      );
-      _.invoke(toSelect, 'selectView');
+      this.$('.photo').slice(_.min(sliceIndexes), _.max(sliceIndexes))
+        .addClass('selected')
     },
 
     selectedPhotoIndexes: function() {

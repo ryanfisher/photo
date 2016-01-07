@@ -1,4 +1,8 @@
 .albums.index {
+  .album-feed {
+    margin: 0 $side-width;
+  }
+
   .album-cover {
     display: inline-block;
     background-size: cover;
