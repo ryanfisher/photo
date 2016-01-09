@@ -7,7 +7,7 @@ class AlbumsController < ApplicationController
   }
 
   def index
-    render locals: { albums: Album.covers }
+    render locals: { albums: albums.covers }
   end
 
   def show
@@ -18,5 +18,13 @@ class AlbumsController < ApplicationController
 
   def album
     AlbumPresenter.new(Album.find(params.fetch(:id)))
+  end
+
+  def albums
+    profile_id ? User.find_by(username: profile_id).albums : Album
+  end
+
+  def profile_id
+    @_profile_id ||= params[:profile_id]
   end
 end
