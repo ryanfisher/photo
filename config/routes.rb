@@ -15,4 +15,6 @@ Rails.application.routes.draw do
     resources :albums, only: [:index, :show, :create, :update, :destroy]
     resources :sorted_photos, only: [:update, :destroy]
   end
+
+  get '*path' => 'errors#routing'
 end

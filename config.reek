@@ -9,6 +9,10 @@ DuplicateMethodCall:
 IrresponsibleModule:
   enabled: false
 
+UncommunicativeMethodName:
+  exclude:
+    - ApplicationController#render_404
+
 UnusedPrivateMethod:
   exclude:
     - Photo
