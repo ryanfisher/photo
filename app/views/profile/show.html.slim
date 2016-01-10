@@ -4,8 +4,9 @@
 #profile-info
   img src="//www.gravatar.com/avatar/#{gravatar}?s=150"
   h1 = "Profile of #{user.username}"
-  select onChange="self.location=this.options[this.selectedIndex].value"
-    option Go to an Album
-    - albums.each do |album|
-      option value=album_path(album.id) =album.title
+ul.nav.nav-tabs
+  li.active role='presentation'
+    a href=profile_path(id: user.username) Photos
+  li role='presentation'
+    a href=profile_albums_path(profile_id: user.username) Albums
 #photo-feed.profile-show

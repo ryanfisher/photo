@@ -1,13 +1,51 @@
 #profile-info {
   text-align: left;
-  margin: 0 $side-width;
+  margin: 0 $side-width -33px;
 
-  img { display: inline-block; }
-  h1 { display: inline-block; }
+  img {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  h1 {
+    display: inline-block;
+    margin: 0;
+  }
 
   select { margin-left: 20px; }
 }
 
 .profile-show .photo .info {
   display: none;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #ddd;
+  padding-left: 160px;
+  list-style: none;
+  margin: 0 $side-width;
+  text-align: left;
+
+  li {
+    margin-bottom: -1px;
+    display: inline-block;
+
+    &.active a {
+      cursor: default;
+      background-color: #fff;
+      border-bottom-color: transparent;
+      color: #333;
+    }
+
+    a {
+      margin-right: 2px;
+      line-height: 1.42857143;
+      border: 1px solid #ddd;
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+    }
+  }
 }
