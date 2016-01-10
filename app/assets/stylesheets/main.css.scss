@@ -89,6 +89,8 @@ $side-width: 5%;
 html {
   @include transition(background-image 0.6s ease-in-out);
 
+  overflow-y: scroll;
+
   body {
     margin: 0;
   }
