@@ -1,6 +1,7 @@
 .albums.index {
-  .album-feed {
+  #album-feed {
     margin: 0 $side-width;
+    text-align: left;
   }
 
   .album-cover {
@@ -8,7 +9,7 @@
     background-size: cover;
     height: 250px;
     width: 250px;
-    margin: 10px;
+    margin: 10px 20px 10px 0;
     position: relative;
   }
 

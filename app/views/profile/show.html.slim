@@ -1,12 +1,4 @@
 - content_for :photos_json
   javascript:
     bootstrapped_photos = #{raw photos_json}
-#profile-info
-  img src="//www.gravatar.com/avatar/#{gravatar}?s=150"
-  h1 = "Profile of #{user.username}"
-ul.nav.nav-tabs
-  li.active role='presentation'
-    a href=profile_path(id: user.username) Photos
-  li role='presentation'
-    a href=profile_albums_path(profile_id: user.username) Albums
 #photo-feed.profile-show

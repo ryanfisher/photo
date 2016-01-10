@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :albums, only: [:index, :show]
   resources :photos, only: [:index, :show]
   resources :profile, only: [:show] do
-    resources :albums, only: [:index]
+    resources :albums, only: [:index], controller: 'profile/albums'
   end
   resources :dashboard, only: [:index]
   get 'dashboard/*path' => 'dashboard#index'

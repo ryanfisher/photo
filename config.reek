@@ -16,6 +16,7 @@ UncommunicativeMethodName:
 UnusedPrivateMethod:
   exclude:
     - Photo
+    - ProfileController
 
 UtilityFunction:
   exclude:

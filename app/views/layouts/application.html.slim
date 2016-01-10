@@ -19,7 +19,7 @@ html
       a.dashboard href=dashboard_index_path dashboard
     .header = content_for :header
     #content
-      = yield
+      = content_for?(:content) ? yield(:content) : yield
     #modal
       .modal-background
       .modal-body
