@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :photos
   has_many :albums
+
+  def gravatar
+    Digest::MD5.hexdigest(email.strip.downcase)
+  end
 end

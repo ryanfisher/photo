@@ -12,7 +12,7 @@ class ProfileController < ApplicationController
   end
 
   def gravatar
-    Digest::MD5.hexdigest(user.email.strip.downcase)
+    user.gravatar
   end
 
   def photos

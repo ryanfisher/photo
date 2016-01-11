@@ -1,0 +1,34 @@
+.profiles.index {
+  .profile-feed {
+    margin: 0 $side-width;
+    text-align: left;
+  }
+
+  .profile-photo {
+    width: 250px;
+    height: 250px;
+    display: inline-block;
+    margin: 10px 20px 10px 0;
+    position: relative;
+  }
+
+  // TODO: Look into sass extend to share these rules with albums index
+  .profile-title-overlay {
+    background-color: black;
+    width: 230px;
+    height: 30px;
+    position: absolute;
+    bottom: 30px;
+    @include opacity(0.7);
+  }
+
+  .profile-title {
+    position: absolute;
+    bottom: 30px;
+    padding-left: 20px;
+    line-height: 30px;
+    color: white;
+    font-weight: 900;
+    text-decoration: none;
+  }
+}

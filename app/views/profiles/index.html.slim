@@ -1,0 +1,7 @@
+- content_for :header do
+    h1 Profiles
+.profile-feed
+  - users.each do |user|
+    a.profile-photo style="background-image: url(//www.gravatar.com/avatar/#{user.gravatar}?s=250);" href=profile_path(user.username)
+      .profile-title-overlay
+      .profile-title = user.username

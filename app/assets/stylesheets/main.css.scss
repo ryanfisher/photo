@@ -85,6 +85,7 @@ $side-width: 5%;
 @import 'profile';
 @import 'modal';
 @import 'albums/index';
+@import 'profiles/index';
 
 html {
   @include transition(background-image 0.6s ease-in-out);

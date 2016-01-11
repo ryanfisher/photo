@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :profile, only: [:show] do
     resources :albums, only: [:index], controller: 'profile/albums'
   end
+  resources :profiles, only: [:index]
   resources :dashboard, only: [:index]
   get 'dashboard/*path' => 'dashboard#index'
 
