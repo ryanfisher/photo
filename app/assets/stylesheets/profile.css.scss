@@ -19,6 +19,10 @@
   display: none;
 }
 
+.albums.index.profile {
+  .header h1 { display: none; }
+}
+
 .nav-tabs {
   border-bottom: 1px solid #ddd;
   padding-left: 160px;

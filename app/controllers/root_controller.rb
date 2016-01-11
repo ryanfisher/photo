@@ -1,5 +1,5 @@
 class RootController < ApplicationController
   def index
-    redirect_to photos_path
+    redirect_to albums_path
   end
 end

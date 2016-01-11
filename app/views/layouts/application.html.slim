@@ -12,9 +12,10 @@ html
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
     = yield :head
-  body class="#{controller_name} #{action_name}"
+  body class="#{controller_name} #{action_name} #{@body_class}"
     nav#main-nav
-      a.photos href=photos_path photos
+      / #TODO: Change to profiles index
+      / a.photos href=photos_path photos
       a.albums href=albums_path albums
       a.dashboard href=dashboard_index_path dashboard
     .header = content_for :header

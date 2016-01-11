@@ -1,3 +1,6 @@
+- content_for :header
+  h1 Albums
+- @body_class = 'profile'
 #album-feed
   - albums.each do |album|
     a.album-cover style="background-image: url(#{album.thumb_url});" href=album_path(album.id)
