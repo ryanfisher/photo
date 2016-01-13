@@ -11,7 +11,7 @@ describe Album, type: :model do
     before do
       expect(subject).to receive(:sorted_photos) { sorted_photos }
       expect(sorted_photos).to receive(:find_or_create_by)
-        .with(photo_id: 1) { sorted_photo }
+        .with(photo_id: 1, position: 0) { sorted_photo }
       expect(subject).to receive(:title=).with('Switzerland!')
       expect(subject).to receive(:save) { true }
     end
