@@ -12,7 +12,7 @@ namespace 'Fotio.Collections.User', (exports) ->
         url: "/api/photos"
         data: form_data
         success: _.bind(newPhoto.set, newPhoto),
-        error: (jqXHR) -> console.log(jqXHR.status)
+        error: (jqXHR) -> newPhoto.trigger(jqXHR.status)
         complete: => callbacks.complete()
         processData: false,
         contentType: false,

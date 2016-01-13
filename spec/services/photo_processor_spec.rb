@@ -8,19 +8,41 @@ describe PhotoProcessor do
   let(:image)         { double(:image, dimensions: [20, 10]) }
   let(:uploaded_file) { double(:uploaded_file, size: 30)     }
 
-  before do
-    expect(photo).to receive(:file_path) { '/' }
-    expect(image).to receive(:exif)
-    expect(uploaded_file).to receive(:original_filename)
-    expect(uploaded_file).to receive(:path)
-    expect(PhotoUploader).to receive(:upload) { '/' }
-    expect(MiniMagick::Image).to receive(:new) { image }
-    expect(PhotoResizeJob).to receive(:perform_later)
-  end
-
   describe '.new' do
     it 'is an instance of described class' do
       expect(subject).to be_instance_of described_class
+    end
+  end
+
+  describe '#process' do
+    before do
+      expect(MiniMagick::Image).to receive(:new) { image }
+      expect(image).to receive(:signature) { '' }
+      expect(uploaded_file).to receive(:path)
+    end
+
+    describe 'when photo does not exist' do
+      before do
+        expect(photo).to receive(:file_path) { '/' }
+        expect(image).to receive(:exif)
+        expect(uploaded_file).to receive(:original_filename)
+        expect(PhotoUploader).to receive(:upload) { '/' }
+        expect(PhotoResizeJob).to receive(:perform_later)
+      end
+
+      it 'responds with a boolen value' do
+        expect(subject.process).to be true
+      end
+    end
+
+    describe 'when photo already exists' do
+      before do
+        expect(Photo).to receive(:exists?) { true }
+      end
+
+      it 'responds with false' do
+        expect(subject.process).to be false
+      end
     end
   end
 

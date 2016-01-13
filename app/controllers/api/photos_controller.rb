@@ -10,7 +10,13 @@ module Api
     end
 
     def create
-      render json: processed_photo
+      photo = processed_photo
+      if photo
+        render json: photo
+      else
+        # TODO: Respond with a useful error message
+        render json: {}, status: :unprocessable_entity
+      end
     end
 
     def update
@@ -41,7 +47,8 @@ module Api
 
     def processed_photo
       processor = PhotoProcessor.new(photo, params.fetch(:file))
-      processor.photo
+      result = processor.process
+      result ? processor.photo : false
     end
 
     def user_photos

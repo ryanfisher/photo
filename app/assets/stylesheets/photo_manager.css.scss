@@ -222,6 +222,7 @@ $manager-side-bar-width: 320px;
       &.processing i {
         color: $accent-color;
       }
+      &.error i { display: block; }
       &.uploading i { display: none; }
       &.uploading .percentage {
         display: inline;

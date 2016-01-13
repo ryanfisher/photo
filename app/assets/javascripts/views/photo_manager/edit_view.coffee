@@ -14,12 +14,18 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @$el.append($('<span>', class: 'percentage'))
       @listenTo @model, 'destroy', @remove
       @listenTo @model, 'percentUpdated', @updatePercentage
+      @listenTo @model, '422', @unableToProcess
 
     selectedIndex: ->
       @$el.index() if @$el.hasClass('selected')
 
     updatePercentage: (args) ->
       @$('.percentage').text("#{args.percentage}%")
+
+    unableToProcess: ->
+      @$('i, .percentage').remove()
+      @$el.removeClass('uploading').addClass('error')
+      @$el.append($('<i>', class: 'fa fa-warning', title: 'Duplicate photo found'));
 
     finishUploading: ->
       @$el.removeClass('uploading')

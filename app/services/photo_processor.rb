@@ -11,20 +11,25 @@ class PhotoProcessor
   def initialize(photo, uploaded_file)
     @photo = photo
     @uploaded_file = uploaded_file
-    process
   end
 
   attr_accessor :photo
 
   def process
-    photo.original_filename = uploaded_file.original_filename
+    return false if photo_exists?
     photo.url = PhotoUploader.upload(uploaded_file, photo.file_path)
-    photo.width, photo.height, photo.exif = width, height, mm_image.exif
-    photo.size = uploaded_file.size
+    set_attributes
     photo.save
   end
 
   private
+
+  def set_attributes
+    photo.signature = photo_signature
+    photo.original_filename = uploaded_file.original_filename
+    photo.width, photo.height, photo.exif = width, height, mm_image.exif
+    photo.size = uploaded_file.size
+  end
 
   def mm_image
     @_mm_image ||= MiniMagick::Image.new(uploaded_file.path)
@@ -40,6 +45,14 @@ class PhotoProcessor
 
   def height
     dimensions[1]
+  end
+
+  def photo_signature
+    @_photo_signature ||= mm_image.signature
+  end
+
+  def photo_exists?
+    Photo.exists?(signature: photo_signature, user: photo.user)
   end
 
   attr_reader :uploaded_file

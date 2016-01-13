@@ -9,6 +9,10 @@ DuplicateMethodCall:
 IrresponsibleModule:
   enabled: false
 
+TooManyInstanceVariables:
+  exclude:
+    - PhotoProcessor    
+
 UncommunicativeMethodName:
   exclude:
     - ApplicationController#render_404

@@ -37,7 +37,7 @@ describe Api::PhotosController, type: :controller do
   end
 
   describe 'POST create' do
-    let(:processor) { double(:processor, photo: {}) }
+    let(:processor) { double(:processor, photo: {}, process: result) }
 
     before do
       expect(PhotoProcessor).to receive(:new) { processor }
@@ -45,8 +45,20 @@ describe Api::PhotosController, type: :controller do
 
     before { post :create, file: '' }
 
-    it 'should responds with 200 OK' do
-      expect(response.status).to be 200
+    describe 'when process is successful' do
+      let(:result) { true }
+
+      it 'should responds with 200 OK' do
+        expect(response.status).to be 200
+      end
+    end
+
+    describe 'when process is unsuccessful' do
+      let(:result) { false }
+
+      it 'should responds with 422 unprocessable entity' do
+        expect(response.status).to be 422
+      end
     end
   end
 
