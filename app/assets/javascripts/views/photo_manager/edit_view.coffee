@@ -24,7 +24,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     unableToProcess: ->
       @$('i, .percentage').remove()
-      @$el.removeClass('uploading').addClass('error')
+      @$el.removeClass('uploading transparent').addClass('error')
       @$el.append($('<i>', class: 'fa fa-warning', title: 'Duplicate photo found'));
 
     finishUploading: ->

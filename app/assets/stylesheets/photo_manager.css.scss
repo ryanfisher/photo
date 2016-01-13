@@ -204,8 +204,9 @@ $manager-side-bar-width: 320px;
 
     i, .percentage { display: none; }
 
-    &.transparent {
-      @include opacity(0);
+    &.transparent { @include opacity(0); }
+
+    &.transparent, &.error {
       text-align: center;
       line-height: 130px;
       font-size: 50px;
@@ -222,7 +223,10 @@ $manager-side-bar-width: 320px;
       &.processing i {
         color: $accent-color;
       }
-      &.error i { display: block; }
+      &.error i {
+        display: block;
+        line-height: 130px;
+      }
       &.uploading i { display: none; }
       &.uploading .percentage {
         display: inline;
