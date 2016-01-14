@@ -1,0 +1,22 @@
+en:
+  dashboard:
+    index:
+      dashboard: Dashboard
+      photo_view: Photo View
+      album_view: Album View
+      add_to_album: Add to an album
+      create_a_album: Create a new album
+      batch_actions: Batch actions
+      delete_selected: Delete selected
+      publish_to_service: Publish to service
+      upload: upload
+      editing_album: "Editing album:"
+      choose_permissions: Choose Permissions
+      private: Private
+      public: Public
+      friends: Friends
+      unlisted: Unlisted
+      other_actions: Other actions
+      delete_album: Delete album
+      rename_album: Rename album
+      remove_selected_photos: Remove selected photos

@@ -1,12 +1,12 @@
 - content_for :content do
   #profile-info
     img src="//www.gravatar.com/avatar/#{gravatar}?s=150"
-    h1 = "Profile of #{user.username}"
+    h1 = t('.profile_of', username: user.username)
   ul.nav.nav-tabs
     li class=('active' if controller_name == 'profile') role='presentation'
-      a href=profile_path(id: user.username) Photos
+      a href=profile_path(id: user.username) = t('.photos')
     li class=('active' if controller_name == 'albums') role='presentation'
-      a href=profile_albums_path(profile_id: user.username) Albums
+      a href=profile_albums_path(profile_id: user.username) = t('.albums')
   = yield
 
 = render template: 'layouts/application'

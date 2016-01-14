@@ -1,26 +1,26 @@
 - content_for :header do
-  h1 Dashboard
-  a.photo-view photo view
-  a.album-view album view
+  h1 = t('.dashboard')
+  a.photo-view = t('.photo_view')
+  a.album-view = t('.album_view')
 #notice
   p
 #photo-manager-feed.base-view.changing.hidden
   nav#dashboard-actions
     .dashboard-actions
       .album-choices.dropdown-menu
-        span.placeholder Add to an album
+        span.placeholder = t('.add_to_album')
         i.fa.fa-caret-down
         .options
-          .option.create-album Create a new album
+          .option.create-album = t('.create_a_album')
       .batch-actions.dropdown-menu
-        span.placeholder Batch actions
+        span.placeholder = t('.batch_actions')
         i.fa.fa-caret-down
         .options
           .option.delete
             i.fa.fa-trash
-            | Delete selected
+            = t('.delete_selected')
       .publish-actions.dropdown-menu.hidden
-        span.placeholder Publish to service
+        span.placeholder = t('.publish_to_service')
         i.fa.fa-caret-down
         .options
           .option.instagram
@@ -37,7 +37,7 @@
             | Facebook
   .feed-container
     .feed
-      .upload-button upload
+      .upload-button = t('.upload')
   = render partial: 'uploader'
 #album-manager-feed.base-view.changing.hidden
   .feed-container
@@ -46,28 +46,28 @@
   nav#dashboard-actions
     .dashboard-actions
       h2
-        span.label Editing album:
+        span.label = t('.editing_album')
         span.title
       .permissions-choices.dropdown-menu.hidden
-        span.placeholder Choose Permissions
+        span.placeholder = t('.choose_permissions')
         i.fa.fa-caret-down
         .options
-          .option.private Private
-          .option.public Public
-          .option.friends Friends
-          .option.unlisted Unlisted
+          .option.private = t('.private')
+          .option.public = t('.public')
+          .option.friends = t('.friends')
+          .option.unlisted = t('.unlisted')
       .other-actions.dropdown-menu
-        span.placeholder Other actions
+        span.placeholder = t('.other_actions')
         i.fa.fa-caret-down
         .options
           .option.delete
             i.fa.fa-trash
-            | Delete album
+            = t('.delete_album')
           .option.change-title
             i.fa.fa-edit
-            | Rename album
+            = t('.rename_album')
           .option.remove-selected
             i.fa.fa-remove
-            | Remove selected photos
+            = t('.remove_selected_photos')
   .feed-container
     .feed

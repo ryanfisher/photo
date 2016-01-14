@@ -1,0 +1,11 @@
+en:
+  layouts:
+    application:
+      photo_application: Photo Application
+      albums: albums
+      profiles: profiles
+      dashboard: dashboard
+    profile:
+      profile_of: "Profile of %{username}"
+      photos: Photos
+      albums: Albums

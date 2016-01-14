@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Photo Application
+    title = @title || t('.photo_application')
     meta name='viewport' content='width=device-width, initial-scale=1'
     = content_for :photos_json
     = content_for :photo_json
@@ -14,11 +14,9 @@ html
     = yield :head
   body class="#{controller_name} #{action_name} #{@body_class}"
     nav#main-nav
-      / #TODO: Change to profiles index
-      / a.photos href=photos_path photos
-      a.albums href=albums_path albums
-      a.profiles href=profiles_path profiles
-      a.dashboard href=dashboard_index_path dashboard
+      a.albums href=albums_path = t('.albums')
+      a.profiles href=profiles_path = t('.profiles')
+      a.dashboard href=dashboard_index_path = t('.dashboard')
     .header = content_for :header
     #content
       = content_for?(:content) ? yield(:content) : yield
