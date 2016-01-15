@@ -2,5 +2,10 @@
   javascript:
     bootstrapped_photos = #{raw album.to_json}
 - content_for :header
-  h1 = album.title
+  h1
+    = album.title
+    span.photographer
+      = t('.by') + ' '
+      - username = album.user.username
+      a href=profile_path(username) = username
 #photo-feed
