@@ -1,7 +1,7 @@
 - content_for :content do
   #profile-info
     img src="//www.gravatar.com/avatar/#{gravatar}?s=150"
-    h1 = t('.profile_of', username: user.username)
+    h1 = user.username
   ul.nav.nav-tabs
     li class=('active' if controller_name == 'profile') role='presentation'
       a href=profile_path(id: user.username) = t('.photos')
