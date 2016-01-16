@@ -8,16 +8,24 @@ namespace('Fotio.Routers', function(exports) {
     },
 
     albums: function() {
+      this.setNav('.album-view');
       this.switchViewTo('AlbumsView', {});
     },
 
     album: function(id) {
+      this.setNav('.album-view');
       var model = new Fotio.Models.User.Album({ id: id });
       this.switchViewTo('AlbumEditor', { model: model });
     },
 
     photos: function() {
+      this.setNav('.photo-view');
       this.switchViewTo('PhotosView', {});
+    },
+
+    setNav: function(tab) {
+      $('.nav-tabs li').removeClass('active')
+      $('.nav-tabs').find(tab).addClass('active')
     },
 
     redirectToPhotos: function() {

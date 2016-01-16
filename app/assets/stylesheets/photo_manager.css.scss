@@ -1,9 +1,13 @@
 $manager-side-bar-width: 320px;
 
 .dashboard.index {
-  .header h1 { display:inline-block; }
-  .photo-view, .album-view {
-    margin: 0 20px;
+  .header {
+    text-align: left;
+    h1 { display:inline-block; }
+  }
+
+  .nav-tabs {
+    margin: -34px 0 0;
     cursor: pointer;
   }
 

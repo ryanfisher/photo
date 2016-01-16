@@ -1,7 +1,10 @@
 - content_for :header do
   h1 = t('.dashboard')
-  a.photo-view = t('.photo_view')
-  a.album-view = t('.album_view')
+  ul.nav.nav-tabs
+    li.photo-view role='presentation'
+      a = t('.edit_photos')
+    li.album-view role='presentation'
+      a = t('.edit_albums')
 #notice
   p
 #photo-manager-feed.base-view.changing.hidden

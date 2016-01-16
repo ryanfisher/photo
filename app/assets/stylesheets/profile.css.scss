@@ -41,9 +41,12 @@
       background-color: #fff;
       border-bottom-color: transparent;
       color: #333;
+
+      &:hover { background-color: #fff; }
     }
 
     a {
+      background-color: #f9f9f9;
       margin-right: 2px;
       line-height: 1.42857143;
       border: 1px solid #ddd;
@@ -52,6 +55,9 @@
       display: block;
       padding: 10px 15px;
       text-decoration: none;
+      color: #555;
+
+      &:hover { background-color: #eee; }
     }
   }
 }
