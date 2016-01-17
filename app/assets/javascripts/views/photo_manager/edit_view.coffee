@@ -12,6 +12,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @listenTo @model, 'change:id', @finishUploading
       @$el.append($('<i>', class: 'fa fa-spinner fa-spin'))
       @$el.append($('<span>', class: 'percentage'))
+      @$el.append($('<i>', class: 'fa fa-edit edit'))
       @listenTo @model, 'destroy', @remove
       @listenTo @model, 'percentUpdated', @updatePercentage
       @listenTo @model, '422', @unableToProcess
@@ -62,3 +63,4 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     open_photo_editor: (event) ->
       event.stopPropagation()
+      Fotio.router.navigate('photos/' + this.model.id, { trigger: true });

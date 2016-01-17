@@ -207,6 +207,15 @@ $manager-side-bar-width: 320px;
     float: left;
 
     i, .percentage { display: none; }
+    i.edit {
+      display: block;
+      position: absolute;
+      bottom: -20px;
+      left: 5px;
+      color: white;
+
+      @include transition(bottom .3s);
+    }
 
     &.transparent { @include opacity(0); }
 
@@ -242,9 +251,14 @@ $manager-side-bar-width: 320px;
     }
 
     &:hover {
-      margin: 7px;
-      border: 3px solid gray;
       cursor: pointer;
+
+      .edit {
+        display: block;
+        position: absolute;
+        bottom: 5px;
+        left: 5px;
+      }
     }
 
     &.selected {

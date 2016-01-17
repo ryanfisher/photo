@@ -12,7 +12,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     },
 
     render: function() {
-      this.$('.photo-container img').prop('src', this.model.thumbnail());
+      this.$('.photo-edit-container img').prop('src', this.model.thumbnail());
     }
   });
 });
