@@ -2,8 +2,8 @@ en:
   dashboard:
     index:
       dashboard: Dashboard
-      photo_view: Photo View
-      album_view: Album View
+      edit_photos: Edit Photos
+      edit_albums: Edit Albums
       add_to_album: Add to an album
       create_a_album: Create a new album
       batch_actions: Batch actions
