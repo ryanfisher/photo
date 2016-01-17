@@ -1,9 +1,12 @@
+//= require views/photo_manager/photo_editor
+
 namespace('Fotio.Routers', function(exports) {
   exports.Manager = Backbone.Router.extend({
     routes: {
       'albums': 'albums',
       'albums/:id': 'album',
       'photos': 'photos',
+      'photos/:id': 'photo',
       '*path': 'redirectToPhotos'
     },
 
@@ -21,6 +24,12 @@ namespace('Fotio.Routers', function(exports) {
     photos: function() {
       this.setNav('.photo-view');
       this.switchViewTo('PhotosView', {});
+    },
+
+    photo: function(id) {
+      this.setNav('.photo-view');
+      var model = new Fotio.Models.User.Photo({ id: id })
+      this.switchViewTo('PhotoEditor', { model: model });
     },
 
     setNav: function(tab) {
