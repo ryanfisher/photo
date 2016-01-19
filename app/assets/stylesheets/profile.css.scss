@@ -23,6 +23,12 @@
 
 .albums.index.profile {
   .header h1 { display: none; }
+
+  #profile-info { margin: 0 0 -33px; }
+
+  #content { margin: 0 $side-width; }
+
+  .nav-tabs { margin: 0; }
 }
 
 .nav-tabs {
