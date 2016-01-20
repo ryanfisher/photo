@@ -21,6 +21,8 @@ gem 'devise'
 gem 'aws-s3'
 gem 'mini_magick'
 
+gem 'fog'
+
 gem 'skylight', '~> 0.10.1'
 gem 'rollbar', '~> 2.5.0'
 
