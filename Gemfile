@@ -23,6 +23,8 @@ gem 'mini_magick'
 
 gem 'fog'
 
+gem 'attr_encrypted'
+
 gem 'skylight', '~> 0.10.1'
 gem 'rollbar', '~> 2.5.0'
 
