@@ -17,7 +17,7 @@ class PhotoProcessor
 
   def process
     return false if photo_exists?
-    photo.url = PhotoUploader.upload(uploaded_file, photo.file_path)
+    photo.upload(uploaded_file)
     set_attributes
     photo.save
   end

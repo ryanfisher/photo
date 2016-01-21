@@ -24,6 +24,10 @@ class Photo < ActiveRecord::Base
     { id: id, thumb_url: thumb_url }
   end
 
+  def upload(file)
+    self.url = PhotoUploader.upload(file, file_path)
+  end
+
   private
 
   def delete_photos
