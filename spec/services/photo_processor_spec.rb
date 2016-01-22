@@ -4,7 +4,7 @@ describe PhotoProcessor do
   let(:user) do
     User.create(email: 'han@example.com', password: 'password')
   end
-  let(:photo)         { Photo.new user_id: user.id           }
+  let(:photo)         { Photo.new user_id: user.id, url: '/' }
   let(:image)         { double(:image, dimensions: [20, 10]) }
   let(:uploaded_file) { double(:uploaded_file, size: 30)     }
 
@@ -23,10 +23,9 @@ describe PhotoProcessor do
 
     describe 'when photo does not exist' do
       before do
-        expect(photo).to receive(:file_path) { '/' }
         expect(image).to receive(:exif)
         expect(uploaded_file).to receive(:original_filename)
-        expect(PhotoUploader).to receive(:upload) { '/' }
+        expect(photo).to receive(:upload) { '/' }
         expect(PhotoResizeJob).to receive(:perform_later)
       end
 
