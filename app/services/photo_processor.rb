@@ -17,6 +17,7 @@ class PhotoProcessor
 
   def process
     return false if photo_exists?
+    photo.original_filename = uploaded_file.original_filename
     photo.upload(uploaded_file)
     set_attributes
     photo.save
@@ -26,7 +27,6 @@ class PhotoProcessor
 
   def set_attributes
     photo.signature = photo_signature
-    photo.original_filename = uploaded_file.original_filename
     photo.width, photo.height, photo.exif = width, height, mm_image.exif
     photo.size = uploaded_file.size
   end

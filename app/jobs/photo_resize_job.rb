@@ -13,8 +13,7 @@ class PhotoResizeJob < ActiveJob::Base
   attr_reader :photo
 
   def resize(url)
-    # TODO: The logic needs to change so we're not concerned with protocol here
-    image = MiniMagick::Image.open("http:#{url}")
+    image = MiniMagick::Image.open(url)
     image.resize 'x350'
 
     image.path

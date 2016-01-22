@@ -10,7 +10,7 @@ class Photo < ActiveRecord::Base
 
   after_destroy :delete_photos
 
-  delegate :username, to: :user
+  delegate :username, :bucket, to: :user
 
   def file_path
     [:photos, username, file_key, original_filename].join('/')
@@ -25,7 +25,11 @@ class Photo < ActiveRecord::Base
   end
 
   def upload(file)
-    self.url = PhotoUploader.upload(file, file_path)
+    self.url = bucket.directory.files.create(
+      key: file_path,
+      body: file,
+      public: true
+    ).public_url
   end
 
   private

@@ -15,6 +15,10 @@ class Bucket < ActiveRecord::Base
     end
   end
 
+  def directory
+    @_directory ||= connection.directories.new(key: name)
+  end
+
   private
 
   def keys
