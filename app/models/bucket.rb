@@ -15,6 +15,10 @@ class Bucket < ActiveRecord::Base
     end
   end
 
+  def upload(key, file)
+    directory.files.create(key: key, body: file, public: true).public_url
+  end
+
   def directory
     @_directory ||= connection.directories.new(key: name)
   end

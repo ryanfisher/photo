@@ -25,11 +25,14 @@ class Photo < ActiveRecord::Base
   end
 
   def upload(file)
-    self.url = bucket.directory.files.create(
-      key: file_path,
-      body: file,
-      public: true
-    ).public_url
+    self.url = bucket.upload(file_path, file)
+  end
+
+  def create_thumb
+    image = MiniMagick::Image.open(url)
+    image.resize 'x350'
+    self.thumb_url = bucket.upload(thumb_file_path, open(image.path))
+    save
   end
 
   private

@@ -24,7 +24,7 @@ UnusedPrivateMethod:
 
 UtilityFunction:
   exclude:
-    - PhotoResizeJob#resize
+    - PhotoResizeJob#perform
 
 exclude_paths:
   - db/migrate
