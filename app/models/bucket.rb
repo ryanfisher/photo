@@ -19,6 +19,10 @@ class Bucket < ActiveRecord::Base
     directory.files.create(key: key, body: file, public: true).public_url
   end
 
+  def delete_file(key)
+    directory.files.destroy(key)
+  end
+
   def directory
     @_directory ||= connection.directories.new(key: name)
   end

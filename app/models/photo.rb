@@ -38,8 +38,8 @@ class Photo < ActiveRecord::Base
   private
 
   def delete_photos
-    PhotoUploader.delete(file_path)
-    PhotoUploader.delete(thumb_file_path)
+    bucket.delete_file(file_path)
+    bucket.delete_file(thumb_file_path)
   end
 
   def initialize_hex_key
