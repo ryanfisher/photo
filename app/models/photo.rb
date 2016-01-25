@@ -12,12 +12,17 @@ class Photo < ActiveRecord::Base
 
   delegate :username, :bucket, to: :user
 
+  # TODO: Move different files to version model
   def file_path
     [:photos, username, file_key, original_filename].join('/')
   end
 
   def thumb_file_path
     [:photos, username, file_key, "thumb_#{original_filename}"].join('/')
+  end
+
+  def optimized_file_path
+    [:photos, username, file_key, "optimized_#{original_filename}"].join('/')
   end
 
   def simple_json
@@ -28,10 +33,22 @@ class Photo < ActiveRecord::Base
     self.url = bucket.upload(file_path, file)
   end
 
+  def create_sized_images
+    create_thumb
+    create_optimized
+  end
+
   def create_thumb
     image = MiniMagick::Image.open(url)
     image.resize 'x350'
     self.thumb_url = bucket.upload(thumb_file_path, open(image.path))
+    save
+  end
+
+  def create_optimized
+    image = MiniMagick::Image.open(url)
+    image.resize 'x1920>'
+    self.optimized_url = bucket.upload(optimized_file_path, open(image.path))
     save
   end
 

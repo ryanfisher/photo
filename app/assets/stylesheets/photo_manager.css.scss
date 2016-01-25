@@ -231,6 +231,8 @@ $manager-side-bar-width: 320px;
         i {
           display: inherit;
           line-height: 130px;
+
+          &.edit { display: none; }
         }
       }
       &.processing i {
