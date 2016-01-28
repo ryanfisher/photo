@@ -57,6 +57,7 @@ class Photo < ActiveRecord::Base
   def delete_photos
     bucket.delete_file(file_path)
     bucket.delete_file(thumb_file_path)
+    bucket.delete_file(optimized_file_path)
   end
 
   def initialize_hex_key
