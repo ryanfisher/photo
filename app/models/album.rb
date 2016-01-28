@@ -13,10 +13,8 @@ class Album < ActiveRecord::Base
   def update_with(hash)
     (hash.fetch(:photos) || []).each do |photo|
       next unless photo[:photo_id]
-      sorted_photos.find_or_create_by(
-        photo_id: photo[:photo_id],
-        position: photos.size
-      )
+      sorted_photos.create_with(position: photos.size)
+        .find_or_create_by(photo_id: photo[:photo_id])
     end
     update(title: hash[:title], cover_photo: photos.first)
 
