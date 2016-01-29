@@ -27,6 +27,13 @@ class Bucket < ActiveRecord::Base
     @_directory ||= connection.directories.new(key: name)
   end
 
+  # The file representation of the
+  #
+  # @return [Fog::Storage::Google::File]
+  def file(key)
+    directory.files.get(key)
+  end
+
   private
 
   def keys
