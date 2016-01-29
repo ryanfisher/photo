@@ -1,3 +1,6 @@
+#= require collections/user/photos
+#= require collections/album/photos
+
 namespace 'Fotio.Views.Photo', (exports) ->
   class exports.Feed extends Backbone.View
     el: '#photo-feed'
