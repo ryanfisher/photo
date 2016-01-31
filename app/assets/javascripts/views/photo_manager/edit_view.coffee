@@ -21,6 +21,8 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @$el.index() if @$el.hasClass('selected')
 
     updatePercentage: (args) ->
+      if parseInt(args.percentage) == 100
+        return @$el.toggleClass('processing').removeClass('uploading')
       @$('.percentage').text("#{args.percentage}%")
 
     unableToProcess: ->
