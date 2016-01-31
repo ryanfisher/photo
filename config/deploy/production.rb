@@ -49,11 +49,10 @@
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-server '192.241.235.241',
-  user: 'ryan',
+require_relative '../capistrano_config'
+
+config = CapistranoConfig.production
+server config[:server_ip],
+  user: config[:user],
   roles: %w{web app},
-  ssh_options: {
-    keys: %w(/home/ryan/.ssh/id_rsa_photo),
-    forward_agent: true,
-    auth_methods: %w(publickey)
-  }
+  ssh_options: config[:ssh_options]

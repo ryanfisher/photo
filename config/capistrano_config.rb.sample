@@ -1,0 +1,13 @@
+module CapistranoConfig
+  def self.production
+    {
+      server_ip: '127.0.0.1',
+      user: 'deploy',
+      ssh_options: {
+        keys: %w(/home/deploy/.ssh/id_rsa),
+        forward_agent: true,
+        auth_methods: %w(publickey)
+      }
+    }
+  end
+end
