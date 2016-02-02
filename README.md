@@ -21,6 +21,12 @@ Deploying the app
 - Add database.yml and secrets.yml to capistrano shared/config folder
 - Set up environment variables
 
+Style Guidelines
+---
+- The Rubocop gem is useful for style suggestions
+- https://github.com/styleguide/ruby
+- For sass, rscss.io and https://pages.18f.gov/frontend/css-coding-styleguide/ have some good ideas
+
 Additional resources and inspirations
 ---
 The best way to organize a lifetime of photos https://news.ycombinator.com/item?id=9426422
