@@ -6,12 +6,20 @@ DuplicateMethodCall:
   exclude:
     - Album#update_with
 
+FeatureEnvy:
+  exclude:
+    - Photo#optimally_resize
+
 IrresponsibleModule:
   enabled: false
 
 TooManyInstanceVariables:
   exclude:
     - PhotoProcessor    
+
+TooManyStatements:
+  exclude:
+    - Photo#optimally_resize
 
 UncommunicativeMethodName:
   exclude:

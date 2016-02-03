@@ -39,20 +39,30 @@ class Photo < ActiveRecord::Base
   end
 
   def create_thumb
-    image = MiniMagick::Image.open(url)
-    image.resize 'x350'
+    image = optimally_resize 'x350'
     self.thumb_url = bucket.upload(thumb_file_path, open(image.path))
     save
   end
 
   def create_optimized
-    image = MiniMagick::Image.open(url)
-    image.resize 'x1920>'
+    image = optimally_resize 'x1920>'
     self.optimized_url = bucket.upload(optimized_file_path, open(image.path))
     save
   end
 
   private
+
+  def optimally_resize(new_size)
+    image = MiniMagick::Image.open(url)
+    image.combine_options do |combined|
+      combined.resize new_size
+      combined.strip
+      combined.quality '82'
+      combined.interlace 'plane'
+    end
+
+    image
+  end
 
   def delete_photos
     bucket.delete_file(file_path)
