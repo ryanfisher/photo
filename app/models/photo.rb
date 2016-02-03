@@ -50,6 +50,12 @@ class Photo < ActiveRecord::Base
     save
   end
 
+  def update_cache_control
+    file = bucket.directory.files.get(thumb_file_path)
+    file.cache_control = 'max-age=604800'
+    file.save
+  end
+
   private
 
   def optimally_resize(new_size)
