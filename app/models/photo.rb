@@ -53,6 +53,7 @@ class Photo < ActiveRecord::Base
   def update_cache_control
     file = bucket.directory.files.get(thumb_file_path)
     file.cache_control = 'max-age=604800'
+    file.public = true
     file.save
   end
 
