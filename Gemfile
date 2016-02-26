@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.0'
+gem 'rails', '~> 4.2.0'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -27,7 +27,7 @@ gem 'mini_magick'
 
 gem 'fog'
 
-gem 'attr_encrypted'
+gem 'attr_encrypted', '~> 1.3.5'
 
 gem 'skylight', '~> 0.10.1'
 gem 'rollbar', '~> 2.5.0'
