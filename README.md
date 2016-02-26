@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/ryanfisher/photo.svg?style=svg)](https://circleci.com/gh/ryanfisher/photo)
+
 Photo Hosting App
 ===
 
