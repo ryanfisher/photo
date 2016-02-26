@@ -11,6 +11,10 @@ gem 'jquery-ui-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# https://github.com/modeset/teaspoon/issues/443
+gem 'sprockets', '3.2.0'
+gem 'sprockets-rails', '2.3.1'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -18,7 +22,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 
-gem 'aws-s3'
+# gem 'aws-s3'
 gem 'mini_magick'
 
 gem 'fog'
@@ -43,6 +47,9 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-passenger'
+
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
 end
 
 gem 'actionpack-action_caching'
@@ -50,9 +57,6 @@ gem 'actionpack-action_caching'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', '~> 1.4.0'

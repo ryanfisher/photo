@@ -9,6 +9,7 @@ DuplicateMethodCall:
 FeatureEnvy:
   exclude:
     - Photo#optimally_resize
+    - Photo#update_cache_control
 
 IrresponsibleModule:
   enabled: false
