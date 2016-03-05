@@ -10,4 +10,4 @@ namespace 'Fotio.Models.User', (exports) ->
       @get('thumb_url')
 
     optimized: ->
-      @get('url')
+      @get('optimized_url')
