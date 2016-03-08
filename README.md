@@ -1,5 +1,6 @@
 [![Code Climate](https://codeclimate.com/github/ryanfisher/photo/badges/gpa.svg)](https://codeclimate.com/github/ryanfisher/photo)
 [![Circle CI](https://circleci.com/gh/ryanfisher/photo.svg?style=svg)](https://circleci.com/gh/ryanfisher/photo)
+[![Coverage Status](https://coveralls.io/repos/github/ryanfisher/photo/badge.svg?branch=master)](https://coveralls.io/github/ryanfisher/photo?branch=master)
 
 Photo Hosting App
 ===

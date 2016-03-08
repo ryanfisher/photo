@@ -68,6 +68,8 @@ group :development, :test do
 
   gem 'teaspoon-jasmine'
   gem 'guard-teaspoon'
+
+  gem 'coveralls', require: false
 end
 
 group :test do
