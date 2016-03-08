@@ -1,12 +1,12 @@
 module Api
   class SortedPhotosController < Api::ApplicationController
     def destroy
-      SortedPhoto.find(params.fetch(:id)).destroy
+      sorted_photo.destroy
       head :no_content
     end
 
     def update
-      position = params.fetch(:position)
+      position = params.fetch(:position).to_i
       sorted_photo.update(position: position)
       Album.update(
         sorted_photo.album_id,
