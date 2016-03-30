@@ -24,8 +24,8 @@ gem 'devise'
 
 # gem 'aws-s3'
 gem 'mini_magick'
-
 gem 'fog'
+gem 'sidekiq'
 
 gem 'attr_encrypted', '~> 1.3.5'
 
