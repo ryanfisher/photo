@@ -17,5 +17,11 @@ Rails.application.routes.draw do
     resources :sorted_photos, only: [:update, :destroy]
   end
 
+  require 'sidekiq/web'
+  # TODO: authorize admin users only
+  authenticate :user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   get '*path' => 'errors#routing'
 end
