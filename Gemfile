@@ -32,7 +32,7 @@ gem 'sidekiq'
 gem 'attr_encrypted', '~> 1.3.5'
 
 gem 'skylight', '~> 0.10.1'
-gem 'rollbar', '~> 2.5.0'
+gem 'rollbar'
 
 gem 'passenger'
 
