@@ -6,8 +6,9 @@ class Album < ActiveRecord::Base
 
   def self.covers
     joins('LEFT JOIN photos ON albums.photo_id = photos.id')
+      .joins('LEFT JOIN users ON photos.user_id = users.id')
       .where.not(photo_id: nil).order(updated_at: :desc)
-      .select(:id, :title, 'photos.thumb_url')
+      .select(:id, :title, 'photos.thumb_url', 'users.username')
   end
 
   def update_with(hash)
