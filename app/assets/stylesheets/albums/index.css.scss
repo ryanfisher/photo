@@ -47,4 +47,17 @@
     line-height: 30px;
     font-size: 10px;
   }
+
+  &.profile {
+    .album-title-overlay {
+      height: 30px;
+    }
+
+    .album-title {
+      bottom: 30px;
+      line-height: 30px;
+    }
+
+    .album-owner { display: none; }
+  }
 }
