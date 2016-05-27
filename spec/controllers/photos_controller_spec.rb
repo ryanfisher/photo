@@ -25,10 +25,23 @@ describe PhotosController, type: :controller do
       )
     end
 
-    before { get :show, id: photo.id }
+    context 'when the photo exists' do
+      before { get :show, id: photo.id }
 
-    it 'responds with 200 OK' do
-      expect(response.status).to be 200
+      it 'responds with 200 OK' do
+        expect(response.status).to be 200
+      end
+    end
+
+    context 'when the photo does not exist' do
+      before do
+        Photo.delete_all
+        get :show, id: 1
+      end
+
+      it 'responds with 404 Not found' do
+        expect(response.status).to be 404
+      end
     end
   end
 end
