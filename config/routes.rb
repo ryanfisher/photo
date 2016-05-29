@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :photos, only: [:index, :show]
   resources :profile, only: [:show] do
     resources :albums, only: [:index], controller: 'profile/albums'
+    member { get 'recent' }
   end
   resources :profiles, only: [:index]
   resources :dashboard, only: [:index]

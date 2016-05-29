@@ -2,6 +2,10 @@ class ProfileController < ApplicationController
   layout 'profile'
 
   def show
+    redirect_to profile_albums_path(profile_id: params[:id])
+  end
+
+  def recent
     render locals: { photos_json: photos.to_json }
   end
 

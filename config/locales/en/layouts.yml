@@ -7,5 +7,5 @@ en:
       dashboard: dashboard
     profile:
       profile_of: "Profile of %{username}"
-      photos: Photos
+      photos: Recent Photos
       albums: Albums
