@@ -6,7 +6,7 @@
     li class=('active' if controller_name == 'albums') role='presentation'
       a href=profile_albums_path(profile_id: user.username) = t('.albums')
     li class=('active' if controller_name == 'profile') role='presentation'
-      a href=profile_path(id: user.username) = t('.photos')
+      a href=recent_profile_path(id: user.username) = t('.photos')
   = yield
 
 = render template: 'layouts/application'
