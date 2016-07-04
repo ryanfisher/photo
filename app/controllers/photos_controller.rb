@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
 
   def show
     render locals: { photo_json: photo.to_json }
-  rescue ActiveRecord::RecordNotFound => err
+  rescue ActiveRecord::RecordNotFound
     render_404
   end
 
