@@ -47,6 +47,7 @@ gem 'reek'
 # Use Capistrano for deployment
 group :development do
   gem 'capistrano-rails'
+  gem 'capistrano-sidekiq'
   gem 'capistrano-rvm'
   gem 'capistrano-passenger'
 
