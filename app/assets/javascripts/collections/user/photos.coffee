@@ -1,5 +1,5 @@
 namespace 'Fotio.Collections.User', (exports) ->
-  class exports.Photos extends Backbone.Collection
+  class exports.Photos extends Backbone.PageableCollection
     url: '/api/photos'
     model: Fotio.Models.User.Photo
 

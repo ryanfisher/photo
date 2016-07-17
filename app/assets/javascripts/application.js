@@ -2,5 +2,6 @@
 //= require jquery-ui/sortable
 //= require underscore-min
 //= require backbone-min
+//= require backbone.paginator.min
 //= require namespace
 //= require_tree .
