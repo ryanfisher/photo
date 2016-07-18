@@ -38,7 +38,8 @@ module Api
     end
 
     def photos
-      user_photos.limit(40).order(created_at: :desc)
+      user_photos.order(created_at: :desc)
+        .paginate(page: params[:page], per_page: params[:per_page])
     end
 
     def photo

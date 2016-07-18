@@ -6,6 +6,8 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       'click .feed-container': 'clear_selections'
       'click .upload-button':  'openUploadInput'
       'click .option.delete': 'deletePhotos'
+      'click .page-left': 'pageLeft'
+      'click .page-right': 'pageRight'
 
     initialize: ->
       @collection = new Fotio.Collections.User.SortablePhotos()
@@ -31,6 +33,14 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
 
     openUploadInput: ->
       @$('input.multiple-photos').click()
+
+    pageLeft: ->
+      @reset()
+      @collection.getPreviousPage().done(-> @feed.render())
+
+    pageRight: ->
+      @reset()
+      @collection.getNextPage().done(-> @feed.render())
 
     reset: ->
       @cleanUp()

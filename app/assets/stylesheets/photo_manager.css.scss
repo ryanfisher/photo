@@ -69,8 +69,7 @@ $manager-side-bar-width: 320px;
     .label { margin-right: 3px; }
   }
 
-  .dropdown-menu {
-    // visibility: hidden;
+  .page-left, .page-right, .dropdown-menu {
     display: inline-block;
     padding: 7px;
     margin-bottom: 5px;
@@ -79,6 +78,17 @@ $manager-side-bar-width: 320px;
     @include border-radius(2px);
     font-size: 14px;
     height: 19px;
+  }
+
+  .page-left, .page-right {
+    width: 19px;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover { background-color: $accent-color; color: white; }
+  }
+
+  .dropdown-menu {
     overflow-y: hidden;
     overflow-x: hidden;
     position: relative;
