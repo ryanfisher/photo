@@ -12,7 +12,7 @@ describe Api::PhotosController, type: :controller do
 
   describe 'GET index' do
     before do
-      expect(photos).to receive_message_chain(:limit, :order)
+      expect(photos).to receive_message_chain(:order, :paginate)
     end
 
     before { get :index, format: :json }
