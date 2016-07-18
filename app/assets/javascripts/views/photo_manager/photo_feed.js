@@ -8,6 +8,7 @@ namespace('Fotio.Views.PhotoManager', function(exports) {
     render: function() {
       this.photoEditViews = [];
       this.collection.each(_.bind(this.append_photo_view, this))
+      // TODO: Handle this differently, perhaps by passing callback into upload
       this.collection.on('add', _.bind(function(model) {
         this.new_photo_view(model);
         this.$('.upload-button').after(this.last_photo_view_el());

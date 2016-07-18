@@ -15,8 +15,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @feed = new exports.PhotoFeed({ el: @$('.feed'), @collection })
       @albumDropdown = new exports.AlbumDropdown()
       @albumDropdown.feed = @feed
-      @collection.once 'sync', => @feed.render()
-      @collection.fetch()
+      @collection.fetch(success: => @feed.render())
 
     deletePhotos: ->
       selectedPhotos = @feed.selected_photos()
@@ -35,12 +34,15 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @$('input.multiple-photos').click()
 
     pageLeft: ->
-      @reset()
-      @collection.getPreviousPage().done(-> @feed.render())
+      return if @collection.state.currentPage <= 1
+      @cleanUp()
+      @collection.off('add')
+      @collection.getPreviousPage().done(=> @feed.render())
 
     pageRight: ->
-      @reset()
-      @collection.getNextPage().done(-> @feed.render())
+      @cleanUp()
+      @collection.off('add')
+      @collection.getNextPage().done(=> @feed.render())
 
     reset: ->
       @cleanUp()
