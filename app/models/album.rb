@@ -4,6 +4,8 @@ class Album < ActiveRecord::Base
   belongs_to :user, touch: true
   belongs_to :cover_photo, class_name: 'Photo', foreign_key: 'photo_id'
 
+  before_create :create_stub
+
   def self.covers
     joins('LEFT JOIN photos ON albums.photo_id = photos.id')
       .joins('LEFT JOIN users ON photos.user_id = users.id')
@@ -20,5 +22,12 @@ class Album < ActiveRecord::Base
     update(title: hash[:title], cover_photo: photos.first)
 
     self
+  end
+
+  private
+
+  def create_stub
+    return if stub.present?
+    self.stub = self.title.parameterize
   end
 end

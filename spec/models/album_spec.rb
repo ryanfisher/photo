@@ -22,4 +22,24 @@ describe Album, type: :model do
       expect(subject.update_with(hash)).to be subject
     end
   end
+
+  describe '#create' do
+    subject { Album.create(title: 'Costa Rica', user_id: user.id) }
+
+    let(:user) do
+      User.create(
+        email: 'hansolo@example.com',
+        password: 'password',
+        password_confirmation: 'password'
+      )
+    end
+
+    it 'should create a stub from the title when creating an album' do
+      expect(subject.stub).to eq 'costa-rica'
+    end
+
+    it 'should set the title' do
+      expect(subject.title).to eq 'Costa Rica'
+    end
+  end
 end
