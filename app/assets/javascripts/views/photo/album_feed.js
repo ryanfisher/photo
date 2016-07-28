@@ -10,6 +10,9 @@ namespace('Fotio.Views.Photo', function(exports) {
     render: function() {
       // Resetting inline rules and setting opacity to 0 to avoid flicker from
       // albums covers shifting
+      this.newWidth = $(window).width();
+      if (this.previousWidth === this.newWidth) return;
+      this.previousWidth = this.newWidth;
       this.$el.css('opacity', 0);
       this.$el.css('margin-right', '');
       var albumCovers = this.$('.album-cover');
