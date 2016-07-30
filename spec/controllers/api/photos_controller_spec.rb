@@ -12,6 +12,7 @@ describe Api::PhotosController, type: :controller do
 
   describe 'GET index' do
     before do
+      expect(photos).to receive(:count) { 100 }
       expect(photos).to receive_message_chain(:order, :paginate)
     end
 

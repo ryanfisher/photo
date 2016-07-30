@@ -40,6 +40,7 @@ namespace 'Fotio.Views.PhotoManager', (exports) ->
       @collection.getPreviousPage().done(=> @feed.render())
 
     pageRight: ->
+      return unless @collection.hasNextPage()
       @cleanUp()
       @collection.off('add')
       @collection.getNextPage().done(=> @feed.render())

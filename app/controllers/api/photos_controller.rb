@@ -2,7 +2,7 @@ module Api
   # Api controller for user photos
   class PhotosController < Api::ApplicationController
     def index
-      render json: photos
+      render json: [{ total_entries: user_photos.count }, photos]
     end
 
     def show
@@ -53,7 +53,7 @@ module Api
     end
 
     def user_photos
-      current_user.photos
+      @_user_photos ||= current_user.photos
     end
   end
 end
