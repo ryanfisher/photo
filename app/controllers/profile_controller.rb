@@ -20,7 +20,9 @@ class ProfileController < ApplicationController
   end
 
   def photos
-    user.photos.map { |photo| PhotoPresenter.new(photo).to_json }
+    user.photos.available.recent.map do |photo|
+      PhotoPresenter.new(photo).to_json
+    end
   end
 
   helper_method :gravatar, :user

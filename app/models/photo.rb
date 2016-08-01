@@ -12,6 +12,9 @@ class Photo < ActiveRecord::Base
 
   delegate :username, :bucket, to: :user
 
+  scope :recent,    -> { order(created_at: :desc)  }
+  scope :available, -> { where.not(thumb_url: nil) }
+
   # TODO: Move different files to version model
   def file_path
     [:photos, username, file_key, original_filename].join('/')

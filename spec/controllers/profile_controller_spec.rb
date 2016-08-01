@@ -19,7 +19,8 @@ describe ProfileController, type: :controller do
 
     before do
       expect(User).to receive(:find_by_username).with(username) { profile }
-      expect(profile).to receive(:photos) { photos }
+      expect(profile)
+        .to receive_message_chain(:photos, :available, :recent) { photos }
       expect(PhotoPresenter).to receive(:new) { presenter }
     end
 
