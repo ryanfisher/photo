@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title = @title || t('.photo_application')
+    title = @title ? "#{@title} - #{t('.application_title')}" : t('.application_title')
     meta name='viewport' content='width=device-width, initial-scale=1'
     = content_for :photos_json
     = content_for :photo_json

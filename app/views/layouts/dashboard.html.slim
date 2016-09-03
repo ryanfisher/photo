@@ -1,7 +1,8 @@
 doctype html
 html
   head
-    title = @title || t('layouts.application.photo_application')
+    - title = t('layouts.application.application_title')
+    title = @title ? "#{@title} - #{title}" : title
     meta name='viewport' content='width=device-width, initial-scale=1'
     = favicon_link_tag 'slr-camera.png'
     = render partial: 'layouts/analytics'
