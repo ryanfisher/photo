@@ -1,7 +1,7 @@
 en:
   layouts:
     application:
-      application_title: Photo Application
+      application_title: Photography
       albums: albums
       profiles: profiles
       dashboard: dashboard

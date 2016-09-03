@@ -1,5 +1,6 @@
+- @title = t('layouts.application.profiles').capitalize
 - content_for :header
-  h1 = t('layouts.application.profiles')
+  h1 = @title
 .profile-feed
   - users.each do |user|
     a.profile-photo style="background-image: url(//www.gravatar.com/avatar/#{user.gravatar}?s=250);" href=profile_path(user.username)
